@@ -36,12 +36,12 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     address: ENV['SMTP_ADDRESS'],
-    port: ENV['SMTP_PORT'],
+    port: ENV['SMTP_PORT'].to_i,
     domain: ENV['SMTP_DOMAIN'],
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
     authentication: ENV['SMTP_AUTHENTICATION'],
-    enable_starttls_auto: ENV['SMTP_ENABLE_STARTTLS_AUTO']
+    enable_starttls_auto: true
   }
 
   # Don't care if the mailer can't send.
