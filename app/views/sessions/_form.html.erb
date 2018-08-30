@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<%= form_with scope: @user, url: target_url do |f| %>
+  <div>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.submit submit_label %>
+    </div>
+  </div>
+<% end %>
