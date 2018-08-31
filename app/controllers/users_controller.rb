@@ -1,6 +1,12 @@
 class UsersController < SessionsController
   def confirm_email
-    render html: "We are gonna confirm the email here!"
+    @user = User.find_by_confirm_token(params[:id])
+    if @user
+      @user.mark_email_confirmed
+      log_in
+    else
+      redirect_to root_url, notice: "Used or invalid token."
+    end
   end
 
   def show

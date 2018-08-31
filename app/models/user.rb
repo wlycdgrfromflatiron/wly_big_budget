@@ -1,10 +1,14 @@
 class User < ApplicationRecord
   has_many :carts
   has_many :stores, through: :carts
-  
   has_secure_password
-
   before_create :confirmation_token
+
+  def mark_email_confirmed
+    self.email_confirmed = true
+    self.confirm_token = nil
+    self.save!
+  end
 
   private
 
