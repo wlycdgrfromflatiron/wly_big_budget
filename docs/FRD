@@ -1,0 +1,60 @@
+Logging in takes user to Users#show (profile page)
+
+UsersController:
+  Users#show
+    renders:
+      Total spending today / this week / this month / this year
+      Log new cart -> CartsController#new
+      View carts -> CartsController#index
+      View items -> ItemsController#index
+      View stores -> StoresController#index
+
+CartsController:
+  Carts#index
+    renders:
+      list of all user's carts, sorted by: date, amount, store
+      for each item, list shows:
+        date, total amount, store (BestBuy), note ("Laptop stuff")
+      expand item control on each: (JS)
+        shows each cart_item with price, item name, cart_item note
+      edit item button on each:
+        -> Carts#edit for that cart
+
+  Carts#show
+    renders:
+      details for a specific cart, including:
+        date (AJAX edit)
+        total (updates automatically in response to item edits)
+        note (AJAX edit)
+        store (can select another from drop down or make a new one - AJAX form slides down)
+        store location (dropdown that updates if you change store, can add new)
+        list of cart_items, showing the following for each:
+          name
+          price
+          note
+          tags
+
+          for each cart_item, we can change the price & change the note,
+          or delete the cart_item altogether
+          we can also delete or add tags
+
+        we can also, on this page, add new cart_items
+          that form requires you to choose / create an item,
+          specify a price,
+          and optionally add a note and tags
+
+  
+
+
+I don't understand where to put the store location. Should it be its own model?
+
+where does something like brand go?
+it can go on the item itself, in which case the items become very specific
+or it can go on the cartitem, in which case
+
+
+Let's say a cart just has all these tags, like "Target", "online", etc
+
+
+
+Maybe we can say a cart has many stores
