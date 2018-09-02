@@ -1,7 +1,9 @@
 class Cart < ApplicationRecord
   belongs_to :user
-  belongs_to :store
-  has_many :items
+  has_many :cart_items
+  has_many :items, through: :cart_items
+  has_one :cart_store
+  has_one :store, through: :cart_store
 
   def total
     total = 0
