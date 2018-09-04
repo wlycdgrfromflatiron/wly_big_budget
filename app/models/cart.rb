@@ -1,16 +1,11 @@
 class Cart < ApplicationRecord
   belongs_to :user
-  has_many :cart_items
-  has_many :items, through: :cart_items
-  has_one :store_location
-  has_one :store, through: :store_location
+  has_many :items
+  has_many :prefab_items, through: :items
+  has_one :store
+  has_one :prefab_store, through: :store
 
   def total
-    total = 0
-    # refactor to use Array#reduce, if available
-    cart_items.each do |cart_item|
-      total += cart_item.price
-    end
-    total
+    items.reduce(0) { |total, item| total += item.price }
   end
 end
