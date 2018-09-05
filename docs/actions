@@ -1,13 +1,3 @@
-Navbar:
-New Cart -> Carts#new
-Carts -> Carts#index
-Stores -> PrefabStores#index
-Items -> PrefabItems#index
-Tags -> Tags#index
-Signout -> Sessions#Logout
-Home -> Users#index
-Profile -> Users#show
-
 UsersController
 #index - HOME page today's carts with links to edit, Add New Cart button
 #show - PROFILE page with username, email[, reset password link]
@@ -53,4 +43,14 @@ Prefab Stores,
 Prefab Items,
 Carts,
 User,
-Navbar
+Navbar 
+
+Navbar:
+New Cart -> Carts#new
+Carts -> Carts#index
+Stores -> PrefabStores#index
+Items -> PrefabItems#index
+DONE Tags -> Tags#index
+Signout -> Sessions#Logout
+Home -> Users#index
+Profile -> Users#show

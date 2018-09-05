@@ -1,4 +1,6 @@
 class UsersController < SessionsController
+  before_action :session_guard, only: [:home, :show]
+  
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
     if @user
@@ -9,18 +11,18 @@ class UsersController < SessionsController
     end
   end
 
-  def show
-    unless logged_in? && this_user?
-      redirect_to root_path and return
-    end
+  def home
+    render html: "The Home page of the active user"
+  end
 
-    @user = User.find(params[:id])
+  def show
+    redirect_to home_user_path
   end
 
   def new
     if logged_in?
       @user = User.find(session[:user_id])
-      redirect_to @user
+      redirect_to home_user_path(@user)
     else
       @user = User.new
     end
@@ -29,13 +31,17 @@ class UsersController < SessionsController
   def create
     if logged_in?
       @user = User.find(session[:user_id])
-      redirect_to @user and return
+      redirect_to home_user_path(@user) and return
     end
 
     @user = User.find_by(email: authentication_params[:email])
     if authenticated?
-      log_in and return
-    # add an else to handle a user who has been authenticated but not confirmed
+      if @user.email_confirmed
+        log_in and return
+      else
+        flash.now[:notice] = 'To start using Big Budget, please activate your account by following the instructions in the account confirmation email you received.'
+        redirect_to root_path and return
+      end
     elsif @user
       redirect_to new_user_path, notice: "This email is taken; please use another" and return
     end

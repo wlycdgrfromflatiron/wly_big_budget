@@ -1,3 +1,4 @@
 <% if @user %>
+  <%= link_to 'Home', home_user_path(@user) %>
   <%= link_to 'Tags', user_tags_path(@user) %>
 <% end %>

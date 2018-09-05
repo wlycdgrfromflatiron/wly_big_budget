@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
   def signin
     if logged_in?
       @user = User.find(session[:user_id])
-      redirect_to @user and return
+      redirect_to home_user_path(@user) and return
     end
 
     @user = User.find_by(email: authentication_params[:email])
-    if @user && @user.authenticate(authentication_params[:password])
+    if authenticated?
       if @user.email_confirmed
         log_in and return
       else
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 
   def log_in
     session[:user_id] = @user.id
-    redirect_to @user
+    redirect_to home_user_path(@user)
   end
 
   def this_user?
@@ -44,6 +44,12 @@ class SessionsController < ApplicationController
 
   def this_user_nested?
     session[:user_id].to_i == params[:user_id].to_i
+  end
+
+  def session_guard
+    unless logged_in? && this_user?
+      redirect_to root_path
+    end
   end
 
   def session_guard_for_nested_resource
