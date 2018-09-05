@@ -45,4 +45,10 @@ class SessionsController < ApplicationController
   def this_user_nested?
     session[:user_id].to_i == params[:user_id].to_i
   end
+
+  def session_guard_for_nested_resource
+    unless logged_in? && this_user_nested?
+      redirect_to root_path
+    end
+  end
 end

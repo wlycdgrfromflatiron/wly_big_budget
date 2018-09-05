@@ -1,10 +1,8 @@
 class TagsController < SessionsController
+  before_action :session_guard_for_nested_resource
+
   #index - show all tags: name, link to details, link to delete
   def index
-    unless logged_in? && this_user_nested?
-      redirect_to root_path and return
-    end
-
     @user = User.find(session[:user_id])
     @tags = @user.tags
   end
