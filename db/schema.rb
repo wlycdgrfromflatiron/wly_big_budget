@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_162611) do
+ActiveRecord::Schema.define(version: 2018_09_05_191423) do
 
   create_table "cart_item_tags", force: :cascade do |t|
     t.integer "cart_item_id"
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 2018_09_05_162611) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id"
+    t.index ["user_id"], name: "index_user_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
