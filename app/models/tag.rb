@@ -1,4 +1,6 @@
 class Tag < ApplicationRecord
+  has_many :user_tags
+  has_many :users, through: :user_tags
   has_many :cart_store_tags
   has_many :cart_stores, through: :cart_store_tags
   has_many :cart_item_tags

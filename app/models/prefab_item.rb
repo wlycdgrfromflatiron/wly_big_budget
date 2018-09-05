@@ -1,4 +1,5 @@
 class PrefabItem < ApplicationRecord
+    belongs_to :user
     has_many :cart_items
     has_many :carts, through: :cart_items
     has_many :prefab_item_tags
