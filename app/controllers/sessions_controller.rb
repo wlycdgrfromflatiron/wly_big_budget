@@ -19,6 +19,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def signout
+    session.delete(:user_id)
+    redirect_to root_path
+  end
+
   private
 
   def authenticated?
@@ -32,6 +37,7 @@ class SessionsController < ApplicationController
   def logged_in?
     session[:user_id]
   end
+  helper_method :logged_in?
 
   def log_in
     session[:user_id] = @user.id

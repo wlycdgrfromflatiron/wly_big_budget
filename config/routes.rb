@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   post '/signin', to: 'sessions#signin'
-  post '/signout', to: 'sessions#signout'
+  get '/signout', to: 'sessions#signout'
 
   root "welcome#home"
 end
