@@ -1,5 +1,47 @@
-PrefabStoreController
+Navbar:
+New Cart -> Carts#new
+Carts -> Carts#index
+Stores -> PrefabStores#index
+Items -> PrefabItems#index
+Tags -> Tags#index
+Signout -> Sessions#Logout
+Home -> Users#index
+Profile -> Users#show
+
+UsersController
+#index - HOME page today's carts with links to edit, Add New Cart button
+#show - PROFILE page with username, email[, reset password link]
+
+PrefabStoreController - nested resource of Users
   #index - show all the prefab stores for the user - name, link to edit, link to delete
-  #edit (doubles as #show) - lets you update the name + define, add, and remove tags
+  #edit (doubles as #show) - lets you update the name, add tags, remove tags
   #new - lets you make a new one: define a name + define, add, and remove tags
   #delete - confirm that user is ok with all cart_stores that use this prefab_store losing the prefab_store's tags
+
+PrefabItemsController - nested resource of Users
+#index - show all the user's prefab items, name, link to edit, link to delete
+#edit (doubles as #show) - lets you update the name, add tags, remove tags
+#new - lets you make a new one: give a name and add tags
+#delete - confirm that user is ok with all cart_items that use this prefab_item losing the prefab_item's tags
+
+TagController - nested resource of Users
+#index - show all tags: name, link to details, link to delete
+#edit (doubles as #show) - name, all the user's prefab items and stores that use it
+#new - give name, select prefab items and prefab stores to add the tag to
+#delete - confirm that user is ok with all prefabs, cart stores, and cart items losing this tag
+
+CartsController - nested resource of Users
+#index - show all the user's carts, with links to edit and delete
+#edit (doubles as #show) - lets you change date, note. lets you edit and delete the items. lets you add new items. let you edit store.
+#new - form to make a new cart.
+  date, note
+
+  store_prefab dropdown
+  store note field for cart_store
+  store tags field for cart_store - bunch of checkboxes?
+
+  3 cart_item forms, for each:
+  - price (required)
+  - note (optional)
+  - dropdown to select a prefab item (optional)
+  - checkboxes for item tags (optional)
