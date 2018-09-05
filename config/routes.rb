@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     member do
       get :confirm_email
     end
+
+    resources :prefab_stores, only: [:index]
   end
 
   post '/signin', to: 'sessions#signin'
