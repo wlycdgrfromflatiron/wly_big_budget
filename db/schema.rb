@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_154525) do
+ActiveRecord::Schema.define(version: 2018_09_05_160419) do
+
+  create_table "cart_store_tags", force: :cascade do |t|
+    t.integer "cart_store_id"
+    t.integer "tag_id"
+    t.index ["cart_store_id"], name: "index_cart_store_tags_on_cart_store_id"
+    t.index ["tag_id"], name: "index_cart_store_tags_on_tag_id"
+  end
 
   create_table "cart_stores", force: :cascade do |t|
     t.integer "cart_id"
