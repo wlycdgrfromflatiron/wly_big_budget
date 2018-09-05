@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_152831) do
+ActiveRecord::Schema.define(version: 2018_09_05_154525) do
 
   create_table "cart_stores", force: :cascade do |t|
     t.integer "cart_id"
@@ -27,7 +27,18 @@ ActiveRecord::Schema.define(version: 2018_09_05_152831) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "prefab_store_tags", force: :cascade do |t|
+    t.integer "prefab_store_id"
+    t.integer "tag_id"
+    t.index ["prefab_store_id"], name: "index_prefab_store_tags_on_prefab_store_id"
+    t.index ["tag_id"], name: "index_prefab_store_tags_on_tag_id"
+  end
+
   create_table "prefab_stores", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "tags", force: :cascade do |t|
     t.string "name"
   end
 
