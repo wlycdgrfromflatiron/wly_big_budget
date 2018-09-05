@@ -1,6 +1,6 @@
 class UsersController < SessionsController
   before_action :session_guard, only: [:home, :show]
-  
+
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
     if @user
@@ -12,7 +12,7 @@ class UsersController < SessionsController
   end
 
   def home
-    render html: "The Home page of the active user"
+    @user = User.find(session[:user_id])
   end
 
   def show
