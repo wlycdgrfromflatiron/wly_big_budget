@@ -45,3 +45,12 @@ CartsController - nested resource of Users
   - note (optional)
   - dropdown to select a prefab item (optional)
   - checkboxes for item tags (optional)
+
+
+Order:
+Tags,
+Prefab Stores,
+Prefab Items,
+Carts,
+User,
+Navbar

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       get :confirm_email
     end
 
+    resources :tags
+    
     resources :prefab_stores, only: [:index]
   end
 
