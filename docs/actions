@@ -43,7 +43,7 @@ Prefab Stores,
 Prefab Items,
 Carts,
 User,
-Navbar 
+Navbar
 
 Navbar:
 New Cart -> Carts#new
@@ -51,6 +51,6 @@ Carts -> Carts#index
 Stores -> PrefabStores#index
 Items -> PrefabItems#index
 DONE Tags -> Tags#index
-Signout -> Sessions#Logout
-Home -> Users#index
+DONE Signout -> Sessions#Logout
+DONE Home -> Users#index
 Profile -> Users#show
