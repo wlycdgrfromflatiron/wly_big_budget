@@ -1,6 +1,12 @@
-class TagsController < ApplicationRecord
+class TagsController < SessionsController
   #index - show all tags: name, link to details, link to delete
   def index
+    unless logged_in? && this_user_nested?
+      redirect_to root_path and return
+    end
+
+    @user = User.find(session[:user_id])
+    @tags = @user.tags
   end
 
   #new - give name, select prefab items and prefab stores to add the tag to

@@ -41,4 +41,8 @@ class SessionsController < ApplicationController
   def this_user?
     session[:user_id].to_i == params[:id].to_i
   end
+
+  def this_user_nested?
+    session[:user_id].to_i == params[:user_id].to_i
+  end
 end
