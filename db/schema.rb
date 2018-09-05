@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_213625) do
+ActiveRecord::Schema.define(version: 2018_09_05_151349) do
+
+  create_table "cart_stores", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "prefab_store_id"
+    t.string "note"
+    t.index ["cart_id"], name: "index_cart_stores_on_cart_id"
+    t.index ["prefab_store_id"], name: "index_cart_stores_on_prefab_store_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
