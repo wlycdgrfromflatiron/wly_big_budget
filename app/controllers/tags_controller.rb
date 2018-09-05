@@ -3,12 +3,12 @@ class TagsController < SessionsController
 
   #index - show all tags: name, link to details, link to delete
   def index
-    @user = User.find(session[:user_id])
     @tags = @user.tags
   end
 
   #new - give name, select prefab items and prefab stores to add the tag to
   def new
+    @tag = Tag.new
   end
 
   #edit (doubles as #show) - name, all the user's prefab items and stores that use it

@@ -54,3 +54,6 @@ DONE Tags -> Tags#index
 DONE Signout -> Sessions#Logout
 DONE Home -> Users#index
 Profile -> Users#show
+When logged out:
+DONE Log In -> Welcome#home
+DONE Sign Up -> Users#new

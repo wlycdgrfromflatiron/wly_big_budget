@@ -61,6 +61,8 @@ class SessionsController < ApplicationController
   def session_guard_for_nested_resource
     unless logged_in? && this_user_nested?
       redirect_to root_path
+    else
+      @user = User.find(session[:user_id])
     end
   end
 end
