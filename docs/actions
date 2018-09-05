@@ -1,0 +1,5 @@
+PrefabStoreController
+  #index - show all the prefab stores for the user - name, link to edit, link to delete
+  #edit (doubles as #show) - lets you update the name + define, add, and remove tags
+  #new - lets you make a new one: define a name + define, add, and remove tags
+  #delete - confirm that user is ok with all cart_stores that use this prefab_store losing the prefab_store's tags
