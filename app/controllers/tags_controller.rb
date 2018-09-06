@@ -9,6 +9,8 @@ class TagsController < SessionsController
   #new - give name, select prefab items and prefab stores to add the tag to
   def new
     @tag = Tag.new
+    @prefab_stores = @user.prefab_stores
+    @prefab_items = @user.prefab_items
   end
 
   #edit (doubles as #show) - name, all the user's prefab items and stores that use it
