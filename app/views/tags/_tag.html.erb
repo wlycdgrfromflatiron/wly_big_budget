@@ -1,0 +1,5 @@
+<div>
+  <%= tag.name %>
+  <%= link_to "Edit", edit_user_tag_path(@user, tag) %>
+  <%= link_to "Delete", user_tag_path(@user, tag), method: 'delete' %>
+</div>

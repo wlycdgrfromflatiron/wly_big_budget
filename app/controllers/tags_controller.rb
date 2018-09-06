@@ -28,6 +28,7 @@ class TagsController < SessionsController
   end
 
   #update - do the #edit changes
+  #check taht this tag belongs to the logged in user!
   def update
     tag = Tag.find(params[:id])
 
@@ -42,8 +43,15 @@ class TagsController < SessionsController
     end
   end
 
-  #delete - confirm that user is ok with all prefabs, cart stores, and cart items losing this tag
-  def delete
+  # check that this tag belongs to the logged in user!
+  def destroy
+    tag = @user.tags.find_by(id: params[:id])
+
+    if tag
+      tag.destroy
+    end
+
+    redirect_to user_tags_path
   end
 
   private
