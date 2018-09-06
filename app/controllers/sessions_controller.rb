@@ -54,7 +54,7 @@ class SessionsController < ApplicationController
 
   def session_guard(isUser)
     unless logged_in? && isUser
-      redirect_to root_path 
+      redirect_to root_path
     else
       @user = User.find(session[:user_id])
     end

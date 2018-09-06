@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_192646) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "email_confirmed"
+    t.boolean "email_confirmed", default: false
     t.string "confirm_token"
   end
 

@@ -1,7 +1,7 @@
 class TagsController < SessionsController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefabs, only: [:new, :edit]
-  before_action :load_user_tag, only: [:update, :delete]
+  before_action :load_user_tag, only: [:edit, :update, :delete]
 
   def index
     @tags = @user.tags
@@ -11,17 +11,13 @@ class TagsController < SessionsController
     @tag = Tag.new
   end
 
-  # doubles as #show, cos why not
-  # NEED TO PROTECT
+  # doubles as #show
   def edit
-    @tag = Tag.find(params[:id])
   end
 
   def create
     tag = Tag.new(tag_params)
-
     tag.users << @user
-
     if tag.save
       redirect_to edit_user_tag_path(@user, tag)
     else
@@ -30,27 +26,20 @@ class TagsController < SessionsController
   end
 
   def update
-    unless tag
-      redirect_to user_tags_path
+    if tag.update(
+      name: params[:tag][:name],
+      prefab_store_ids: params[:tag][:prefab_store_ids],
+      prefab_item_ids: params[:tag][:prefab_item_ids]
+    )
+      redirect_to edit_user_tag_path(@user, tag)
     else
-      if tag.update(
-        name: params[:tag][:name],
-        prefab_store_ids: params[:tag][:prefab_store_ids],
-        prefab_item_ids: params[:tag][:prefab_item_ids]
-      )
-        redirect_to edit_user_tag_path(@user, tag)
-      else
-        render :edit
-      end
+      render :edit
     end
   end
 
   # check that this tag belongs to the logged in user!
   def destroy
-    if tag
-      tag.destroy
-    end
-
+    tag.destroy
     redirect_to user_tags_path
   end
 
@@ -67,5 +56,10 @@ class TagsController < SessionsController
 
   def load_user_tag
     tag = @user.tags.find_by(id: params[:id])
+    if !tag
+      redirect_to user_tags_path
+    else
+      @tag = tag
+    end
   end
 end
