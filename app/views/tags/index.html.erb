@@ -2,8 +2,4 @@
   <%= @user.email %>'s Tags!
 </h1>
 
-<% @tags.each do |tag| %>
-  <p>
-    <%= tag.name %>
-  </p>
-<% end %>
+<%= render partial: "tag", collection: @tags %>
