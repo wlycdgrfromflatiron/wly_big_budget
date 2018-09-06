@@ -14,12 +14,12 @@ PrefabItemsController - nested resource of Users
 #new - lets you make a new one: give a name and add tags
 #delete - confirm that user is ok with all cart_items that use this prefab_item losing the prefab_item's tags
 
-TagController - nested resource of Users
+DFN TagController - nested resource of Users
 DFN #index - show all tags: name, link to details, link to delete
 DFN #new - give name, select prefab items and prefab stores to add the tag to
 DFN #create - create the tag and assign it to any chosen prefab stores and prefab items
 DFN #edit (doubles as #show) - name, all the user's prefab items and stores that use it
-#delete - confirm that user is ok with all prefabs, cart stores, and cart items losing this tag
+DFN #delete - confirm that user is ok with all prefabs, cart stores, and cart items losing this tag
 
 CartsController - nested resource of Users
 #index - show all the user's carts, with links to edit and delete
@@ -39,7 +39,7 @@ CartsController - nested resource of Users
 
 
 Order:
-Tags,
+DFN Tags,
 Prefab Stores,
 Prefab Items,
 Carts,

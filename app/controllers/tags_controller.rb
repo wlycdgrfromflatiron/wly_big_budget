@@ -28,8 +28,6 @@ class TagsController < SessionsController
     end
   end
 
-  #update - do the #edit changes
-  #check taht this tag belongs to the logged in user!
   def update
     unless tag
       redirect_to user_tags_path
