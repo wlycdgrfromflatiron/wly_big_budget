@@ -1,5 +1,5 @@
 class TagsController < SessionsController
-  before_action :session_guard_for_nested_resource
+  before_action {|c| c.session_guard c.this_user_nested? }
 
   #index - show all tags: name, link to details, link to delete
   def index

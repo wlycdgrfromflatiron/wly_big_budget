@@ -1,5 +1,7 @@
 class UsersController < SessionsController
-  before_action :session_guard, only: [:home, :show]
+  # parameterized filter implementation adapted from:
+  # https://stackoverflow.com/questions/5507026/before-filter-with-parameters
+  before_action only: [:home, :show] {|c| c.session_guard c.this_user? }
 
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
@@ -12,7 +14,6 @@ class UsersController < SessionsController
   end
 
   def home
-    @user = User.find(session[:user_id])
   end
 
   def show

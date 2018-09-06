@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+  protected
 
   def authenticated?
     @user && @user.authenticate(authentication_params[:password])
@@ -52,15 +52,8 @@ class SessionsController < ApplicationController
     session[:user_id].to_i == params[:user_id].to_i
   end
 
-  def session_guard
-    unless logged_in? && this_user?
-      redirect_to root_path
-    end
-  end
-
-  def session_guard_for_nested_resource
-    unless logged_in? && this_user_nested?
-      redirect_to root_path
+  def session_guard(isUser)
+    unless logged_in? && isUser
     else
       @user = User.find(session[:user_id])
     end
