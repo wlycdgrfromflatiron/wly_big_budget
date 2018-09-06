@@ -1,2 +1,2 @@
 <h1>Edit Tag!</h1>
-<%= render "form" %>
+<%= render partial: "form", locals: {form_url: user_tag_path, submit_method: 'patch'} %>

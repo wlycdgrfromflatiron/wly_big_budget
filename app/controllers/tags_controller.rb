@@ -29,6 +29,17 @@ class TagsController < SessionsController
 
   #update - do the #edit changes
   def update
+    tag = Tag.find(params[:id])
+
+    if tag.update(
+      name: params[:tag][:name],
+      prefab_store_ids: params[:tag][:prefab_store_ids],
+      prefab_item_ids: params[:tag][:prefab_item_ids]
+    )
+      redirect_to edit_user_tag_path(@user, tag)
+    else
+      render :edit
+    end
   end
 
   #delete - confirm that user is ok with all prefabs, cart stores, and cart items losing this tag
