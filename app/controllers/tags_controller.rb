@@ -12,6 +12,7 @@ class TagsController < SessionsController
   end
 
   # doubles as #show, cos why not
+  # NEED TO PROTECT
   def edit
     @tag = Tag.find(params[:id])
   end
