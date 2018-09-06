@@ -15,8 +15,23 @@ def make_user_hash(name)
   }
 end
 
+def create_prefab_stores(user_name, names)
+  names.each do |name|
+    PrefabStore.create({
+      name: name,
+      user: User.find_by(name: user_name)
+    })
+  end
+end
+
 User.create([
   make_user_hash('ilya'), # id 1
   make_user_hash('wlycdgr'), #id 2
   make_user_hash('willa'), #id 3
+])
+
+create_prefab_stores('ilya', [
+  'Best Buy Union Square',
+  'The Strand',
+  'Amazon'
 ])
