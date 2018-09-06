@@ -1,5 +1,6 @@
 class TagsController < SessionsController
   before_action {|c| c.session_guard c.this_user_nested? }
+  before_action :load_prefabs, only: [:new, :edit]
 
   def index
     @tags = @user.tags
@@ -7,21 +8,20 @@ class TagsController < SessionsController
 
   def new
     @tag = Tag.new
-    @prefab_stores = @user.prefab_stores
-    @prefab_items = @user.prefab_items
   end
 
-  #edit (doubles as #show) - name, all the user's prefab items and stores that use it
+  # doubles as #show, cos why not
   def edit
-    render html: "This is where we edit the tag woot!"
+    @tag = Tag.find(params[:id])
   end
 
-  #create - make and save the new tag! and, add it to the indicated stores and items
   def create
     tag = Tag.new(tag_params)
 
+    tag.users << @user
+
     if tag.save
-      redirect_to edit_user_tag_path(@user.id, tag.id)
+      redirect_to edit_user_tag_path(@user, tag)
     else
       render :new
     end
@@ -39,5 +39,10 @@ class TagsController < SessionsController
 
   def tag_params
     params.require(:tag).permit(:name, prefab_store_ids: [], prefab_item_ids: [])
+  end
+
+  def load_prefabs
+    @prefab_stores = @user.prefab_stores
+    @prefab_items = @user.prefab_items
   end
 end

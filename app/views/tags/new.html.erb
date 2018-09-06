@@ -1,8 +1,2 @@
 <h1>New Tag!</h1>
-
-<%= form_with scope: @tag, url: user_tags_path do |f| %>
-  <%= labeled_text_field(f, :name).html_safe %>
-  <%= check_boxes_for(@prefab_stores, :prefab_store_ids, "Stores", f).html_safe %>
-  <%= check_boxes_for(@prefab_items, :prefab_item_ids, "Items", f).html_safe %>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>
