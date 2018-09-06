@@ -2,4 +2,4 @@
   <%= @user.email %>'s Tags!
 </h1>
 
-<%= render partial: "tag", collection: @tags %>
+<%= render partial: "shared/nested_resource", collection: @tags, locals: {resource_name: 'tag'} %>

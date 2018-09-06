@@ -1,0 +1,8 @@
+<% edit_path_helper = "edit_user_" + resource_name + "_path" %>
+<% delete_path_helper = "user_" + resource_name + "_path" %>
+
+<div>
+  <%= nested_resource.name %>
+  <%= link_to "Edit", send(edit_path_helper, @user, nested_resource) %>
+  <%= link_to "Delete", send(delete_path_helper, @user, nested_resource), method: 'delete' %>
+</div>
