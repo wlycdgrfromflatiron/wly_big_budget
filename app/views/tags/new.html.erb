@@ -1,24 +1,8 @@
 <h1>New Tag!</h1>
 
 <%= form_with scope: @tag, url: user_tags_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= check_boxes_for(@prefab_stores, :prefab_store_ids, "BANANAS FOSTER", f).html_safe %>
-
-  <h3>for Stores</h3>
-  <%= f.collection_check_boxes(:prefab_store_ids, @prefab_stores, :id, :name) do |b| %>
-    <p>
-      <%= b.label { b.check_box + b.text } %>
-    </p>
-  <% end %>
-
-  <h3>for Items</h3>
-  <%= f.collection_check_boxes(:prefab_item_ids, @prefab_items, :id, :name) do |b| %>
-    <p>
-      <%= b.label { b.check_box + b.text } %>
-    </p>
-  <% end %>
-
+  <%= labeled_text_field(f, :name).html_safe %>
+  <%= check_boxes_for(@prefab_stores, :prefab_store_ids, "Stores", f).html_safe %>
+  <%= check_boxes_for(@prefab_items, :prefab_item_ids, "Items", f).html_safe %>
   <%= f.submit %>
 <% end %>
