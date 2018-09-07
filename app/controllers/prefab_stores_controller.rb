@@ -8,6 +8,7 @@ class PrefabStoresController < NestedResourcesController
 
   def new
     @prefab_store = PrefabStore.new
+    @tags = @user.tags
   end
 
   # doubles as #show

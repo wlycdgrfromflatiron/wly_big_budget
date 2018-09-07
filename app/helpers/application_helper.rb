@@ -14,4 +14,13 @@ module ApplicationHelper
     content << "#{fbo.text_field attribute}"
     content
   end
+
+  def new_link resource_label, resource_name
+    content = "<p>"
+    helper_method = "new_user_#{resource_name}_path"
+    content << "#{link_to resource_label, send(helper_method, @user)}"
+    content << "</p>"
+    content
+  end
+
 end
