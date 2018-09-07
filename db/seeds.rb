@@ -15,11 +15,14 @@ def make_user_hash(name)
   }
 end
 
-def create_prefab_stores(user_name, names)
-  names.each do |name|
-    PrefabStore.create({
-      name: name,
-      user: User.find_by(name: user_name)
+def create_prefabs prefab_class_name, user_name, prefab_instance_names
+  user = User.find_by(name: user_name)
+  prefab_class = prefab_class_name.camelize.constantize
+
+  prefab_instance_names.each do |pin|
+    prefab_class.create({
+      name: pin,
+      user: user
     })
   end
 end
@@ -50,11 +53,27 @@ User.create([
   make_user_hash('willa'), #id 3
 ])
 
-create_prefab_stores('ilya', [
-  'Best Buy Union Square',
-  'The Strand',
-  'Amazon'
-])
+create_prefabs(
+  'prefab_store',
+  'ilya',
+  [
+    'Best Buy Union Square',
+    'The Strand',
+    'Amazon'
+  ]
+)
+
+create_prefabs(
+  'prefab_item',
+  'ilya',
+  [
+    'Bodega iced coffee',
+    'Egg & cheese on a roll with pickles and jalapenos',
+    'Seltzer',
+    'Programming Book',
+    'Anthology Film Archives ticket'
+  ]
+)
 
 create_tag('NYC', [
   ['ilya', ['Best Buy Union Square', 'The Strand'], []]
