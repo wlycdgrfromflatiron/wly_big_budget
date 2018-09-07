@@ -34,6 +34,10 @@ class CartsController < NestedResourcesController
   def cart_params
     # TBD once I review the nested attributes process
     #params.require(:cart).permit(:name,.....)
+    params.require(:cart).permit(
+      :name,
+      cart_store_attributes: [:note]
+    )
   end
 
   def load_prefabs_and_tags
