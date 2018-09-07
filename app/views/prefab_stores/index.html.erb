@@ -2,4 +2,4 @@
   <%= @user.email %>'s Prefab Stores!
 </h1>
 
-<%= render partial: "prefab_store", collection: @prefab_stores %>
+<%= render partial: "shared/nested_resource", collection: @prefab_stores, locals: {resource_name: 'prefab_store'} %>
