@@ -6,6 +6,6 @@ class Cart < ApplicationRecord
   has_one :prefab_store, through: :cart_store
 
   def total
-    items.reduce(0) { |total, item| total += item.price }
+    cart_items.reduce(0) { |total, cart_item| total += cart_item.price }
   end
 end

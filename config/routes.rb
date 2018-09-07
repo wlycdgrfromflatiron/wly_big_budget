@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       get :home
     end
 
+    resources :carts
+    # add nested cart_items and cart_stores resources 
     resources :tags
     resources :prefab_stores
     resources :prefab_items
