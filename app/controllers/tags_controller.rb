@@ -4,7 +4,7 @@ class TagsController < NestedResourcesController
   before_action :load_user_tag, only: [:edit, :update, :destroy]
 
   def index
-    super @tags = @user.tags
+    @tags = @user.tags
   end
 
   def new

@@ -1,8 +1,4 @@
 class SessionsController < ApplicationController
-  def index collection
-    @tags = @user.tags
-  end
-
   def signin
     if logged_in?
       @user = User.find(session[:user_id])

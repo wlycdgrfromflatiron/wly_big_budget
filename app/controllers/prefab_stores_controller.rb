@@ -1,4 +1,4 @@
-class PrefabStoresController < SessionsController
+class PrefabStoresController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefab_store, only: [:edit, :update, :delete]
 
