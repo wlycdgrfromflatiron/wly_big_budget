@@ -2,11 +2,11 @@ UsersController
 #index - HOME page today's carts with links to edit, Add New Cart button
 #show - PROFILE page with username, email[, reset password link]
 
-PrefabStoreController - nested resource of Users
-  #index - show all the prefab stores for the user - name, link to edit, link to delete
-  #edit (doubles as #show) - lets you update the name, add tags, remove tags
-  #new - lets you make a new one: define a name + define, add, and remove tags
-  #delete - confirm that user is ok with all cart_stores that use this prefab_store losing the prefab_store's tags
+DFN PrefabStoreController - nested resource of Users
+DFN #index - show all the prefab stores for the user - name, link to edit, link to delete
+DFN #edit (doubles as #show) - lets you update the name, add tags, remove tags
+DFN #new - lets you make a new one: define a name + define, add, and remove tags
+DFN #delete - confirm that user is ok with all cart_stores that use this prefab_store losing the prefab_store's tags
 
 PrefabItemsController - nested resource of Users
 #index - show all the user's prefab items, name, link to edit, link to delete
@@ -40,7 +40,7 @@ CartsController - nested resource of Users
 
 Order:
 DFN Tags,
-Prefab Stores,
+DFN Prefab Stores,
 Prefab Items,
 Carts,
 User,
@@ -49,7 +49,7 @@ Navbar
 Navbar:
 New Cart -> Carts#new
 Carts -> Carts#index
-Stores -> PrefabStores#index
+DONE Stores -> PrefabStores#index
 Items -> PrefabItems#index
 DONE Tags -> Tags#index
 DONE Signout -> Sessions#Logout
@@ -58,13 +58,3 @@ Profile -> Users#show
 When logged out:
 DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
-
-
-if @prefab_store.update(
-  name: params[:prefab_store][:name],
-  tag_ids: params[:prefab_store][:tag_ids],
-)
-  redirect_to edit_user_prefab_store_path(@user, @prefab_store)
-else
-  render :edit
-end

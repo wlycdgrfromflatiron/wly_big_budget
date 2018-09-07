@@ -24,8 +24,7 @@ class TagsController < NestedResourcesController
   end
 
   def destroy
-    @tag.destroy
-    redirect_to user_tags_path
+    super @tag, user_tags_path
   end
 
   private

@@ -25,4 +25,9 @@ class NestedResourcesController < SessionsController
       render :edit
     end
   end
+
+  def destroy resource, resource_index_path
+    resource.destroy
+    redirect_to resource_index_path
+  end
 end

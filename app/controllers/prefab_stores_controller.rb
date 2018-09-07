@@ -24,8 +24,7 @@ class PrefabStoresController < NestedResourcesController
   end
 
   def destroy
-    @prefab_store.destroy
-    redirect_to user_prefab_stores_path
+    super @prefab_store, user_prefab_stores_path
   end
 
   private
