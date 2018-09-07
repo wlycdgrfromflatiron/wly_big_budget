@@ -1,5 +1,3 @@
-# README
-
 # wly's Big Budget
 ### flexible budgeting for mavens and minnows
 
