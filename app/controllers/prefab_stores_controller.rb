@@ -20,14 +20,7 @@ class PrefabStoresController < NestedResourcesController
   end
 
   def update
-    if @prefab_store.update(
-      name: params[:prefab_store][:name],
-      tag_ids: params[:prefab_store][:tag_ids],
-    )
-      redirect_to edit_user_prefab_store_path(@user, @prefab_store)
-    else
-      render :edit
-    end
+    super @prefab_store, 'prefab_store', prefab_store_params
   end
 
   def destroy

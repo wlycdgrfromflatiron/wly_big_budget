@@ -60,10 +60,11 @@ DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
 
 
-prefab_store = PrefabStore.new(prefab_store_params)
-prefab_store.user = @user
-if prefab_store.save
-  redirect_to edit_user_prefab_store_path(@user, prefab_store)
+if @prefab_store.update(
+  name: params[:prefab_store][:name],
+  tag_ids: params[:prefab_store][:tag_ids],
+)
+  redirect_to edit_user_prefab_store_path(@user, @prefab_store)
 else
-  render :new
+  render :edit
 end

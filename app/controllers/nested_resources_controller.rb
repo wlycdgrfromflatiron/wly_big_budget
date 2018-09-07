@@ -16,4 +16,13 @@ class NestedResourcesController < SessionsController
       render :new
     end
   end
+
+  def update resource, resource_name, resource_params
+    if resource.update(resource_params)
+      edit_resource_path = "edit_user_#{resource_name}_path"
+      redirect_to send(edit_resource_path, @user, resource)
+    else
+      render :edit
+    end
+  end
 end
