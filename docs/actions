@@ -8,11 +8,11 @@ DFN #edit (doubles as #show) - lets you update the name, add tags, remove tags
 DFN #new - lets you make a new one: define a name + define, add, and remove tags
 DFN #delete - confirm that user is ok with all cart_stores that use this prefab_store losing the prefab_store's tags
 
-PrefabItemsController - nested resource of Users
-#index - show all the user's prefab items, name, link to edit, link to delete
-#edit (doubles as #show) - lets you update the name, add tags, remove tags
-#new - lets you make a new one: give a name and add tags
-#delete - confirm that user is ok with all cart_items that use this prefab_item losing the prefab_item's tags
+DFN PrefabItemsController - nested resource of Users
+DFN #index - show all the user's prefab items, name, link to edit, link to delete
+DFN #edit (doubles as #show) - lets you update the name, add tags, remove tags
+DFN #new - lets you make a new one: give a name and add tags
+DFN #delete - confirm that user is ok with all cart_items that use this prefab_item losing the prefab_item's tags
 
 DFN TagController - nested resource of Users
 DFN #index - show all tags: name, link to details, link to delete
@@ -41,7 +41,7 @@ CartsController - nested resource of Users
 Order:
 DFN Tags,
 DFN Prefab Stores,
-Prefab Items,
+DFN Prefab Items,
 Carts,
 User,
 Navbar
@@ -50,7 +50,7 @@ Navbar:
 New Cart -> Carts#new
 Carts -> Carts#index
 DONE Stores -> PrefabStores#index
-Items -> PrefabItems#index
+DONE Items -> PrefabItems#index
 DONE Tags -> Tags#index
 DONE Signout -> Sessions#Logout
 DONE Home -> Users#index

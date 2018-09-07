@@ -1,0 +1,5 @@
+<h1>
+  <%= @user.email %>'s Prefab Items!
+</h1>
+
+<%= render partial: "shared/nested_resource", collection: @prefab_items, locals: {resource_name: 'prefab_item'} %>

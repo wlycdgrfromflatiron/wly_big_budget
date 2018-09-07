@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     end
 
     resources :tags
-
     resources :prefab_stores
+    resources :prefab_items
   end
 
   post '/signin', to: 'sessions#signin'
