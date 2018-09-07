@@ -2,6 +2,7 @@ UsersController
 #index - HOME page today's carts with links to edit, Add New Cart button
 #show - PROFILE page with username, email[, reset password link]
 
+
 DFN PrefabStoreController - nested resource of Users
 DFN #index - show all the prefab stores for the user - name, link to edit, link to delete
 DFN #edit (doubles as #show) - lets you update the name, add tags, remove tags
@@ -58,3 +59,26 @@ Profile -> Users#show
 When logged out:
 DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
+
+
+
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
