@@ -9,6 +9,12 @@ module ApplicationHelper
     content
   end
 
+  def form_div fbo, id, classes, method, *args
+    content = "<div id='#{id}' class='#{classes}'>"
+    content << fbo.send(*args.unshift(method))
+    content << "</div>"
+  end
+
   def labeled_text_field(fbo, attribute)
     content = "#{fbo.label attribute}"
     content << "#{fbo.text_field attribute}"

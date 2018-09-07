@@ -11,8 +11,6 @@ class CartsController < NestedResourcesController
     @cart = Cart.new
     @cart.cart_store = CartStore.new
     3.times { @cart.cart_items.build }
-
-    render html: "Carts#new code does not error"
   end
 
   # doubles as #show
