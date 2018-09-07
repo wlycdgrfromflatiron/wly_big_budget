@@ -1,4 +1,4 @@
-class TagsController < SessionsController
+class TagsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefabs, only: [:new, :edit]
   before_action :load_user_tag, only: [:edit, :update, :destroy]
