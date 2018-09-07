@@ -1,4 +1,12 @@
 class SessionsController < ApplicationController
+  def index collection
+    @tags = @user.tags
+  end
+
+  def create resource_type, resource_params
+    class_name = resource_type
+  end
+
   def signin
     if logged_in?
       @user = User.find(session[:user_id])
