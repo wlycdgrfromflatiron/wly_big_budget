@@ -58,3 +58,13 @@ Profile -> Users#show
 When logged out:
 DONE Log In -> Welcome#home
 DONE Sign Up -> Users#new
+
+
+
+    tag = Tag.new(tag_params)
+    tag.users << @user
+    if tag.save
+      redirect_to edit_user_tag_path(@user, tag)
+    else
+      render :new
+    end

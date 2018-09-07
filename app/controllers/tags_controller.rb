@@ -17,14 +17,6 @@ class TagsController < SessionsController
 
   def create
     super 'tag', tag_params
-
-    tag = Tag.new(tag_params)
-    tag.users << @user
-    if tag.save
-      redirect_to edit_user_tag_path(@user, tag)
-    else
-      render :new
-    end
   end
 
   def update
@@ -39,7 +31,6 @@ class TagsController < SessionsController
     end
   end
 
-  # check that this tag belongs to the logged in user!
   def destroy
     @tag.destroy
     redirect_to user_tags_path
