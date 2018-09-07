@@ -71,16 +71,41 @@ create_prefabs(
     'Egg & cheese on a roll with pickles and jalapenos',
     'Seltzer',
     'Programming Book',
-    'Anthology Film Archives ticket'
+    'Anthology Film Archives ticket',
+    'Coffeeshop coffee'
   ]
 )
 
+create_tag('ticket', [
+  ['ilya', [], ['Anthology Film Archives ticket']]
+])
+
+create_tag('movie', [
+  ['ilya', [], ['Anthology Film Archives ticket']]
+])
+
+create_tag('togo', [
+  ['ilya', [], ['Bodega iced coffee']]
+])
+
+create_tag('bodega', [
+  ['ilya', [], ['Bodega iced coffee', 'Egg & cheese on a roll with pickles and jalapenos']]
+])
+
+create_tag('coffee', [
+  ['ilya', [], ['Bodega iced coffee', 'Coffeeshop coffee']]
+])
+
+create_tag('beverage', [
+  ['ilya', [], ['Bodega iced coffee', 'Seltzer', 'Coffeeshop coffee']]
+])
+
 create_tag('NYC', [
-  ['ilya', ['Best Buy Union Square', 'The Strand'], []]
+  ['ilya', ['Best Buy Union Square', 'The Strand'], ['Anthology Film Archives ticket']]
 ])
 
 create_tag('favorite', [
-  ['ilya', ['The Strand', 'Amazon'], []]
+  ['ilya', ['The Strand', 'Amazon'], ['Egg & cheese on a roll with pickles and jalapenos']]
 ])
 
 create_tag('online', [
@@ -92,7 +117,7 @@ create_tag('bookstore', [
 ])
 
 create_tag('independent', [
-  ['ilya', ['The Strand'], []]
+  ['ilya', ['The Strand'], ['Anthology Film Archives ticket']]
 ])
 
 create_tag('24hr', [
