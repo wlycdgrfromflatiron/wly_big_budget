@@ -17,13 +17,7 @@ class PrefabStoresController < NestedResourcesController
   end
 
   def create
-    prefab_store = PrefabStore.new(prefab_store_params)
-    prefab_store.user = @user
-    if prefab_store.save
-      redirect_to edit_user_prefab_store_path(@user, prefab_store)
-    else
-      render :new
-    end
+    super 'prefab_store', prefab_store_params
   end
 
   def update

@@ -3,7 +3,11 @@ class NestedResourcesController < SessionsController
   def create resource_type, resource_params
     resource = resource_type.camelize.constantize.new(resource_params)
 
-    resource.users << @user
+    if resource.respond_to? :user
+      resource.user = @user
+    else
+      resource.users << @user
+    end
 
     if resource.save
       edit_path_helper = "edit_user_" + resource_type + "_path"

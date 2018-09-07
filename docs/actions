@@ -58,3 +58,12 @@ Profile -> Users#show
 When logged out:
 DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
+
+
+prefab_store = PrefabStore.new(prefab_store_params)
+prefab_store.user = @user
+if prefab_store.save
+  redirect_to edit_user_prefab_store_path(@user, prefab_store)
+else
+  render :new
+end
