@@ -7,6 +7,7 @@
     Cart Store:
     <%= f.fields_for :cart_store do |cart_store_form| %>
       <%= wly_form_div self, 'wly_labeled_text_field', cart_store_form, :note %>
+      <%= cart_store_form.collection_select :prefab_store_id, @prefab_stores, :id, :name_and_tag_names, include_blank: 'Select a prefab store (optional)' %>
     <% end %>
   </div>
 
