@@ -1,5 +1,5 @@
 <%= form_with scope: @prefab_store, url: form_url, method: submit_method do |f| %>
-  <%= labeled_text_field(f, :name).html_safe %>
-  <%= check_boxes_for(@tags, :tag_ids, "Tags", f).html_safe %>
+  <%= wly_form_div self, 'wly_labeled_text_field', f, :name %>
+  <%= wly_check_boxes_for @tags, :tag_ids, "Tags", f %>
   <%= f.submit %>
 <% end %>

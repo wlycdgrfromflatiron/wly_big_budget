@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def check_boxes_for(collection, names, title, fbo)
+  def wly_check_boxes_for(collection, names, title, fbo)
     content = "<h3>#{title}</h3>"
     fbo.collection_check_boxes(names, collection, :id, :name) do |b|
       content << "<p>"
@@ -16,13 +16,13 @@ module ApplicationHelper
     content.html_safe
   end
 
-  def labeled_text_field(fbo, attribute)
+  def wly_labeled_text_field(fbo, attribute)
     content = "#{fbo.label attribute}"
     content << "#{fbo.text_field attribute}"
     content.html_safe
   end
 
-  def new_link resource_label, resource_name
+  def wly_new_link resource_label, resource_name
     content = "<p>"
     helper_method = "new_user_#{resource_name}_path"
     content << "#{link_to resource_label, send(helper_method, @user)}"
