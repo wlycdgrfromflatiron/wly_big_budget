@@ -1,9 +1,7 @@
 <h1>New Cart!</h1>
 
 <%= form_with scope: @cart, url: user_carts_path, method: 'post' do |f| %>
-  <div>
-    <%= labeled_text_field(f, :name).html_safe %>
-  </div>
+  <%= form_div(self, 'labeled_text_field', f, :name).html_safe %>
 
   <div>
     Cart Store:
@@ -12,6 +10,6 @@
     <% end %>
   </div>
 
-  <%= form_div(f, '', '', 'submit').html_safe %>
+  <%= form_div(f, 'submit').html_safe %>
 
 <% end %>

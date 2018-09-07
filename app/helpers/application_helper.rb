@@ -9,8 +9,8 @@ module ApplicationHelper
     content
   end
 
-  def form_div fbo, id, classes, method, *args
-    content = "<div id='#{id}' class='#{classes}'>"
+  def form_div fbo, method, *args, id: ''
+    content = "<div id='#{id}'>"
     content << fbo.send(*args.unshift(method))
     content << "</div>"
   end
