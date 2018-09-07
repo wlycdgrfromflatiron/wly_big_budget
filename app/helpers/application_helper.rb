@@ -6,19 +6,20 @@ module ApplicationHelper
         content << "#{b.label { b.check_box + b.text }}"
       content << "</p>"
     end
-    content
+    content.html_safe
   end
 
-  def form_div fbo, method, *args, id: ''
-    content = "<div id='#{id}'>"
+  def wly_form_div fbo, method, *args, id: '', classes: ''
+    content = "<div id='#{id}' class='#{classes}'>"
     content << fbo.send(*args.unshift(method))
     content << "</div>"
+    content.html_safe
   end
 
   def labeled_text_field(fbo, attribute)
     content = "#{fbo.label attribute}"
     content << "#{fbo.text_field attribute}"
-    content
+    content.html_safe
   end
 
   def new_link resource_label, resource_name
@@ -26,7 +27,7 @@ module ApplicationHelper
     helper_method = "new_user_#{resource_name}_path"
     content << "#{link_to resource_label, send(helper_method, @user)}"
     content << "</p>"
-    content
+    content.html_safe
   end
 
 end

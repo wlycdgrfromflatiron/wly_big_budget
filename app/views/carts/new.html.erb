@@ -1,15 +1,15 @@
 <h1>New Cart!</h1>
 
 <%= form_with scope: @cart, url: user_carts_path, method: 'post' do |f| %>
-  <%= form_div(self, 'labeled_text_field', f, :name).html_safe %>
+  <%= wly_form_div self, 'labeled_text_field', f, :name %>
 
   <div>
     Cart Store:
     <%= f.fields_for :cart_store do |cart_store_form| %>
-      <%= labeled_text_field(cart_store_form, :note).html_safe %>
+      <%= labeled_text_field(cart_store_form, :note) %>
     <% end %>
   </div>
 
-  <%= form_div(f, 'submit').html_safe %>
+  <%= wly_form_div f, 'submit' %>
 
 <% end %>
