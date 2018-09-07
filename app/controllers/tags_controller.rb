@@ -20,15 +20,7 @@ class TagsController < NestedResourcesController
   end
 
   def update
-    if @tag.update(
-      name: params[:tag][:name],
-      prefab_store_ids: params[:tag][:prefab_store_ids],
-      prefab_item_ids: params[:tag][:prefab_item_ids]
-    )
-      redirect_to edit_user_tag_path(@user, @tag)
-    else
-      render :edit
-    end
+    super @tag, 'tag', tag_params
   end
 
   def destroy
