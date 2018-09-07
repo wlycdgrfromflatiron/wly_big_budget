@@ -9,6 +9,10 @@ class CartsController < NestedResourcesController
 
   def new
     @cart = Cart.new
+    @cart.cart_store = CartStore.new
+    3.times { @cart.cart_items.build }
+
+    render html: "Carts#new code does not error"
   end
 
   # doubles as #show
@@ -45,4 +49,5 @@ class CartsController < NestedResourcesController
     if !@cart
       redirect_to user_carts_path
     end
+  end
 end
