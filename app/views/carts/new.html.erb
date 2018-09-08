@@ -15,6 +15,16 @@
     <% end %>
   </div>
 
+  <div>
+    <h3>Items:</h3>
+    <%= f.fields_for :cart_items do |cart_item_form| %>
+      <h6>Item:</h6>
+      <%= wly_form_div self, 'wly_labeled_text_field', cart_item_form, :note %>
+    <% end %>
+  </div>
+
+  <br>
+
   <%= wly_form_div f, 'submit' %>
 
 <% end %>
