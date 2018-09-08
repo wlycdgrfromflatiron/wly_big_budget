@@ -61,6 +61,21 @@ DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
 
 
+WITH JAVASCRIPT!
+
+TAGS#index
+* all the tags are displayed in sequence
+* you can sort them alphabetically, you can sort them by popularity
+* clicking on a tag shows a detail view that shows you
+the associated stores and items. there's a button to delete, and a button to edit
+
+TAGS#new
+* name checked for uniqueness on submit
+* stores area is a dropdown where you can select a store,
+  it gets added to list,
+  you can select again
+* same deal with items
+
 
 
 Things you may want to cover:
