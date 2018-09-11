@@ -59,7 +59,8 @@ create_prefabs(
   [
     'Best Buy Union Square',
     'The Strand',
-    'Amazon'
+    'Amazon',
+    'Home bodega'
   ]
 )
 
@@ -89,7 +90,7 @@ create_tag('togo', [
 ])
 
 create_tag('bodega', [
-  ['ilya', [], ['Bodega iced coffee', 'Egg & cheese on a roll with pickles and jalapenos']]
+  ['ilya', ['Home bodega'], ['Bodega iced coffee', 'Egg & cheese on a roll with pickles and jalapenos']]
 ])
 
 create_tag('coffee', [
@@ -105,7 +106,7 @@ create_tag('NYC', [
 ])
 
 create_tag('favorite', [
-  ['ilya', ['The Strand', 'Amazon'], ['Egg & cheese on a roll with pickles and jalapenos']]
+  ['ilya', ['The Strand', 'Amazon', 'Home bodega'], ['Egg & cheese on a roll with pickles and jalapenos']]
 ])
 
 create_tag('online', [
@@ -121,6 +122,7 @@ create_tag('independent', [
 ])
 
 create_tag('24hr', [
-  ['ilya', ['Best Buy Union Square'], []]
+  ['ilya', ['Best Buy Union Square', 'Home bodega'], []]
 ])
-
+  
+  

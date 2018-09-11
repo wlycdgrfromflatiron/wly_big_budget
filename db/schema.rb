@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_194519) do
+ActiveRecord::Schema.define(version: 2018_09_11_200601) do
 
   create_table "cart_item_tags", force: :cascade do |t|
     t.integer "cart_item_id"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 2018_09_11_194519) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
     t.integer "prefab_item_id"
-    t.integer "price"
     t.string "note"
+    t.integer "dollars", default: 0
+    t.integer "cents", default: 0
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["prefab_item_id"], name: "index_cart_items_on_prefab_item_id"
   end
