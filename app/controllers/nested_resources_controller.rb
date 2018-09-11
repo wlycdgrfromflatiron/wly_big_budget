@@ -8,7 +8,7 @@ class NestedResourcesController < SessionsController
     else
       resource.users << @user
     end
-
+    
     if resource.save
       edit_path_helper = "edit_user_" + resource_type + "_path"
       redirect_to send(edit_path_helper, @user, resource)
