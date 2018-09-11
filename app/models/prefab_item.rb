@@ -10,6 +10,6 @@ class PrefabItem < ApplicationRecord
       end
   
     def tag_names
-        tags.map {|tag| tag.name }
+        tags ? tags.map {|tag| tag.name } : []
     end
 end
