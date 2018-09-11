@@ -37,7 +37,7 @@ class CartsController < NestedResourcesController
     params.require(:cart).permit(
       :note, :date,
       cart_store_attributes: [:note, :prefab_store_id, tag_ids: []],
-      cart_items_attributes: [[:price, :note, :prefab_item_id, tag_ids: []]]
+      cart_items_attributes: [[:dollars, :cents, :note, :prefab_item_id, tag_ids: []]]
     )
   end
 
