@@ -74,6 +74,18 @@ TODO:
 * DFN verify that new finished cart form works as expected
 * implement Class-level methods - sort with these - have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
+* add validations
+  * tag: name presence, name uniqueness
+  * prefab store: name presence, name uniqueness
+  * prefab item: name presence, name uniqueness
+  * cart:
+    * note presence
+    * date presence
+    * cart store presence
+      * cart store note OR prefab presence
+    * cart item 1+ presence
+      * cart item price presence, price >= $0.00 (freebies can be logged)
+      * cart item note OR prefab presence
 * implement cart update
 * implement cart delete
 * add tags to stores index
@@ -83,7 +95,7 @@ TODO:
 * implement third party login
 * implement error messages / css
 * implement styling
-* handle the fact that if cart creation fails, we need the cart_store and cart_items 
+* handle the fact that if cart creation fails, we need the cart_store and cart_items to be available to render :new
 
 
 // OOS
