@@ -71,7 +71,7 @@ DONE Sign Up -> Users#news
 
 TODO:
 * DONE finish new cart form - add price field for items, add datetime field for cart
-* verify that new finished cart form works as expected
+* DFN verify that new finished cart form works as expected
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * implement cart update
 * implement cart delete
@@ -80,6 +80,8 @@ TODO:
 * add prefab stores and items to tags index
 * implement profile page - grand total
 * implement third party login
+* handle the fact that if cart creation fails, we need the cart_store and cart_items 
+
 
 * add cart sorting - by date, by amount
 * add stores sorting - by amount, by name
