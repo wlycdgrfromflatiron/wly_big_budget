@@ -4,7 +4,9 @@ class CartsController < NestedResourcesController
   before_action :load_user_cart, only: [:additem, :edit, :update, :destroy]
 
   def additem
-    render html: "This is where we will have a form to add another item to cart ##{@cart.id}!"
+    @old_items = @cart.cart_items
+    @new_item = @cart.cart_items.build 
+    #1.times { @cart.cart_items.build }
   end
 
   def index
