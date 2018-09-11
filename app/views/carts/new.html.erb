@@ -20,6 +20,11 @@
     <%= f.fields_for :cart_items do |cart_item_form| %>
       <h6>Item:</h6>
       <%= wly_form_div self, 'wly_labeled_text_field', cart_item_form, :note %>
+      <br>
+      <div>
+        <%= cart_item_form.collection_select :prefab_item_id, @prefab_items, :id, :name_and_tag_names, include_blank: 'Select a prefab item (optional)' %>
+      </div>
+      <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this item", cart_item_form %>
     <% end %>
   </div>
 

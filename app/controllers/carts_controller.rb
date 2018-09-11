@@ -18,6 +18,7 @@ class CartsController < NestedResourcesController
   end
 
   def create
+    byebug 
     super 'cart', cart_params
   end
 
@@ -36,7 +37,8 @@ class CartsController < NestedResourcesController
     #params.require(:cart).permit(:name,.....)
     params.require(:cart).permit(
       :name,
-      cart_store_attributes: [:note, :prefab_store_id, tag_ids: []]
+      cart_store_attributes: [:note, :prefab_store_id, tag_ids: []],
+      cart_items_attributes: [[:note, :prefab_item_id, tag_ids: []]]
     )
   end
 
