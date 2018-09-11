@@ -3,4 +3,8 @@ class CartItem < ApplicationRecord
   belongs_to :prefab_item, optional: true
   has_many :cart_item_tags
   has_many :tags, through: :cart_item_tags
+
+  def price
+    dollars + (cents / 100)
+  end
 end

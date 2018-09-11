@@ -72,7 +72,11 @@ DONE Sign Up -> Users#news
 TODO:
 * DONE finish new cart form - add price field for items, add datetime field for cart
 * DFN verify that new finished cart form works as expected
-* remove "price" and add "dollars" and "cents", with defaults to 0, to the cart_item table & forms
+* DONE remove "price" and add "dollars" and "cents", with defaults to 0, to the cart_item table & forms
+* update code to handle dollars and cents instead of price 
+  * DONE modify Cart#total to account for dollars and cents being used instead of price on cart items
+  * modify new cart form to account for dollars and cents being used instead of price
+  * modify CartsController to permit dollas and cents parameters instead of price
 * add a couple carts to db seed file 
 * implement Class-level methods - sort with these - have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
