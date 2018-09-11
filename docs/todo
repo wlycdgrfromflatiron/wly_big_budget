@@ -10,7 +10,12 @@ TODO:
   * DONE modify CartItem#price to reflect that we are now only using dollars
   * DONE modfiy new Cart form to only use dollars & give a 'round up' message
   * DONE modify CartsController
-  * enforce min of 1 for dollars field
+  * DONE enforce min of 1 for dollars field
+* update new Cart creation logic:
+    * one item to start
+    * two buttons: DONE and ADD ITEM
+    * DONE -> creates / updates cart & renders its show page 
+    * ADD ITEM -> creates / updates cart & renders add form
 * add tags to stores index
 * add tags to items index
 * add a couple carts to db seed file 

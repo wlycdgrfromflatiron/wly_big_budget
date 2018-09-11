@@ -1,7 +1,11 @@
 class CartsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs_and_tags, only: [:new, :edit]
-  before_action :load_user_cart, only: [:edit, :update, :destroy]
+  before_action :load_prefabs_and_tags, only: [:additem, :new, :create, :edit]
+  before_action :load_user_cart, only: [:additem, :edit, :update, :destroy]
+
+  def additem
+    render html: "This is where we will have a form to add another item to cart ##{@cart.id}!"
+  end
 
   def index
     @carts = @user.carts # show note as title and total to start
@@ -18,7 +22,16 @@ class CartsController < NestedResourcesController
   end
 
   def create
-    super 'cart', cart_params
+    @cart = Cart.new(cart_params)
+
+    @cart.user = @user
+    
+    if @cart.save
+      if params[:cart][:another_item].to_i == 1
+        @cart.cart_items.build
+        redirect_to "/users/#{@user.id}/carts/#{@cart.id}/additem"
+      end
+    end
   end
 
   def update

@@ -1,22 +1,6 @@
-<h1>New Cart!</h1>
+<h1>Add another item to Cart!</h1>
 
 <%= form_with scope: @cart, url: user_carts_path, method: 'post' do |f| %>
-  <%= wly_form_div self, 'wly_labeled_field', f, 'date_select', :date %>
-  <br>
-  <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>
-
-  <div>
-    <h2>Store:</h2>
-    <%= f.fields_for :cart_store do |cart_store_form| %>
-      <div>
-        <%= cart_store_form.collection_select :prefab_store_id, @prefab_stores, :id, :name_and_tag_names, include_blank: 'Select a prefab store (optional)' %>
-      </div>
-      <br>
-      <%= wly_form_div self, 'wly_labeled_text_field', cart_store_form, :note %>
-      <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this store", cart_store_form %>
-    <% end %>
-  </div>
-
   <div>
     <h2>Items:</h2>
     <%= f.fields_for :cart_items do |cart_item_form| %>
@@ -34,8 +18,6 @@
     <% end %>
   </div>
 
-  <br>
-
   <div>
     <%= f.label 'another_item', 'Add another item?' %>
     <%= f.check_box 'another_item' %>
@@ -44,4 +26,19 @@
 
   <%= wly_form_div f, 'submit' %>
 
+  <%= wly_form_div self, 'wly_labeled_field', f, 'date_select', :date %>
+  <br>
+  <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>
+
+  <div>
+    <h2>Store:</h2>
+    <%= f.fields_for :cart_store do |cart_store_form| %>
+      <div>
+        <%= cart_store_form.collection_select :prefab_store_id, @prefab_stores, :id, :name_and_tag_names, include_blank: 'Select a prefab store (optional)' %>
+      </div>
+      <br>
+      <%= wly_form_div self, 'wly_labeled_text_field', cart_store_form, :note %>
+      <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this store", cart_store_form %>
+    <% end %>
+  </div>
 <% end %>
