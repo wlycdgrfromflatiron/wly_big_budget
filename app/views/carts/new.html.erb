@@ -36,12 +36,9 @@
 
   <br>
 
-  <div>
-    <%= f.label 'another_item', 'Add another item?' %>
-    <%= f.check_box 'another_item' %>
-  </div>
-  <br>
 
-  <%= wly_form_div f, 'submit' %>
+  <%= wly_form_div f, 'submit', 'Add Another Item' %>
+  <br>
+  <%= wly_form_div f, 'submit', 'Done' %>
 
 <% end %>

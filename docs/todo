@@ -12,10 +12,14 @@ TODO:
   * DONE modify CartsController
   * DONE enforce min of 1 for dollars field
 * update new Cart creation logic:
-    * one item to start
-    * two buttons: DONE and ADD ITEM
-    * DONE -> creates / updates cart & renders its show page 
-    * ADD ITEM -> creates / updates cart & renders add form
+    * DONE one item to start
+    * DONE two buttons: "Done" and "Add Another Item"
+    * DONE "Done" -> creates cart & redirects to index
+    * DONE "Add Another Item" -> creates cart & redirect to /additem
+* implement Add Item form for Carts
+    * two buttons: "Done" and "Add Another Item"
+    * "Done" -> updates cart and redirects to index
+    * "Add Another Item" -> updates cart & redirects back to /additem
 * add tags to stores index
 * add tags to items index
 * add a couple carts to db seed file 

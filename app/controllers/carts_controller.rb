@@ -9,6 +9,8 @@ class CartsController < NestedResourcesController
 
   def index
     @carts = @user.carts # show note as title and total to start
+
+    render html: "Index page with all the carts! #{@carts}"
   end
 
   def new
@@ -27,10 +29,14 @@ class CartsController < NestedResourcesController
     @cart.user = @user
     
     if @cart.save
-      if params[:cart][:another_item].to_i == 1
+      if params[:commit] == "Add Another Item"
         @cart.cart_items.build
         redirect_to "/users/#{@user.id}/carts/#{@cart.id}/additem"
+      else
+        redirect_to user_carts_path
       end
+    else
+        render :new
     end
   end
 
