@@ -21,7 +21,8 @@
     <h2>Items:</h2>
     <%= f.fields_for :cart_items do |cart_item_form| %>
       <h3>Item:</h3>
-      <%= wly_form_div self, 'wly_labeled_field', cart_item_form, 'number_field', :price %>
+      <%= wly_form_div self, 'wly_labeled_field', cart_item_form, 'number_field', :dollars %>
+      <%= wly_form_div self, 'wly_labeled_field', cart_item_form, 'number_field', :cents %>
       <br>
       
       <div>
