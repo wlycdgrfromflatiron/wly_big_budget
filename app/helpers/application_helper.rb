@@ -16,9 +16,15 @@ module ApplicationHelper
     content.html_safe
   end
 
+  def wly_labeled_field(fbo, field_helper, attribute)
+    content = "#{fbo.label attribute}"
+    content << " #{fbo.send(field_helper, attribute)}" #"  #{fbo.text_field attribute}"
+    content.html_safe
+  end
+
   def wly_labeled_text_field(fbo, attribute)
     content = "#{fbo.label attribute}"
-    content << "  #{fbo.text_field attribute}"
+    content << " #{fbo.send('text_field', attribute)}" #"  #{fbo.text_field attribute}"
     content.html_safe
   end
 

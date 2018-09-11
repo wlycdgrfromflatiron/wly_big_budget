@@ -24,19 +24,26 @@ DFN #delete - confirm that user is ok with all prefabs, cart stores, and cart it
 
 CartsController - nested resource of Users
 #index - show all the user's carts, with links to edit and delete
-#edit (doubles as #show) - lets you change date, note. lets you edit and delete the items. lets you add new items. let you edit store.
 #new - form to make a new cart.
   date, note
 
-  store_prefab dropdown
-  store note field for cart_store
-  store tags field for cart_store - bunch of checkboxes?
+  DFN store_prefab dropdown
+  DFN store note field for cart_store
+  DFN store tags field for cart_store - bunch of checkboxes?
 
-  3 cart_item forms, for each:
+  1 cart_item forms, for each:
   - price (required)
-  - note (optional)
-  - dropdown to select a prefab item (optional)
-  - checkboxes for item tags (optional)
+  - DFN note (optional)
+  - DFN dropdown to select a prefab item (optional)
+  - DFN checkboxes for item tags (optional)
+#edit (doubles as #show) - 
+  - lets you change date, note. 
+  - lets you edit and delete items. 
+  - lets you add another item. 
+  - let you edit store.
+#create - create the cart
+#update - make changes to the items / store, delete items / store /tags / prefabs /, optionally add new item
+#delete
 
 
 Order:
@@ -61,22 +68,32 @@ DONE Log In -> Welcome#home
 DONE Sign Up -> Users#news
 
 
-WITH JAVASCRIPT!
+TODO:
+* finish new cart form - add price field for items, add datetime field for cart
+* implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
+* implement cart update
+* implement cart delete
+* add tags to stores index
+* add tags to items index
+* add prefab stores and items to tags index
+* implement profile page - grand total
+* implement third party login
 
-TAGS#index
-* all the tags are displayed in sequence
-* you can sort them alphabetically, you can sort them by popularity
-* clicking on a tag shows a detail view that shows you
-the associated stores and items. there's a button to delete, and a button to edit
-
-TAGS#new
-* name checked for uniqueness on submit
-* stores area is a dropdown where you can select a store,
-  it gets added to list,
-  you can select again
-* same deal with items
+* add cart sorting - by date, by amount
+* add stores sorting - by amount, by name
+* add items sorting - by amount,  by name
 
 
+
+
+
+
+
+
+
+
+
+README instructions:
 
 Things you may want to cover:
 
