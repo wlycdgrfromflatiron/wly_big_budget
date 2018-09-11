@@ -1,11 +1,19 @@
 module ApplicationHelper
   def wly_check_boxes_for(collection, names, title, fbo)
-    content = "<h3>#{title}</h3>"
+    content = "<h4>#{title}</h4>"
+    content << "<p>"
+    checkboxes_on_line = 0
     fbo.collection_check_boxes(names, collection, :id, :name) do |b|
-      content << "<p>"
+      content << "<span>"
         content << "#{b.label { b.check_box + b.text }}"
-      content << "</p>"
+      content << "</span> "
+      checkboxes_on_line += 1
+      if checkboxes_on_line > 4
+        checkboxes_on_line = 0
+        content << "<br>"
+      end
     end
+    content << "</p>"
     content.html_safe
   end
 
