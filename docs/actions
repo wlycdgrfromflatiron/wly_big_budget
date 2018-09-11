@@ -24,18 +24,19 @@ DFN #delete - confirm that user is ok with all prefabs, cart stores, and cart it
 
 CartsController - nested resource of Users
 #index - show all the user's carts, with links to edit and delete
-#new - form to make a new cart.
-  date, note
+DFN #new - form to make a new cart.
+  DFN date, note
 
   DFN store_prefab dropdown
   DFN store note field for cart_store
   DFN store tags field for cart_store - bunch of checkboxes?
 
-  1 cart_item forms, for each:
-  - price (required)
+  3 cart_item forms, for each:
+  - DFN price (required)
   - DFN note (optional)
   - DFN dropdown to select a prefab item (optional)
   - DFN checkboxes for item tags (optional)
+
 #edit (doubles as #show) - 
   - lets you change date, note. 
   - lets you edit and delete items. 
@@ -69,7 +70,8 @@ DONE Sign Up -> Users#news
 
 
 TODO:
-* finish new cart form - add price field for items, add datetime field for cart
+* DONE finish new cart form - add price field for items, add datetime field for cart
+* verify that new finished cart form works as expected
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * implement cart update
 * implement cart delete
