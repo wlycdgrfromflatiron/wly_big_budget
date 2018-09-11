@@ -72,6 +72,7 @@ DONE Sign Up -> Users#news
 TODO:
 * DONE finish new cart form - add price field for items, add datetime field for cart
 * DFN verify that new finished cart form works as expected
+* add a couple carts to db seed file 
 * implement Class-level methods - sort with these - have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * add validations
@@ -82,10 +83,10 @@ TODO:
     * note presence
     * date presence
     * cart store presence
-      * cart store note OR prefab presence
+      * cart store note presence, unless there is a prefab
     * cart item 1+ presence
       * cart item price presence, price >= $0.00 (freebies can be logged)
-      * cart item note OR prefab presence
+      * cart item note presence, unless there is a prefab
 * implement cart update
 * implement cart delete
 * add tags to stores index

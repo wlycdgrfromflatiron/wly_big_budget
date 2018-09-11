@@ -123,3 +123,4 @@ create_tag('independent', [
 create_tag('24hr', [
   ['ilya', ['Best Buy Union Square'], []]
 ])
+
