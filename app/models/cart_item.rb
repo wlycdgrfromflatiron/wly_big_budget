@@ -5,6 +5,6 @@ class CartItem < ApplicationRecord
   has_many :tags, through: :cart_item_tags
 
   def price
-    dollars + (cents / 100)
+    dollars
   end
 end

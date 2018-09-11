@@ -10,7 +10,7 @@ class CartsController < NestedResourcesController
   def new
     @cart = Cart.new
     @cart.cart_store = CartStore.new
-    3.times { @cart.cart_items.build }
+    1.times { @cart.cart_items.build }
   end
 
   # doubles as #show
@@ -32,12 +32,10 @@ class CartsController < NestedResourcesController
   private
 
   def cart_params
-    # TBD once I review the nested attributes process
-    #params.require(:cart).permit(:name,.....)
     params.require(:cart).permit(
       :note, :date,
       cart_store_attributes: [:note, :prefab_store_id, tag_ids: []],
-      cart_items_attributes: [[:dollars, :cents, :note, :prefab_item_id, tag_ids: []]]
+      cart_items_attributes: [[:dollars, :note, :prefab_item_id, tag_ids: []]]
     )
   end
 

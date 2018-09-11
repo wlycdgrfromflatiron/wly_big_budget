@@ -5,9 +5,12 @@ TODO:
 * update code to handle dollars and cents instead of price 
   * DONE modify Cart#total to account for dollars and cents being used instead of price on cart items
   * DONE modify new cart form to account for dollars and cents being used instead of price
-  * modify CartsController to permit dollas and cents parameters instead of price
-  * limit dollars field to 0 or more
-  * limit cents field to between 0 and 99
+  * DONE modify CartsController to permit dollars and cents parameters instead of price
+  * SCRATCH THE ABOVE - DONE modify to only use dollars. tell users to round up.
+  * DONE modify CartItem#price to reflect that we are now only using dollars
+  * DONE modfiy new Cart form to only use dollars & give a 'round up' message
+  * DONE modify CartsController
+  * enforce min of 1 for dollars field
 * add tags to stores index
 * add tags to items index
 * add a couple carts to db seed file 

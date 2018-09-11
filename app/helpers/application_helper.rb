@@ -24,9 +24,9 @@ module ApplicationHelper
     content.html_safe
   end
 
-  def wly_labeled_field(fbo, field_helper, attribute)
+  def wly_labeled_field(fbo, field_helper, attribute, options = {})
     content = "#{fbo.label attribute}"
-    content << " #{fbo.send(field_helper, attribute)}" #"  #{fbo.text_field attribute}"
+    content << " #{fbo.send(field_helper, attribute, options)}" #"  #{fbo.text_field attribute}"
     content.html_safe
   end
 
