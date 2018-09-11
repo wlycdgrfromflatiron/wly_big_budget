@@ -1,1 +1,1 @@
-let bananas = "foster"
+const bananas = "foster";
