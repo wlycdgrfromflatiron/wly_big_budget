@@ -33,7 +33,30 @@ TODO:
 
 
 
-* implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
+* implement cart index - 
+  * for each cart: 
+    - note
+    - total
+    - date
+    - show link
+    - edit link
+    - delete link
+
+* implement cart show 
+  - EDIT link
+  - DELETE link
+  - ADD ITEM link
+  - note
+  - total
+  - date
+  - store
+    - note
+    - prefab name. prefab tags. SHOW link if prefab
+    - store tags
+  - items
+    - note
+    - prefab name. SHOW link if prefab
+    - 
 * add validations
   * tag: name presence, name uniqueness
   * prefab store: name presence, name uniqueness
