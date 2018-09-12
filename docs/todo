@@ -2,7 +2,7 @@ TODO:
 * DONE finish new cart form - add price field for items, add datetime field for cart
 * DFN verify that new finished cart form works as expected
 * DONE remove "price" and add "dollars" and "cents", with defaults to 0, to the cart_item table & forms
-* update code to handle dollars and cents instead of price 
+* DONE update code to handle dollars and cents [UPDATE: only dollars!] instead of price 
   * DONE modify Cart#total to account for dollars and cents being used instead of price on cart items
   * DONE modify new cart form to account for dollars and cents being used instead of price
   * DONE modify CartsController to permit dollars and cents parameters instead of price
@@ -11,15 +11,15 @@ TODO:
   * DONE modfiy new Cart form to only use dollars & give a 'round up' message
   * DONE modify CartsController
   * DONE enforce min of 1 for dollars field
-* update new Cart creation logic:
+* DONE update new Cart creation logic:
     * DONE one item to start
     * DONE two buttons: "Done" and "Add Another Item"
     * DONE "Done" -> creates cart & redirects to index
-    * DONE "Add Another Item" -> creates cart & redirect to /additem
-* implement Add Item form for Carts
-    * two buttons: "Done" and "Add Another Item"
-    * "Done" -> updates cart and redirects to index
-    * "Add Another Item" -> updates cart & redirects back to /additem
+    * DONE "Add Another Item" -> creates cart & redirect to CartItems#new
+* DONE implement CartItem#new and CartItem#create
+    * DONE two buttons: "Done" and "Add Another Item"
+    * DONE "Done" -> saves new cart item to cart and redirects to Carts#index
+    * DONE "Add Another Item" -> updates cart & redirects back to CartItem#item
 * DONE make sure that cart items and cart stores are getting destroyed whenwe delete a cart
 * add tags to stores index
 * add tags to items index

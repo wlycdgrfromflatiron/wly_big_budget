@@ -1,7 +1,7 @@
 class PrefabItemsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefab_item, only: [:edit, :update, :destroy]
-  before_action :load_tags, only: [:new, :edit]
+  before_action :load_tags, only: [:index, :new, :edit]
 
   def index
     @prefab_items = @user.prefab_items

@@ -2,7 +2,21 @@
 <% delete_path_helper = "user_" + resource_name + "_path" %>
 
 <div>
-  <%= nested_resource.name %>
-  <%= link_to "Edit", send(edit_path_helper, @user, nested_resource) %>
-  <%= link_to "Delete", send(delete_path_helper, @user, nested_resource), method: 'delete' %>
+  <strong><%= nested_resource.name %></strong>
+  <%= link_to 'Edit', send(edit_path_helper, @user, nested_resource) %> <%= link_to 'Delete', send(delete_path_helper, @user, nested_resource) %>
+  <br>
+  <% if 'tag' == resource_name %>
+    <% if !nested_resource.prefab_stores.empty? %>
+      <em>Stores:</em>
+      <%= render partial: "shared/nested_resource_attribute", collection: nested_resource.prefab_stores %>
+      <br>
+    <% end %>
+    <% if !nested_resource.prefab_items.empty? %>
+      <em>Items:</em>
+      <%= render partial: "shared/nested_resource_attribute", collection: nested_resource.prefab_items %>
+    <% end %>
+  <% else %>
+    <%= render partial: "shared/nested_resource_attribute", collection: nested_resource.tags %>
+  <% end %>
 </div>
+<br>
