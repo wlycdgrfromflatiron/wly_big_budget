@@ -1,0 +1,12 @@
+<h1>Edit Cart</h1>
+
+<%= form_with scope: @cart, url: user_cart_path(@user, @cart), method: 'patch' do |f| %>
+  <%= wly_form_div self, 'wly_labeled_field', f, 'date_select', :date %>
+  <br>
+  <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>
+
+
+  <%= link_to 'Cancel', user_carts_path(@user) %>
+  <br>
+  <%= wly_form_div f, 'submit', 'Done' %>
+<% end %>
