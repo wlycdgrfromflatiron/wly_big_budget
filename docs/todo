@@ -21,10 +21,11 @@ TODO:
     * DONE "Done" -> saves new cart item to cart and redirects to Carts#index
     * DONE "Add Another Item" -> updates cart & redirects back to CartItem#item
 * DONE make sure that cart items and cart stores are getting destroyed whenwe delete a cart
-* add tags to stores index
-* add tags to items index
-* add a couple carts to db seed file 
-* implement Class-level methods - sort with these - have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
+* DONE add tags to stores index
+* DONE add tags to items index
+* DONE implement create_cart in db seed file
+* DONE add a cart to db seed file 
+* add one more cart to db seed file
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * add validations
   * tag: name presence, name uniqueness
@@ -40,11 +41,12 @@ TODO:
       * cart item note presence, unless there is a prefab
 * implement cart update
 * implement cart delete
-* add prefab stores and items to tags index
+* implement sort: have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement profile page - grand total
 * implement third party login
 * implement error messages / css
 * implement styling
+* implement Class-level methods: an "alphabetical" one for start
 * handle the fact that if cart creation fails, we need the cart_store and cart_items to be available to render :new
 
 

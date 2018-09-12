@@ -125,4 +125,60 @@ create_tag('24hr', [
   ['ilya', ['Best Buy Union Square', 'Home bodega'], []]
 ])
   
+
+def create_cart username:, date:, note:, store:, items:
+  cart = Cart.new
   
+  cart.user = User.find_by(name: username)
+  cart.date = date
+  cart.note = note
+
+  cart.cart_store = CartStore.new(note: store[:note])
+  if (pfs = store[:prefab_store_name])
+    cart.cart_store.prefab_store = PrefabStore.find_by(name: pfs)
+  end
+  if (tag_names = store[:tag_names])
+    tag_names.each do |tag_name|
+      cart.cart_store.tags << Tag.find_by(name: tag_name)
+    end
+  end
+
+  items.each do |item|
+    new_item = CartItem.new
+    new_item.cart = cart
+    if item[:note]
+      new_item.note = item[:note]
+    end
+    if item[:prefab_item_name]
+      new_item.prefab_item = PrefabItem.find_by(name: item[:prefab_item_name])
+    end
+    new_item.dollars = item[:dollars]
+
+    cart.cart_items << new_item
+  end
+    
+  cart.save 
+end
+
+
+create_cart(
+  username: 'ilya',
+  date: Date.parse('August 12 2018'),
+  note: 'Bodega run',
+  store: {
+    prefab_store_name: 'Home bodega',
+    note: 'Real Madrid are terrible cheaters',
+    tag_names: ['NYC']
+  },
+  items: [
+    {
+      note: "So tasty and cheap",
+      prefab_item_name: 'Egg & cheese on a roll with pickles and jalapenos',
+      dollars: 2
+    },
+    {
+      note: "Hot, milk, no sugar",
+      dollars: 1
+    }
+  ]
+)
