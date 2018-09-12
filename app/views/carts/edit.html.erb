@@ -5,6 +5,17 @@
   <br>
   <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>
 
+  <div>
+    <h2>Store:</h2>
+    <%= f.fields_for :cart_store do |cart_store_form| %>
+      <div>
+        <%= cart_store_form.collection_select :prefab_store_id, @prefab_stores, :id, :name_and_tag_names, include_blank: '[No prefab store]' %>
+      </div>
+      <br>
+      <%= wly_form_div self, 'wly_labeled_text_field', cart_store_form, :note %>
+      <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this store", cart_store_form %>
+    <% end %>
+  </div>
 
   <%= link_to 'Cancel', user_carts_path(@user) %>
   <br>

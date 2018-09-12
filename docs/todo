@@ -60,6 +60,20 @@ TODO:
 * DONE make it so that Done redirects to Cart show view from add cart item form
 
 * implement Cart#edit
+  * user can edit note
+  * user can edit date
+  * store:
+    user can edit note
+    user can change / remove prefab
+    user can add / remove tags
+  * items:
+    for each item, user can:
+      * change note
+      * change / remove prefab
+      * add / remove tags
+      * change price
+  * DONE button
+  * CANCEL button
 
 
 * implement PrefabStore#show
