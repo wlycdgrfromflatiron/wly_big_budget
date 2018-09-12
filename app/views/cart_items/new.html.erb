@@ -1,20 +1,16 @@
-<%= form_with scope: @cart, url: "users/#{@user.id}/carts/#{@cart.id}/items" method: 'post' do |f| %>
+<%= form_with scope: @cart_item, url: cart_cart_items_path, method: 'post' do |f| %>
   <div>
-    <%= f.fields_for @new_item do |cart_item_form| %>
-      <h3>Item:</h3>
-      <%= wly_labeled_field cart_item_form, 'number_field', :dollars, min: 1 %>
-      <p>No cents. Round up for best results.</p>
-      <br>
-      
-      <div>
-        <%= cart_item_form.collection_select :prefab_item_id, @prefab_items, :id, :name_and_tag_names, include_blank: 'Select a prefab item (optional)' %>
-      </div>      
-      <br>
-      <%= wly_form_div self, 'wly_labeled_text_field', cart_item_form, :note %>
-      <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this item", cart_item_form %>
-    <% end %>
+    <h3>New Item:</h3>
+    <%= wly_labeled_field f, 'number_field', :dollars, min: 1 %>
+    <p>No cents. Round up for best results.</p>
+    <br>
+    <div>
+      <%= f.collection_select :prefab_item_id, @prefab_items, :id, :name_and_tag_names, include_blank: 'Select a prefab item (optional)' %>
+    </div>      
+    <br>
+    <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>
+    <%= wly_check_boxes_for @tags, :tag_ids, "Optional additional tags for this item", f %>
   </div>
-
   <%= wly_form_div f, 'submit', "Add Another Item" %>
   <br>
   <%= wly_form_div f, 'submit', "Done" %>
@@ -25,7 +21,7 @@
 
 <h2><%= @cart.note %> | $<%= @cart.total %></h2>
 
-<% @old_items.each do |old_item| %>
-  <%= old_item.note %> | $<%= old_item.dollars %>
+<% @cart.cart_items.each do |cart_item| %>
+  <%= cart_item.note %> | $<%= cart_item.dollars %>
   <br>
 <% end %>
