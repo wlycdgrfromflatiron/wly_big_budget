@@ -27,36 +27,38 @@ TODO:
 * DONE add a cart to db seed file 
 
 
-
 * DONE add carts to navbar
 * DONE add one more cart to db seed file (added a couple tags too, and an item tag processing bit to the create_cart method)
-
-
-
-* implement cart index - 
-  * for each cart: 
+* DONE implement cart index - 
+  * DONE heading 
+  * DONE basic layout formatting
+  * DONE for each cart: 
     - DONE note
     - DONE total
     - DONE date
-    - show link
-    - edit link
-    - delete link
+    - DONE show link
+    - DONE edit link
+    - DONE delete link
+* DONE implement cart destroy
+
 
 * implement cart show 
   - EDIT link
   - DELETE link
   - ADD ITEM link
-  - note
-  - total
-  - date
+  - DONE note
+  - DONE total
+  - DONE date
   - store
-    - note
-    - prefab name. prefab tags. SHOW link if prefab
-    - store tags
+    - DONE note
+    - DONE prefab name. 
+    - DONE prefab tags. 
+    - SHOW link if prefab
+    - DONE store tags
   - items
     - note
     - prefab name. SHOW link if prefab
-    - 
+    - item tags
 
 * generalize CartsController#Create, passing in whether to redirect to new item form as a param
 
@@ -73,7 +75,6 @@ TODO:
       * cart item price presence, price >= $0.00 (freebies can be logged)
       * cart item note presence, unless there is a prefab
 * implement cart update
-* implement cart delete
 * implement sort: have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement profile page - grand total
 * implement third party login

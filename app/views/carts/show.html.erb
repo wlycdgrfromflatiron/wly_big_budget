@@ -1,0 +1,14 @@
+<h1><%= @cart.note %> | $<%= @cart.total %></h1>
+<p><%= @cart.date %>
+
+<div>
+    <strong>Store</strong><br>
+    Note: <%= @store.note %><br>
+    <% if @store.prefab_store %>
+        Prefab: <%= link_to @store.prefab_store.name, user_prefab_store_path(@store.prefab_store) %><br>
+    <% end %>
+    Tags: <% @store.tags.each do |tag| %>
+        <%= tag.name %>&nbsp
+    <% end %><br>
+</div>
+<br>

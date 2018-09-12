@@ -8,7 +8,8 @@ class CartsController < NestedResourcesController
   end
 
   def show
-    render html: "This is where we will show details about cart '#{@cart.note}'"
+    @store = @cart.cart_store
+    @items = @cart.cart_items
   end
 
   def new
@@ -17,7 +18,6 @@ class CartsController < NestedResourcesController
     1.times { @cart.cart_items.build }
   end
 
-  # doubles as #show
   def edit
   end
 
