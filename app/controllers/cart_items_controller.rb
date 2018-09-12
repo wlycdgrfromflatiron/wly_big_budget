@@ -16,7 +16,7 @@ class CartItemsController < SessionsController
             if params[:commit] == "Add Another Item"
                 redirect_to new_cart_cart_item_path(@cart)
             else
-                redirect_to user_carts_path(@user)
+                redirect_to user_cart_path(@user, @cart)
             end
         else
             render :new

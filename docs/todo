@@ -40,27 +40,31 @@ TODO:
     - DONE edit link
     - DONE delete link
 * DONE implement cart destroy
-
-
-* implement cart show 
-  - EDIT link
-  - DELETE link
-  - ADD ITEM link
+* DONE implement cart show 
+  - DONE EDIT link
+  - DONE DELETE link
+  - DONE ADD ITEM link
   - DONE note
   - DONE total
   - DONE date
-  - store
+  - DONE store
     - DONE note
     - DONE prefab name. 
-    - DONE prefab tags. 
-    - SHOW link if prefab
+    - DONE SHOW link if prefab
     - DONE store tags
-  - items
-    - note
-    - prefab name. SHOW link if prefab
-    - item tags
+  - DONE items
+    - DONE note
+    - DONE prefab name. SHOW link if prefab
+    - DONE item tags
+* DONE fix bug where tags are listed twice in add cart item form
+* DONE make it so that Done redirects to Cart show view from add cart item form
 
-* generalize CartsController#Create, passing in whether to redirect to new item form as a param
+* implement Cart#edit
+
+
+* implement PrefabStore#show
+* implement PrefabItem#show
+* implement Tag#show
 
 * add validations
   * tag: name presence, name uniqueness
@@ -84,7 +88,8 @@ TODO:
 * handle the fact that if cart creation fails, we need the cart_store and cart_items to be available to render :new
 
 
-// OOS
+// FOR LATER
+* generalize CartsController#Create, passing in whether to redirect to new item form as a param
 * add cart sorting - by date, by amount
 * add stores sorting - by amount, by name
 * add items sorting - by amount,  by name

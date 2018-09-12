@@ -47,6 +47,45 @@ def create_tag(name, users_and_prefabs)
   tag.save
 end
 
+def create_cart username:, date:, note:, store:, items:
+  cart = Cart.new
+  
+  cart.user = User.find_by(name: username)
+  cart.date = date
+  cart.note = note
+
+  cart.cart_store = CartStore.new(note: store[:note])
+  if (pfs = store[:prefab_store_name])
+    cart.cart_store.prefab_store = PrefabStore.find_by(name: pfs)
+  end
+  if (tag_names = store[:tag_names])
+    tag_names.each do |tag_name|
+      cart.cart_store.tags << Tag.find_by(name: tag_name)
+    end
+  end
+
+  items.each do |item|
+    new_item = CartItem.new
+    new_item.cart = cart
+    if item[:note]
+      new_item.note = item[:note]
+    end
+    if item[:prefab_item_name]
+      new_item.prefab_item = PrefabItem.find_by(name: item[:prefab_item_name])
+    end
+    if item[:tag_names]
+      item[:tag_names].each do |tag_name|
+        new_item.tags << Tag.find_by(name: tag_name)
+      end
+    end
+    new_item.dollars = item[:dollars]
+
+    cart.cart_items << new_item
+  end
+    
+  cart.save 
+end
+
 User.create([
   make_user_hash('ilya'), # id 1
   make_user_hash('wlycdgr'), #id 2
@@ -133,46 +172,6 @@ create_tag('entertainment', [
   ['ilya', [], ['Anthology Film Archives ticket']]
 ])
   
-
-def create_cart username:, date:, note:, store:, items:
-  cart = Cart.new
-  
-  cart.user = User.find_by(name: username)
-  cart.date = date
-  cart.note = note
-
-  cart.cart_store = CartStore.new(note: store[:note])
-  if (pfs = store[:prefab_store_name])
-    cart.cart_store.prefab_store = PrefabStore.find_by(name: pfs)
-  end
-  if (tag_names = store[:tag_names])
-    tag_names.each do |tag_name|
-      cart.cart_store.tags << Tag.find_by(name: tag_name)
-    end
-  end
-
-  items.each do |item|
-    new_item = CartItem.new
-    new_item.cart = cart
-    if item[:note]
-      new_item.note = item[:note]
-    end
-    if item[:prefab_item_name]
-      new_item.prefab_item = PrefabItem.find_by(name: item[:prefab_item_name])
-    end
-    if item[:tag_names]
-      item[:tag_names].each do |tag_name|
-        new_item.tags << Tag.find_by(name: tag_name)
-      end
-    end
-    new_item.dollars = item[:dollars]
-
-    cart.cart_items << new_item
-  end
-    
-  cart.save 
-end
-
 
 create_cart(
   username: 'ilya',
