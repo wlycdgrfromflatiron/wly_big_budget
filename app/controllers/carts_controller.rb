@@ -9,6 +9,9 @@ class CartsController < NestedResourcesController
     #1.times { @cart.cart_items.build }
   end
 
+  def createitem
+  end
+
   def index
     @carts = @user.carts # show note as title and total to start
 
@@ -32,8 +35,7 @@ class CartsController < NestedResourcesController
     
     if @cart.save
       if params[:commit] == "Add Another Item"
-        @cart.cart_items.build
-        redirect_to "/users/#{@user.id}/carts/#{@cart.id}/additem"
+        redirect_to new_cart_cart_item_path(@cart)
       else
         redirect_to user_carts_path
       end

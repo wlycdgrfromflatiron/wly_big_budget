@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :prefab_items
   end
 
+  resources :carts do
+    resources :cart_items, only: [:new, :create, :destroy]
+  end
+
   get '/users/:user_id/carts/:id/additem', to: 'carts#additem'
 
   post '/signin', to: 'sessions#signin'

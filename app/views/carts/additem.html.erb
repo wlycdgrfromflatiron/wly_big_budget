@@ -1,4 +1,4 @@
-<%= form_with scope: @cart, url: user_carts_path, method: 'post' do |f| %>
+<%= form_with scope: @cart, url: "users/#{@user.id}/carts/#{@cart.id}/items" method: 'post' do |f| %>
   <div>
     <%= f.fields_for @new_item do |cart_item_form| %>
       <h3>Item:</h3>

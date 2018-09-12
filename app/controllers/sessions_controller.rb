@@ -52,6 +52,16 @@ class SessionsController < ApplicationController
     session[:user_id].to_i == params[:user_id].to_i
   end
 
+  def this_carts_user?
+    cart = Cart.find_by(id: params[:cart_id])
+
+    if !cart || !cart.user 
+      false
+    else 
+      session[:user_id].to_i == cart.user.id
+    end
+  end
+
   def session_guard(isUser)
     unless logged_in? && isUser
       redirect_to root_path
