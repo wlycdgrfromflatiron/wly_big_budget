@@ -12,3 +12,17 @@
     <% end %><br>
 </div>
 <br>
+
+<div>
+    <strong>Items</strong><br>
+    <% @items.each do |item| %>
+        <strong>$<%= item.dollars %></strong><br>
+        Note: <%= item.note %><br>
+        <% if item.prefab_item %>
+            Prefab: <%= link_to item.prefab_item.name, user_prefab_item_path(item.prefab_item) %><br>
+        <% end %>
+        Tags: <% item.tags.each do |tag| %>
+            <%= tag.name %>&nbsp
+        <% end %><br><br>
+    <% end %>
+</div>
