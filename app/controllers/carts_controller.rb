@@ -1,16 +1,7 @@
 class CartsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs_and_tags, only: [:additem, :new, :create, :edit]
-  before_action :load_user_cart, only: [:additem, :edit, :update, :destroy]
-
-  def additem
-    @old_items = @cart.cart_items
-    @new_item = @cart.cart_items.build 
-    #1.times { @cart.cart_items.build }
-  end
-
-  def createitem
-  end
+  before_action :load_prefabs_and_tags, only: [:new, :create, :edit]
+  before_action :load_user_cart, only: [:edit, :update, :destroy]
 
   def index
     @carts = @user.carts # show note as title and total to start
