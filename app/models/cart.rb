@@ -1,8 +1,8 @@
 class Cart < ApplicationRecord
   belongs_to :user
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
   has_many :prefab_items, through: :cart_items
-  has_one :cart_store
+  has_one :cart_store, dependent: :destroy
   has_one :prefab_store, through: :cart_store
   accepts_nested_attributes_for :cart_items
   accepts_nested_attributes_for :cart_store

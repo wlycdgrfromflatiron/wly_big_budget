@@ -20,6 +20,7 @@ TODO:
     * two buttons: "Done" and "Add Another Item"
     * "Done" -> updates cart and redirects to index
     * "Add Another Item" -> updates cart & redirects back to /additem
+* DONE make sure that cart items and cart stores are getting destroyed whenwe delete a cart
 * add tags to stores index
 * add tags to items index
 * add a couple carts to db seed file 
