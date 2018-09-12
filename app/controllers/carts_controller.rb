@@ -6,7 +6,7 @@ class CartsController < NestedResourcesController
   def index
     @carts = @user.carts # show note as title and total to start
 
-    render html: "Index page with all the carts! #{@carts}"
+    render html: "Index page with all the carts! #{@carts.inspect}"
   end
 
   def new

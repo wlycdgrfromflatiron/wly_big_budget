@@ -25,6 +25,10 @@ TODO:
 * DONE add tags to items index
 * DONE implement create_cart in db seed file
 * DONE add a cart to db seed file 
+
+
+
+* add carts to navbar
 * add one more cart to db seed file
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * add validations
