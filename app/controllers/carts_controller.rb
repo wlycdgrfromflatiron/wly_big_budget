@@ -22,7 +22,7 @@ class CartsController < NestedResourcesController
   end
 
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new(cart_create_params)
 
     @cart.user = @user
     
@@ -37,8 +37,15 @@ class CartsController < NestedResourcesController
     end
   end
 
-  def update    
-    if @cart.update(cart_params)
+  def update
+    cart_params = params[:cart]
+    store_params = cart_params[:cart_store_attriutes]
+    items_params = cart_params[:cart_items_attributes]
+
+    @cart.note = cart_params[:note]
+    @cart.date = Date.parse("#{cart_params['date(1i)']}-#{cart_params['date(2i)']}-#{cart_params['date(3i)']}")
+
+    if @cart.save
       redirect_to user_cart_path(@user, @cart)
     else
       render :edit
@@ -53,7 +60,7 @@ class CartsController < NestedResourcesController
 
   private
 
-  def cart_params
+  def cart_create_params
     params.require(:cart).permit(
       :note, :date,
       cart_store_attributes: [:note, :prefab_store_id, tag_ids: []],
