@@ -26,3 +26,7 @@
         <% end %><br><br>
     <% end %>
 </div>
+
+<%= link_to 'Add Item', new_cart_cart_item_path(@cart) %> |
+<%= link_to 'Edit Cart', edit_user_cart_path(@user, @cart) %> | 
+<%= link_to 'Delete Cart', user_cart_path(@user, @cart), method: 'delete' %>
