@@ -124,6 +124,14 @@ create_tag('independent', [
 create_tag('24hr', [
   ['ilya', ['Best Buy Union Square', 'Home bodega'], []]
 ])
+
+create_tag('game', [
+  ['ilya', [], []]
+])
+
+create_tag('entertainment', [
+  ['ilya', [], ['Anthology Film Archives ticket']]
+])
   
 
 def create_cart username:, date:, note:, store:, items:
@@ -152,6 +160,11 @@ def create_cart username:, date:, note:, store:, items:
     if item[:prefab_item_name]
       new_item.prefab_item = PrefabItem.find_by(name: item[:prefab_item_name])
     end
+    if item[:tag_names]
+      item[:tag_names].each do |tag_name|
+        new_item.tags << Tag.find_by(name: tag_name)
+      end
+    end
     new_item.dollars = item[:dollars]
 
     cart.cart_items << new_item
@@ -179,6 +192,33 @@ create_cart(
     {
       note: "Hot, milk, no sugar",
       dollars: 1
+    }
+  ]
+)
+
+create_cart(
+  username: 'ilya',
+  date: Date.parse('September 4 2018'),
+  note: 'A lazy afternoon at Target',
+  store: {
+    note: 'This is the Atlantic Center one',
+    tag_names: ['NYC']
+  },
+  items: [
+    {
+      note: "4x 1L bottle Market Pantry brand",
+      prefab_item_name: 'Seltzer',
+      dollars: 3,
+      tag_names: ['favorite']
+    },
+    {
+      note: "An award-winning board game I will never play",
+      dollars: 15,
+      tag_names: ['game', 'entertainment']
+    },
+    {
+      note: "Those Ritz cracker shits, Sour Cream & Onion",
+      dollars: 4
     }
   ]
 )

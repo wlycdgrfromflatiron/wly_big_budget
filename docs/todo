@@ -28,8 +28,11 @@ TODO:
 
 
 
-* add carts to navbar
-* add one more cart to db seed file
+* DONE add carts to navbar
+* DONE add one more cart to db seed file (added a couple tags too, and an item tag processing bit to the create_cart method)
+
+
+
 * implement cart index - cart note, total, store, items (note if available, prefab name otherwise)
 * add validations
   * tag: name presence, name uniqueness
@@ -58,3 +61,7 @@ TODO:
 * add cart sorting - by date, by amount
 * add stores sorting - by amount, by name
 * add items sorting - by amount,  by name
+
+* better tags implementation: type a comma-separated list into a text area. backend automatically finds or creates the tags
+
+* limited tag, prefab store, and prefab item amounts in the free version
