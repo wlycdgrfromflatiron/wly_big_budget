@@ -37,8 +37,14 @@ class CartsController < NestedResourcesController
     end
   end
 
-  def update
-    super @cart, 'cart', cart_params
+  def update    
+    if @cart.update(cart_params)
+      redirect_to user_cart_path(@user, @cart)
+    else
+      render :edit
+    end
+    # update this to redirect to show once show stubs impelemented for all nested resources
+    # super @cart, 'cart', cart_params
   end
 
   def destroy
