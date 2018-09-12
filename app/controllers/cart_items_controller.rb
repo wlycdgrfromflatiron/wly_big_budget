@@ -8,25 +8,33 @@ class CartItemsController < SessionsController
     end
 
     def create
-        # make a new cart_item
-        # attach it o cart
-        # try to save
-        # if it worked,
-        #   if user wants to add another item, redirect to :new
-        #   if user is done, redirect to carts index
-        # if it didn't work, render new
+        @cart_item = CartItem.new(cart_item_params)
+
+        @cart_item.cart = @cart 
+
+        if @cart_item.save
+            if params[:commit] == "Add Another Item"
+                redirect_to new_cart_cart_item_path(@cart)
+            else
+                redirect_to user_carts_path(@user)
+            end
+        else
+            render :new
+        end
     end
 
     def destroy
     end
 
+    private
+
+    def cart_item_params
+        params.require(:cart_item).permit(:dollars, :prefab_item_id, :note, tag_ids: [])
+    end
+
     def load_prefab_items_and_tags
         @prefab_items = @user.prefab_items
         @tags = @user.tags
-    end
-
-    def cart_item_params
-        require
     end
 
     def load_cart
