@@ -1,12 +1,10 @@
 class CartsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefabs_and_tags, only: [:new, :create, :edit]
-  before_action :load_user_cart, only: [:edit, :update, :destroy]
+  before_action :load_existing_user_cart, only: [:edit, :update, :destroy]
 
   def index
-    @carts = @user.carts # show note as title and total to start
-
-    render html: "Index page with all the carts! #{@carts.inspect}"
+    @carts = @user.carts
   end
 
   def new
@@ -59,7 +57,7 @@ class CartsController < NestedResourcesController
     @tags = @user.tags
   end
 
-  def load_user_cart
+  def load_existing_user_cart
     @cart = @user.carts.find_by(id: params[:id])
     if !@cart
       redirect_to user_carts_path

@@ -1,0 +1,9 @@
+<h1><%= @user.email %>'s Carts</h1>
+
+<ul>
+<% @carts.each do |cart| %>
+    <li>
+        <%= cart.note %>
+    </li>
+<% end %>
+</ul>
