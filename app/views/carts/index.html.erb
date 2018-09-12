@@ -3,7 +3,12 @@
 <ul>
 <% @carts.each do |cart| %>
     <li>
-        <%= cart.note %>
+        <h3><%= cart.note %> | <%= cart.date %> | $<%= cart.total %></h3>
+        <%= link_to 'Details', user_cart_path(@user, cart) %>
+        <%= link_to 'Edit', edit_user_cart_path(@user, cart) %>
+        <%= link_to 'Delete', user_cart_path(@user, cart), method: 'delete' %>
+        <br>
+        <br>
     </li>
 <% end %>
 </ul>

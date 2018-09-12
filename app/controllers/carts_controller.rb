@@ -1,10 +1,14 @@
 class CartsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefabs_and_tags, only: [:new, :create, :edit]
-  before_action :load_existing_user_cart, only: [:edit, :update, :destroy]
+  before_action :load_existing_user_cart, only: [:show, :edit, :update, :destroy]
 
   def index
     @carts = @user.carts
+  end
+
+  def show
+    render html: "This is where we will show details about cart '#{@cart.note}'"
   end
 
   def new
