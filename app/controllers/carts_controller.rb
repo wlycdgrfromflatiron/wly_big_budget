@@ -39,11 +39,17 @@ class CartsController < NestedResourcesController
 
   def update
     cart_params = params[:cart]
-    store_params = cart_params[:cart_store_attriutes]
+    store_params = cart_params[:cart_store_attributes]
     items_params = cart_params[:cart_items_attributes]
+
+    #byebug
 
     @cart.note = cart_params[:note]
     @cart.date = Date.parse("#{cart_params['date(1i)']}-#{cart_params['date(2i)']}-#{cart_params['date(3i)']}")
+
+    @cart.cart_store.note = store_params[:note]
+    @cart.cart_store.prefab_store = PrefabStore.find_by(id: store_params[:prefab_store_id])
+    @cart.cart_store.tags = store_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) }
 
     if @cart.save
       redirect_to user_cart_path(@user, @cart)
