@@ -58,25 +58,25 @@ TODO:
     - DONE item tags
 * DONE fix bug where tags are listed twice in add cart item form
 * DONE make it so that Done redirects to Cart show view from add cart item form
-
-* implement Cart#edit
+* DONE implement Cart#edit
   * DONE user can edit note
   * DONE user can edit date
   * DONE store:
       DONE user can edit note
       DONE user can change / remove prefab
       DONE user can add / remove tags
-  * items:
-    for each item, user can:
-      * change note
-      * change / remove prefab
-      * add / remove tags
-      * change price
-  * DONE button
-  * CANCEL button
+  * DONE items:
+    DONE for each item, user can:
+      * DONE change note
+      * DONE change / remove prefab
+      * DONE add / remove tags
+      * DONE change price
+  * DONE DONE button
+  * DONE CANCEL button
 
 
 * implement PrefabStore#show
+  * 
 * implement PrefabItem#show
 * implement Tag#show
 
@@ -92,7 +92,6 @@ TODO:
     * cart item 1+ presence
       * cart item price presence, price >= $0.00 (freebies can be logged)
       * cart item note presence, unless there is a prefab
-* implement cart update
 * implement sort: have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
 * implement profile page - grand total
 * implement third party login
