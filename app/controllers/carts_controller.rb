@@ -51,6 +51,20 @@ class CartsController < NestedResourcesController
     @cart.cart_store.prefab_store = PrefabStore.find_by(id: store_params[:prefab_store_id])
     @cart.cart_store.tags = store_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) }
 
+    @cart.cart_items.delete_all
+    items_params.each do |item_params|
+      cart_item = CartItem.new
+
+      item_params = item_params[1]
+
+      cart_item.note = item_params[:note]
+      cart_item.dollars = item_params[:dollars]
+      cart_item.prefab_item = PrefabItem.find_by(id: item_params[:prefab_item_id])
+      cart_item.tags = item_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) } if item_params[:tag_ids]
+
+      @cart.cart_items << cart_item
+    end
+
     if @cart.save
       redirect_to user_cart_path(@user, @cart)
     else
