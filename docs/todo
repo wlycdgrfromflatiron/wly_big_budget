@@ -77,15 +77,15 @@ TODO:
   * DONE add route
   * DONE add controller action
   * DONE redirect there after editing a PrefabStore
-  * add #total_spent method to model
-  * add #top_prefab_items method to model 
+  * DONE add #total_spent method to model
+  * add link to PrefabStores#index
   * have the following fields on the form:
     * name
     * tags (with links to their show pages, maybe)
     * carts
       * note, date, total, link to cart
     * total spent
-  * add link to PrefabStores#index
+ * implement Tags#show
 
 
 
