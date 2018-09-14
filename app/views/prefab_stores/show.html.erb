@@ -15,3 +15,10 @@ Carts:<br>
     <br>
     <br>
 <%end %>
+
+<%= link_to 'Edit Store', edit_user_prefab_store_path(@user, @prefab_store) %>
+<br>
+<br>
+<br>
+Deleting the store is irreversible. If you recreate it, you will have to manually re-associate any carts that were previously associated with it.
+So before clicking <%= link_to 'delete store', user_prefab_store_path(@user, @prefab_store), method: 'delete' %>, please make sure that you really want to do this.
