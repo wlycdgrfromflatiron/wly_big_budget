@@ -12,22 +12,37 @@ class Tag < ApplicationRecord
 
   # TODO generalize these two getters
   def cart_items_directly_or_through_prefab_items
-    cart_items_through_prefab_items = prefab_items.collect do |prefab_item|
-      prefab_item.cart_items
-    end
-    cart_items_through_prefab_items.flatten!
+    if !@all_cart_items_memoized
+      cart_items_through_prefab_items = prefab_items.collect do |prefab_item|
+        prefab_item.cart_items
+      end
+      cart_items_through_prefab_items.flatten!
 
-    (cart_items + cart_items_through_prefab_items).uniq!
+      @all_cart_items_memoized = (cart_items + cart_items_through_prefab_items).uniq!
+    end
+
+    @all_cart_items_memoized
   end
 
-  def cart_stores_directly_or_through_prefab_stores
-    cart_stores_through_prefab_stores = prefab_stores.collect do |prefab_store|
-      prefab_store.cart_stores
-    end
-    cart_stores_through_prefab_stores.flatten!
+  def carts
+    if !@all_carts_memoized
+      # all the carts of the cart items
+      # + all the carts of the cart stores
+      # uniq! the fuq out of that bitch
+      cart_item_carts = cart_items.map do |cart_item|
+        cart_item.cart
+      end
 
-    (cart_stores + cart_stores_through_prefab_stores).uniq!
+      cart_store_carts = cart_store.map do |cart_store|
+        cart_store.cart
+      end
+
+      @all_carts_memoized = (cart_item_carts + cart_store_carts).uniq
+    end
+
+    @all_carts_memoized
   end
+
   
   def total_spent
     cart_items_directly_or_through_prefab_items.reduce(0) do |dollars, cart_item| 
