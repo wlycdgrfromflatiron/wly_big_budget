@@ -10,3 +10,13 @@
         <br>
     <% end %>
 <% end %>
+
+<h3>Prefab Items:</h3>
+<% if @tag.prefab_items.empty? %>
+    None yet!
+<% else %>
+    <% @tag.prefab_items.each do |prefab_item| %>
+        <%= link_to prefab_item.name, user_prefab_item_path(@user, prefab_item) %>
+        <br>
+    <% end %>
+<% end %>
