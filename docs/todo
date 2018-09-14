@@ -73,21 +73,40 @@ TODO:
   * DONE CANCEL button
 
 
-* implement PrefabStore#show
+
+* DONE implement PrefabStore#show
   * DONE add route
   * DONE add controller action
   * DONE redirect there after editing a PrefabStore
   * DONE add #total_spent method to model
-  * add link to PrefabStores#index
+  * DONE add link to PrefabStores#index
   * have the following fields on the form:
-    * name
-    * tags (with links to their show pages, maybe)
-    * carts
-      * note, date, total, link to cart
-    * total spent
+    * DONE name
+    * DONE tags (with links to their show pages, maybe)
+    * DONE carts
+      * DONE note, date, total, link to cart
+    * DONE total spent
+
+
+
+
+
+
+
+
+
  * implement Tags#show
-
-
+  * DONE add route
+  * DONE add controller action
+  * DONE redirect there after editing a PrefabStore
+  * DONE add #total_spent method to model
+  * DONE add link to PrefabStores#index
+  * have the following fields on the form:
+    * DONE name
+    * DONE tags (with links to their show pages, maybe)
+    * DONE carts
+      * DONE note, date, total, link to cart
+    * DONE total spent
 
 * implement PrefabItem#show
 * implement Tag#show

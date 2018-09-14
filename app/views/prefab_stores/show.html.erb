@@ -1,8 +1,17 @@
-<h1><%= @prefab_store.name %></h1>
-<h1>Total spent here: $<%= @prefab_store.total_spent %></h1>
+<h1><%= @prefab_store.name %> | $<%= @prefab_store.total_spent %></h1>
 
+Tags:<br>
 <% @prefab_store.tags.each do |tag| %>
     <%= link_to tag.name, user_tag_path(@user, tag) %>&nbsp
 <% end %>
 <br>
 <br>
+
+Carts:<br>
+<% @prefab_store.carts.each do |cart| %>
+    <%= link_to cart.note, user_cart_path(@user, cart) %>
+    <br>
+    <%= cart.date %> | <strong>$<%= cart.total %></strong>
+    <br>
+    <br>
+<%end %>
