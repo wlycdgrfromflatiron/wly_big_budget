@@ -103,14 +103,15 @@ TODO:
   * DONE add controller action
   * DONE redirect there after editing a Tag
   * DONE add #total_spent method to model
-  * DONE add #cart_items_directly_or_through_prefab to model 
+  * DONE add #cart_items_directly_or_through_prefab to model
+  * DONE add #carts to Tag model
   * DONE add link to Tag#index
   * have the following fields on the form:
     * DONE name
     * DONE prefab stores (with links to their show pages )
     * DONE prefab items (with links to their show pages)
     * cart items (directly or through prefab items)
-    * cart stores (directly or through prefab stores)
+    * DONE carts
     * total spent 
     * edit link
     * delete link 

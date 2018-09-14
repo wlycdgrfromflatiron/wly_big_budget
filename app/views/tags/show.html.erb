@@ -20,3 +20,13 @@
         <br>
     <% end %>
 <% end %>
+
+<h3>Carts:</h3>
+<% if @tag.carts.empty? %>
+    None yet!
+<% else %>
+    <% @tag.carts.each do |cart| %>
+        <%= link_to cart.note, user_cart_path(@user, cart) %>
+        <br>
+    <% end %>
+<% end %>

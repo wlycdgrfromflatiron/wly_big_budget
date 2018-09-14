@@ -33,7 +33,7 @@ class Tag < ApplicationRecord
         cart_item.cart
       end
 
-      cart_store_carts = cart_store.map do |cart_store|
+      cart_store_carts = cart_stores.map do |cart_store|
         cart_store.cart
       end
 
