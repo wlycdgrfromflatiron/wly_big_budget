@@ -30,4 +30,10 @@ class Tag < ApplicationRecord
 
     (cart_stores + cart_stores_through_prefab_stores).uniq!
   end
+  
+  def total_spent
+    cart_items_directly_or_through_prefab_items.reduce(0) do |dollars, cart_item| 
+      dollars += cart_item.dollars
+    end
+  end
 end

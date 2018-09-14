@@ -102,7 +102,7 @@ TODO:
   * DONE add route
   * DONE add controller action
   * DONE redirect there after editing a Tag
-  * add #total_spent method to model
+  * DONE add #total_spent method to model
   * DONE add #cart_items_directly_or_through_prefab to model 
   * DONE add #cart_stores_directly_or_through_prefab to model 
   * add link to Tag#index
