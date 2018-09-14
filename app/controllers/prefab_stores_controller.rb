@@ -1,17 +1,19 @@
 class PrefabStoresController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefab_store, only: [:edit, :update, :destroy]
+  before_action :load_prefab_store, only: [:show, :edit, :update, :destroy]
   before_action :load_tags, only: [:index, :new, :edit]
 
   def index
     @prefab_stores = @user.prefab_stores
   end
 
+  def show
+  end
+
   def new
     @prefab_store = PrefabStore.new
   end
 
-  # doubles as #show
   def edit
   end
 

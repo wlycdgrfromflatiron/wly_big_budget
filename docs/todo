@@ -25,8 +25,6 @@ TODO:
 * DONE add tags to items index
 * DONE implement create_cart in db seed file
 * DONE add a cart to db seed file 
-
-
 * DONE add carts to navbar
 * DONE add one more cart to db seed file (added a couple tags too, and an item tag processing bit to the create_cart method)
 * DONE implement cart index - 
@@ -76,10 +74,25 @@ TODO:
 
 
 * implement PrefabStore#show
-  * 
+  * DONE add route
+  * DONE add controller action
+  * DONE redirect there after editing a PrefabStore
+  * add #total_spent method to model
+  * add #top_prefab_items method to model 
+  * have the following fields on the form:
+    * name
+    * tags (with links to their show pages, maybe)
+    * carts
+      * note, date, total, link to cart
+    * total spent
+  * add link to PrefabStores#index
+
+
+
 * implement PrefabItem#show
 * implement Tag#show
-
+* implement Cart::total_spent for user profile page! 
+That's my class method!
 * add validations
   * tag: name presence, name uniqueness
   * prefab store: name presence, name uniqueness
