@@ -80,14 +80,14 @@ TODO:
   * DONE redirect there after editing a PrefabStore
   * DONE add #total_spent method to model
   * DONE add link to PrefabStores#index
-  * have the following fields on the page:
+  * DONE have the following fields on the page:
     * DONE name
     * DONE tags (with links to their show pages, maybe)
     * DONE carts
       * DONE note, date, total, link to cart
     * DONE total spent
-    * Edit button 
-    * Delete button
+    * DONE Edit button 
+    * DONE Delete button
 
 
 
@@ -99,17 +99,22 @@ TODO:
 
 
  * implement Tags#show
-  * add route
+  * DONE add route
   * add controller action
   * redirect there after editing a Tag
   * add #total_spent method to model
+  * add #cart_items_directly_or_through_prefab to model 
+  * add #cart_stores_directly_or_through_prefab to model 
   * add link to Tag#index
   * have the following fields on the form:
-    * DONE name
-    * DONE prefab stores (with links to their show pages )
-    * DONE carts
-      * DONE note, date, total, link to cart
-    * DONE total spent
+    * name
+    * prefab stores (with links to their show pages )
+    * prefab items (with links to their show pages)
+    * cart items (directly or through prefab items)
+    * cart stores (directly or through prefab stores)
+    * total spent 
+    * edit link
+    * delete link 
 
 * implement PrefabItem#show
 * implement Tag#show
