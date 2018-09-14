@@ -1,5 +1,4 @@
-<h1>Show page for <%= @tag.name %></h1>
-
+<h1>'<%= @tag.name %>'</h1>
 
 <h3>Prefab Stores:</h3>
 <% if @tag.prefab_stores.empty? %>
@@ -30,3 +29,21 @@
         <br>
     <% end %>
 <% end %>
+
+<h3>Cart Items:</h3>
+<% if @tag.all_cart_items.empty? %>
+    None yet!
+<% else %>
+    <% @tag.all_cart_items.each do |cart_item| %>
+        <strong>$<%= cart_item.price %></strong> | <%= link_to cart_item.description, user_cart_path(@user, cart_item.cart) %>
+    <% end %>
+<% end %>
+
+<h3>Total Spent: $<%= @tag.total_spent %></h3>
+
+<%= link_to "Edit Tag", edit_user_tag_path(@user, @tag) %>
+<br>
+<br>
+Deleting a tag is irreversible. If you later remake the tag,
+you will have to re-tag all the previously tagged things. So, please be sure 
+you understand and accept this before you click here to <%= link_to "delete this tag", user_tag_path(@user, @tag), method: 'delete' %>.
