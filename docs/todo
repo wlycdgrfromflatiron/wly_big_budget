@@ -100,14 +100,14 @@ TODO:
 
  * implement Tags#show
   * DONE add route
-  * add controller action
-  * redirect there after editing a Tag
+  * DONE add controller action
+  * DONE redirect there after editing a Tag
   * add #total_spent method to model
-  * add #cart_items_directly_or_through_prefab to model 
-  * add #cart_stores_directly_or_through_prefab to model 
+  * DONE add #cart_items_directly_or_through_prefab to model 
+  * DONE add #cart_stores_directly_or_through_prefab to model 
   * add link to Tag#index
   * have the following fields on the form:
-    * name
+    * DONE name
     * prefab stores (with links to their show pages )
     * prefab items (with links to their show pages)
     * cart items (directly or through prefab items)
