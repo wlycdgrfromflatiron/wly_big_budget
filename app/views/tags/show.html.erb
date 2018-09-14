@@ -1,1 +1,12 @@
 <h1>Show page for <%= @tag.name %></h1>
+
+
+<h3>Prefab Stores:</h3>
+<% if @tag.prefab_stores.empty? %>
+    None yet!
+<% else %>
+    <% @tag.prefab_stores.each do |prefab_store| %>
+        <%= link_to prefab_store.name, user_prefab_store_path(@user, prefab_store) %>
+        <br>
+    <% end %>
+<% end %>

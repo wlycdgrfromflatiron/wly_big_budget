@@ -10,8 +10,6 @@ class Tag < ApplicationRecord
   has_many :prefab_store_tags
   has_many :prefab_stores, through: :prefab_store_tags
 
-
-
   # TODO generalize these two getters
   def cart_items_directly_or_through_prefab_items
     cart_items_through_prefab_items = prefab_items.collect do |prefab_item|
