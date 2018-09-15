@@ -1,6 +1,6 @@
 class TagsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs, only: [:new, :show, :edit]
+  before_action :load_prefabs, only: [:new, :edit]
   before_action :load_user_tag, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,6 +8,8 @@ class TagsController < NestedResourcesController
   end
 
   def show
+    @prefab_stores = @tag.prefab_stores.select {|ps| ps.user == @user }
+    @prefab_items = @tag.prefab_items.select { |pi| pi.user == @user }
   end
 
   def new
@@ -47,6 +49,8 @@ class TagsController < NestedResourcesController
     super @tag, 'tag', tag_params
   end
 
+  # MUST NOT DESTROY IF OTHER USERS STILL HAVE IT!
+  # DELETE ALL THIS USER'S STUFF FROM THE TAG INSTEAD
   def destroy
     super @tag, user_tags_path
   end

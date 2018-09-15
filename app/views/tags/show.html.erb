@@ -1,20 +1,20 @@
 <h1>'<%= @tag.name %>'</h1>
 
 <h3>Prefab Stores:</h3>
-<% if @tag.prefab_stores.empty? %>
+<% if @prefab_stores.empty? %>
     None yet!
 <% else %>
-    <% @tag.prefab_stores.each do |prefab_store| %>
+    <% @prefab_stores.each do |prefab_store| %>
         <%= link_to prefab_store.name, user_prefab_store_path(@user, prefab_store) %>
         <br>
     <% end %>
 <% end %>
 
 <h3>Prefab Items:</h3>
-<% if @tag.prefab_items.empty? %>
+<% if @prefab_items.empty? %>
     None yet!
 <% else %>
-    <% @tag.prefab_items.each do |prefab_item| %>
+    <% @prefab_items.each do |prefab_item| %>
         <%= link_to prefab_item.name, user_prefab_item_path(@user, prefab_item) %>
         <br>
     <% end %>
