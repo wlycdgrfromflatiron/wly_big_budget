@@ -5,9 +5,26 @@
     <%= link_to tag.name, user_tag_path(@user, tag) %>&nbsp
 <% end %>
 
+<h3>Cart Items:</h3>
+<% if !@prefab_item.cart_items.empty? %>
+    <% @prefab_item.cart_items.each do |cart_item| %>
+        <%= "#{cart_item.note} | " if !cart_item.note.empty? %>
+        <%= "[a/an #{@prefab_item.name}] | " %>
+        $<%= cart_item.price %> | 
+        <%= link_to 'Cart', user_cart_path(@user, cart_item.cart) %>
+    <% end %>
+    <br>
+    <br>
+    <strong>Total: $<%= @prefab_item.total_spent %></strong>
+<% else %>
+    None yet :(
+<% end %>
 
 <br>
 <br>
+<br>
+<br>
+
 <%= link_to 'Edit Prefab Item', edit_user_prefab_item_path(@user, @prefab_item) %>
 <br>
 <br>

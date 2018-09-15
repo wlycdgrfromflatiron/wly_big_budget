@@ -12,4 +12,8 @@ class PrefabItem < ApplicationRecord
     def tag_names
         tags ? tags.map {|tag| tag.name } : []
     end
+
+    def total_spent
+        cart_items.reduce(0) {|total, cart_item| total += cart_item.price }
+    end
 end
