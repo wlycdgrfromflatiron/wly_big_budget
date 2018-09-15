@@ -103,18 +103,27 @@ TODO:
     * DONE edit link
     * DONE delete link 
 
+* DONE implement third party login
 
 
 
 
 
-
-
-
-
-* implement third party login
 * implement PrefabItem#show
-* implement Tag#show
+  * add route
+  * DONE add controller action
+  * redirect there after editing a PrefabItem
+  * add #total_spent method to model
+  * DONE add link to PrefabItems#index
+  * have the following fields on the page:
+    * name
+    * tags (with links to their show pages)
+    * list of cart items that use prefab, with, for each
+      * name
+      * price
+      * its cart (link)
+    * total spent
+
 * implement Cart::total_spent for user profile page! 
 That's my class method!
 * add validations
