@@ -5,7 +5,7 @@ class CartItem < ApplicationRecord
   has_many :tags, through: :cart_item_tags
 
   validates :note, presence: true, unless: :prefab_item
-  validates_numericality_of :dolalrs, greater_than_or_equal_to: 0
+  validates_numericality_of :dollars, greater_than_or_equal_to: 0
 
   # from when I also had cents - leave for now as it is an intuitive alias
   def price
