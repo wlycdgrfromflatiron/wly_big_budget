@@ -14,7 +14,7 @@ class Tag < ApplicationRecord
 
   # this doesn't work. not sure how to accomplish this yet!
   # currently, therefore, validating in create action
-  validates_uniqueness_of :name, scope: :users
+  # validates_uniqueness_of :name, scope: :users
 
   def all_cart_items
     if !@all_cart_items_memoized

@@ -1,6 +1,6 @@
 class TagsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs, only: [:new, :edit]
+  before_action :load_prefabs, only: [:new, :show, :edit]
   before_action :load_user_tag, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,8 +18,26 @@ class TagsController < NestedResourcesController
   end
 
   def create
-    if (@user.tags.find_by(name: params[:tag][:name]))
-      render :new
+    # does a tag by this name already exist?
+    # if so, associate it with this user
+    tp = tag_params
+    if (@tag = Tag.find_by(name: tp[:name]))
+      @tag.users << @user
+
+      if tp[:prefab_store_ids]
+        @tag.prefab_stores.concat(tp[:prefab_store_ids].map { |psi| PrefabStore.find(psi) })
+      end
+
+      if tp[:prefab_item_ids]
+        @tag.prefab_items.concat(tp[:prefab_items_ids].map { |pii| PrefabItem.find(pii) })
+      end
+      
+      if @tag.save
+        redirect_to user_tag_path(@user, @tag)
+      else
+        render :new
+      end
+    # if not, create it the usual way
     else
       super 'tag', tag_params
     end
