@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_203759) do
+ActiveRecord::Schema.define(version: 2018_09_15_033537) do
 
   create_table "cart_item_tags", force: :cascade do |t|
     t.integer "cart_item_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_203759) do
     t.string "password_digest"
     t.boolean "email_confirmed", default: false
     t.string "confirm_token"
+    t.boolean "is_amazon_login", default: false
   end
 
 end
