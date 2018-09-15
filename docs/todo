@@ -71,9 +71,6 @@ TODO:
       * DONE change price
   * DONE DONE button
   * DONE CANCEL button
-
-
-
 * DONE implement PrefabStore#show
   * DONE add route
   * DONE add controller action
@@ -88,17 +85,7 @@ TODO:
     * DONE total spent
     * DONE Edit button 
     * DONE Delete button
-
-
-
-
-
-
-
-
-
-
- * implement Tags#show
+ * DONE implement Tags#show
   * DONE add route
   * DONE add controller action
   * DONE redirect there after editing a Tag
@@ -106,16 +93,26 @@ TODO:
   * DONE add #cart_items_directly_or_through_prefab to model
   * DONE add #carts to Tag model
   * DONE add link to Tag#index
-  * have the following fields on the form:
+  * DONE have the following fields on the form:
     * DONE name
     * DONE prefab stores (with links to their show pages )
     * DONE prefab items (with links to their show pages)
     * cart items (directly or through prefab items)
     * DONE carts
-    * total spent 
-    * edit link
-    * delete link 
+    * DONE total spent 
+    * DONE edit link
+    * DONE delete link 
 
+
+
+
+
+
+
+
+
+
+* implement third party login
 * implement PrefabItem#show
 * implement Tag#show
 * implement Cart::total_spent for user profile page! 
@@ -132,13 +129,11 @@ That's my class method!
     * cart item 1+ presence
       * cart item price presence, price >= $0.00 (freebies can be logged)
       * cart item note presence, unless there is a prefab
-* implement sort: have a checkbox form on the index page, when you submit it posts to a 'sort' action, the sort action gets the correct sort & renders index
-* implement profile page - grand total
-* implement third party login
 * implement error messages / css
+
+
 * implement styling
-* implement Class-level methods: an "alphabetical" one for start
-* handle the fact that if cart creation fails, we need the cart_store and cart_items to be available to render :new
+
 
 
 // FOR LATER
@@ -146,7 +141,5 @@ That's my class method!
 * add cart sorting - by date, by amount
 * add stores sorting - by amount, by name
 * add items sorting - by amount,  by name
-
+* handle the fact that if cart creation fails, we need the cart_store and cart_items to be available to render :new
 * better tags implementation: type a comma-separated list into a text area. backend automatically finds or creates the tags
-
-* limited tag, prefab store, and prefab item amounts in the free version
