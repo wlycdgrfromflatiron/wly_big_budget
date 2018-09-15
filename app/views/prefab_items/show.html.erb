@@ -1,1 +1,15 @@
-This is where we will show the item details!
+<h1><%= @prefab_item.name %></h1>
+
+<h3>Tags:</h3>
+<% @prefab_item.tags.each do |tag| %>
+    <%= link_to tag.name, user_tag_path(@user, tag) %>&nbsp
+<% end %>
+
+
+<br>
+<br>
+<%= link_to 'Edit Prefab Item', edit_user_prefab_item_path(@user, @prefab_item) %>
+<br>
+<br>
+Deleting this prefab item is irreversible.<br>
+<%= link_to 'Delete this prefab item', user_prefab_item_path(@user, @prefab_item), method: 'delete' %>

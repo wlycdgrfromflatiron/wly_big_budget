@@ -97,7 +97,7 @@ TODO:
     * DONE name
     * DONE prefab stores (with links to their show pages )
     * DONE prefab items (with links to their show pages)
-    * cart items (directly or through prefab items)
+    * DONE cart items (directly or through prefab items)
     * DONE carts
     * DONE total spent 
     * DONE edit link
@@ -110,7 +110,7 @@ TODO:
 
 
 * implement PrefabItem#show
-  * add route
+  * DONE add route
   * DONE add controller action
   * redirect there after editing a PrefabItem
   * add #total_spent method to model
@@ -123,6 +123,8 @@ TODO:
       * price
       * its cart (link)
     * total spent
+    * DONE edit link
+    * DONE delete link
 
 * implement Cart::total_spent for user profile page! 
 That's my class method!
