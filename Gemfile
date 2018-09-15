@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-amazon'
 
+# HTTPS on localhost
+gem 'thin'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

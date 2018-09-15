@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   post '/signin', to: 'sessions#signin'
   get '/signout', to: 'sessions#signout'
+  get '/auth/amazon/callback', to: 'sessions#amazon_signin'
 
   root "welcome#home"
 end

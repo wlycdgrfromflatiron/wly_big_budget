@@ -19,6 +19,20 @@ class SessionsController < ApplicationController
     end
   end
 
+  def amazon_signin
+    if logged_in?
+      @user = User.find(session[:user_id])
+      redirect_to home_user_path(@user) and return
+    end
+
+    #@user = User.find_or_create_by(amazon_user_id: auth['uid']) do |u|
+     # u.name = auth['info']['name']
+     # u.email = auth['info']['email']
+    # end
+
+    # @user.mark_email_confirmed
+  end
+
   def signout
     session.delete(:user_id)
     redirect_to root_path
