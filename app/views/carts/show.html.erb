@@ -5,7 +5,7 @@
     <strong>Store</strong><br>
     Note: <%= @store.note %><br>
     <% if @store.prefab_store %>
-        Prefab: <%= link_to @store.prefab_store.name, user_prefab_store_path(@store.prefab_store) %><br>
+        Prefab: <%= link_to @store.prefab_store.name, user_prefab_store_path(@user, @store.prefab_store) %><br>
     <% end %>
     Tags: <% @store.tags.each do |tag| %>
         <%= tag.name %>&nbsp
