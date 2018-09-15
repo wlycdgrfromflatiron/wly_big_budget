@@ -18,7 +18,11 @@ class TagsController < NestedResourcesController
   end
 
   def create
-    super 'tag', tag_params
+    if (@user.tags.find_by(name: params[:tag][:name]))
+      render :new
+    else
+      super 'tag', tag_params
+    end
   end
 
   def update

@@ -5,6 +5,9 @@ class PrefabItem < ApplicationRecord
     has_many :prefab_item_tags
     has_many :tags, through: :prefab_item_tags
 
+    validates :name, presence: true
+    validates_uniqueness_of :name, scope: :user
+
     def name_and_tag_names
         "#{name} (#{self.tag_names.join(', ')})"
       end

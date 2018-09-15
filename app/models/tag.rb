@@ -10,6 +10,12 @@ class Tag < ApplicationRecord
   has_many :prefab_store_tags
   has_many :prefab_stores, through: :prefab_store_tags
 
+  validates :name, presence: true
+
+  # this doesn't work. not sure how to accomplish this yet!
+  # currently, therefore, validating in create action
+  validates_uniqueness_of :name, scope: :users
+
   def all_cart_items
     if !@all_cart_items_memoized
       cart_items_through_prefab_items = prefab_items.collect do |prefab_item|

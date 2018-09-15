@@ -5,6 +5,9 @@ class PrefabStore < ApplicationRecord
     has_many :prefab_store_tags
     has_many :tags, through: :prefab_store_tags
 
+    validates :name, presence: true
+    validates_uniqueness_of :name, scope: :user
+
     def name_and_tag_names
       "#{name} (#{self.tag_names.join(', ')})"
     end

@@ -28,7 +28,7 @@ def create_prefabs prefab_class_name, user_name, prefab_instance_names
 end
 
 def create_tag(name, users_and_prefabs)
-  tag = Tag.create({name: name})
+  tag = Tag.new({name: name})
 
   users_and_prefabs.each do |user_and_prefabs|
     user = User.find_by(name: user_and_prefabs[0])
