@@ -49,10 +49,19 @@ class TagsController < NestedResourcesController
     super @tag, 'tag', tag_params
   end
 
-  # MUST NOT DESTROY IF OTHER USERS STILL HAVE IT!
-  # DELETE ALL THIS USER'S STUFF FROM THE TAG INSTEAD
   def destroy
-    super @tag, user_tags_path
+    @tag.users = @tag.users.select {|u| u != @user }
+
+    # if the tag has no users left, we can and should destroy it
+    if @tag.users.empty?
+      super @tag, user_tags_path
+    # otherwise, we should just wipe all other memory of THIS user
+    else
+      @tag.prefab_stores = @tag.prefab_stores.select {|ps| ps.user != @user }
+      @tag.prefab_items = @tag.prefab_items.select {|pi| pi.user != @user }
+
+      redirect_to user_tags_path(@user)
+    end
   end
 
   private
