@@ -7,6 +7,11 @@ class Cart < ApplicationRecord
   accepts_nested_attributes_for :cart_items
   accepts_nested_attributes_for :cart_store
 
+  validates :note, presence: true
+  validates :date, presence: true
+  validates :cart_store, presence: true
+  validates :cart_items, presence: true
+
   def total
     cart_items.reduce(0) { |total, cart_item| total += cart_item.price }
   end

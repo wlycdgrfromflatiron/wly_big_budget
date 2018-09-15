@@ -56,6 +56,9 @@ Specs:
     Tag: name presence, User-scoped name uniqueness
     PrefabStore: name presence, User-scoped name uniqueness
     Prefabitem: name presence, User-scoped name uniqueness
+    Cart: note presence, date presence, cart store presence, cart item presence
+    Cart Store: note presence (unless prefab store)
+    Cart Item: note presence (unless prefab item), dollars is a number greater than or equal to 0
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup (how e.g. Devise)

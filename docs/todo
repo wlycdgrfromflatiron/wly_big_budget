@@ -126,14 +126,14 @@ TODO:
   * DONE tag: name presence, User-scoped name uniqueness
   * DONE prefab store: name presence, User-scoped name uniqueness
   * DONE prefab item: name presence, User-scoped name uniqueness
-  * cart:
-    * note presence
-    * date presence
-    * cart store presence
-      * cart store note presence, unless there is a prefab
-    * cart item 1+ presence
-      * cart item price presence, price >= $0.00 (freebies can be logged)
-      * cart item note presence, unless there is a prefab
+  * DONE cart:
+    * DONE note presence
+    * DONE date presence
+    * DONE cart store presence
+      * DONE cart store note presence, unless there is a prefab
+    * DONE cart item 1+ presence
+      * DONE cart item price presence, price >= $0.00 (freebies can be logged)
+      * DONE cart item note presence, unless there is a prefab
   * user
 
 
