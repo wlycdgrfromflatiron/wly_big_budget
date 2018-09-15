@@ -25,12 +25,15 @@ class SessionsController < ApplicationController
       redirect_to home_user_path(@user) and return
     end
 
-    #@user = User.find_or_create_by(amazon_user_id: auth['uid']) do |u|
-     # u.name = auth['info']['name']
-     # u.email = auth['info']['email']
-    # end
+    @user = User.find_or_create_by(amazon_user_id: omniauth['uid']) do |u|
+      u.name = omniauth['info']['name']
+      u.email = omniauth['info']['email']
+      u.password = SecureRandom.urlsafe_base64.to_s
+    end
 
-    # @user.mark_email_confirmed
+    @user.mark_email_confirmed
+
+    log_in
   end
 
   def signout
@@ -39,6 +42,10 @@ class SessionsController < ApplicationController
   end
 
   protected
+
+  def omniauth
+    request.env['omniauth.auth']
+  end
 
   def authenticated?
     @user && @user.authenticate(authentication_params[:password])
