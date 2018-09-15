@@ -1,15 +1,15 @@
 class TagsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs, only: [:new, :edit]
   before_action :load_user_tag, only: [:show, :edit, :update, :destroy]
+  before_action :load_user_prefabs, only: [:new, :edit]
+  before_action :load_user_tag_prefabs, only: [:show]
+  
 
   def index
     @tags = @user.tags
   end
 
   def show
-    @prefab_stores = @tag.prefab_stores.select {|ps| ps.user == @user }
-    @prefab_items = @tag.prefab_items.select { |pi| pi.user == @user }
   end
 
   def new
@@ -61,9 +61,14 @@ class TagsController < NestedResourcesController
     params.require(:tag).permit(:name, prefab_store_ids: [], prefab_item_ids: [])
   end
 
-  def load_prefabs
+  def load_user_prefabs
     @prefab_stores = @user.prefab_stores
     @prefab_items = @user.prefab_items
+  end
+
+  def load_user_tag_prefabs
+    @prefab_stores = @tag.prefab_stores.select {|ps| ps.user == @user }
+    @prefab_items = @tag.prefab_items.select { |pi| pi.user == @user }
   end
 
   def load_user_tag
