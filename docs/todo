@@ -141,6 +141,8 @@ TODO:
 That's my class method!
 
 * implement error messages / css
+  * DONE Cart, new and edit 
+  * CartItem, new
 
 
 * implement styling
