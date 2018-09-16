@@ -120,9 +120,7 @@ TODO:
     * DONE total spent
     * DONE edit link
     * DONE delete link
-
-
-* add validations
+* DONE add validations
   * DONE tag: name presence, User-scoped name uniqueness
   * DONE prefab store: name presence, User-scoped name uniqueness
   * DONE prefab item: name presence, User-scoped name uniqueness
@@ -134,21 +132,24 @@ TODO:
     * DONE cart item 1+ presence
       * DONE cart item price presence, price >= $0.00 (freebies can be logged)
       * DONE cart item note presence, unless there is a prefab
-  * user
-
-
-* implement Cart::total_spent for user profile page! 
-That's my class method!
-
+  * DONE user
 * implement error messages / css
   * DONE Cart, new and edit 
   * DONE CartItem, new
   * DONE PrefabItem, new and edit 
   * DONE PrefabStore, new and edit
-  * Tag, new and edit
+  * DONE Tag, new and edit
 
 
-* implement styling
+
+
+* implement Cart::total_spent for user profile page! 
+That's my class method!
+
+
+
+
+* add styling
 
 
 
