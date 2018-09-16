@@ -60,7 +60,8 @@ Specs:
     Cart Store: note presence (unless prefab store)
     Cart Item: note presence (unless prefab item), dollars is a number greater than or equal to 0
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+    -Cart::total, at users/:user_id/carts
 
 - [x] Include signup (how e.g. Devise)
     -Hand-rolled
