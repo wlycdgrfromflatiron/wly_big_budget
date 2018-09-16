@@ -12,10 +12,6 @@ class Cart < ApplicationRecord
   validates :cart_store, presence: true
   validates :cart_items, presence: true
 
-  def self.total
-    Cart.all.reduce(0) { |total, cart| total += cart.total }
-  end
-
   def total
     cart_items.reduce(0) { |total, cart_item| total += cart_item.price }
   end

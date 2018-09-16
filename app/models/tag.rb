@@ -12,9 +12,9 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
 
-  # this doesn't work. not sure how to accomplish this yet!
-  # currently, therefore, validating in create action
-  # validates_uniqueness_of :name, scope: :users
+  def self.ten_most_popular
+    (Tag.all.sort {|tag1, tag2| tag2.users.count - tag1.users.count }).slice(0, 10)
+  end
 
   def all_cart_items
     if !@all_cart_items_memoized

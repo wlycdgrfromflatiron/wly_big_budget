@@ -1,6 +1,6 @@
 <h1><%= @user.email %>'s Carts</h1>
 
-<h3>Grand Total Spent: $<%= Cart.total %></h3>
+<h3>Grand Total Spent: $<%= @user.total %></h3>
 
 <ul>
 <% @carts.each do |cart| %>
