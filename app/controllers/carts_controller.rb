@@ -38,40 +38,9 @@ class CartsController < NestedResourcesController
   end
 
   def update
-    cart_params = params[:cart]
-    store_params = cart_params[:cart_store_attributes]
-    items_params = cart_params[:cart_items_attributes]
+    @carts = @user.carts 
+    render_to_string :index
 
-    #byebug
-
-    @cart.note = cart_params[:note]
-    @cart.date = Date.parse("#{cart_params['date(1i)']}-#{cart_params['date(2i)']}-#{cart_params['date(3i)']}")
-
-    @cart.cart_store.note = store_params[:note]
-    @cart.cart_store.prefab_store = PrefabStore.find_by(id: store_params[:prefab_store_id])
-    @cart.cart_store.tags = store_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) }
-
-    @cart.cart_items.delete_all
-    items_params.each do |item_params|
-      cart_item = CartItem.new
-
-      item_params = item_params[1]
-
-      cart_item.note = item_params[:note]
-      cart_item.dollars = item_params[:dollars]
-      cart_item.prefab_item = PrefabItem.find_by(id: item_params[:prefab_item_id])
-      cart_item.tags = item_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) } if item_params[:tag_ids]
-
-      @cart.cart_items << cart_item
-    end
-
-    if @cart.save
-      redirect_to user_cart_path(@user, @cart)
-    else
-      render :edit
-    end
-    # update this to redirect to show once show stubs impelemented for all nested resources
-    # super @cart, 'cart', cart_params
   end
 
   def destroy
