@@ -143,8 +143,8 @@ That's my class method!
 * implement error messages / css
   * DONE Cart, new and edit 
   * DONE CartItem, new
-  * PrefabItem, new and edit 
-  * PrefabStore, new and edit
+  * DONE PrefabItem, new and edit 
+  * DONE PrefabStore, new and edit
   * Tag, new and edit
 
 
