@@ -1,14 +1,4 @@
-<div>
-  <br>
-  <% if @cart_item.errors.any? %>
-    There were validation errors. Please review and correct them :)
-    <ul>
-    <% @cart_item.errors.full_messages.each do |full_message| %> 
-      <li><%= full_message %></li>
-    <% end %>
-    </ul>
-  <% end %>
-</div>
+<%= render partial: 'shared/form_validation_errors_notice', locals: {resource: @cart_item} %>
 
 <%= form_with scope: @cart_item, local: true, url: cart_cart_items_path, method: 'post' do |f| %>
   <div>

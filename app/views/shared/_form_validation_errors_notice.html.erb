@@ -1,0 +1,11 @@
+<div>
+  <br>
+  <% if resource.errors.any? %>
+    There were validation errors. Please review and correct them :)
+    <ul>
+    <% resource.errors.full_messages.each do |full_message| %> 
+      <li><%= full_message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
