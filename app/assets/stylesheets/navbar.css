@@ -1,0 +1,14 @@
+nav {
+    padding: 10px;
+    background-color: #333333;
+}
+
+nav a {
+    color: white;
+    padding: 0px 10px;
+    font-family: sans-serif;
+}
+
+nav a:hover {
+    color: pink;
+}
