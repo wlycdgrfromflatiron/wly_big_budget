@@ -1,7 +1,7 @@
 class PrefabStoresController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_prefab_store, only: [:show, :edit, :update, :destroy]
-  before_action :load_tags, only: [:index, :new, :edit]
+  before_action :load_tags, only: [:index, :new, :create, :edit, :update]
 
   def index
     @prefab_stores = @user.prefab_stores
@@ -12,6 +12,7 @@ class PrefabStoresController < NestedResourcesController
 
   def new
     @prefab_store = PrefabStore.new
+    @resource = @prefab_store
   end
 
   def edit
@@ -22,7 +23,7 @@ class PrefabStoresController < NestedResourcesController
   end
 
   def update
-    super @prefab_store, 'prefab_store', prefab_store_params
+    super @resource, 'prefab_store', prefab_store_params
   end
 
   def destroy
@@ -40,6 +41,7 @@ class PrefabStoresController < NestedResourcesController
     if !@prefab_store
       redirect_to user_prefab_stores_path
     end
+    @resource = @prefab_store
   end
 
   def load_tags

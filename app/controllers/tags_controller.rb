@@ -1,7 +1,7 @@
 class TagsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
   before_action :load_user_tag, only: [:show, :edit, :update, :destroy]
-  before_action :load_user_prefabs, only: [:new, :edit]
+  before_action :load_user_prefabs, only: [:new, :edit, :create, :update]
   before_action :load_user_tag_prefabs, only: [:show]
   
 
@@ -14,6 +14,7 @@ class TagsController < NestedResourcesController
 
   def new
     @tag = Tag.new
+    @resource = @tag
   end
 
   def edit
@@ -37,6 +38,7 @@ class TagsController < NestedResourcesController
       if @tag.save
         redirect_to user_tag_path(@user, @tag)
       else
+        @resource = @tag
         render :new
       end
     # if not, create it the usual way
@@ -46,7 +48,7 @@ class TagsController < NestedResourcesController
   end
 
   def update
-    super @tag, 'tag', tag_params
+    super @resource, 'tag', tag_params
   end
 
   def destroy
@@ -85,5 +87,6 @@ class TagsController < NestedResourcesController
     if !@tag
       redirect_to user_tags_path
     end
+    @resource = @tag
   end
 end

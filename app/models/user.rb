@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_secure_password
   before_create :confirmation_token
 
+  def total
+    carts.reduce(0) { |total, cart| total += cart.total }
+  end
+
   def mark_email_confirmed
     self.email_confirmed = true
     self.confirm_token = nil

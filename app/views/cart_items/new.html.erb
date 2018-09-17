@@ -1,4 +1,6 @@
-<%= form_with scope: @cart_item, url: cart_cart_items_path, method: 'post' do |f| %>
+<%= render partial: 'shared/form_validation_errors_notice', locals: {resource: @cart_item} %>
+
+<%= form_with scope: @cart_item, local: true, url: cart_cart_items_path, method: 'post' do |f| %>
   <div>
     <h3>New Item:</h3>
     <%= wly_labeled_field f, 'number_field', :dollars, min: 1 %>

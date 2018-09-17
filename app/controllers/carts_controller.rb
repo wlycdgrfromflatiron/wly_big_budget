@@ -1,6 +1,6 @@
 class CartsController < NestedResourcesController
   before_action {|c| c.session_guard c.this_user_nested? }
-  before_action :load_prefabs_and_tags, only: [:new, :create, :edit]
+  before_action :load_prefabs_and_tags, only: [:new, :create, :edit, :update]
   before_action :load_existing_user_cart, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -42,8 +42,6 @@ class CartsController < NestedResourcesController
     store_params = cart_params[:cart_store_attributes]
     items_params = cart_params[:cart_items_attributes]
 
-    #byebug
-
     @cart.note = cart_params[:note]
     @cart.date = Date.parse("#{cart_params['date(1i)']}-#{cart_params['date(2i)']}-#{cart_params['date(3i)']}")
 
@@ -52,17 +50,19 @@ class CartsController < NestedResourcesController
     @cart.cart_store.tags = store_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) }
 
     @cart.cart_items.delete_all
-    items_params.each do |item_params|
-      cart_item = CartItem.new
+    if items_params
+      items_params.each do |item_params|
+        cart_item = CartItem.new
 
-      item_params = item_params[1]
+        item_params = item_params[1]
 
-      cart_item.note = item_params[:note]
-      cart_item.dollars = item_params[:dollars]
-      cart_item.prefab_item = PrefabItem.find_by(id: item_params[:prefab_item_id])
-      cart_item.tags = item_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) } if item_params[:tag_ids]
+        cart_item.note = item_params[:note]
+        cart_item.dollars = item_params[:dollars]
+        cart_item.prefab_item = PrefabItem.find_by(id: item_params[:prefab_item_id])
+        cart_item.tags = item_params[:tag_ids].map { |tag_id| Tag.find_by(id: tag_id) } if item_params[:tag_ids]
 
-      @cart.cart_items << cart_item
+        @cart.cart_items << cart_item
+      end
     end
 
     if @cart.save
@@ -70,8 +70,6 @@ class CartsController < NestedResourcesController
     else
       render :edit
     end
-    # update this to redirect to show once show stubs impelemented for all nested resources
-    # super @cart, 'cart', cart_params
   end
 
   def destroy

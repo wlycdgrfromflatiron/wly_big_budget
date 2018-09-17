@@ -1,4 +1,6 @@
-<%= form_with scope: @prefab_store, url: form_url, method: submit_method do |f| %>
+<%= render partial: 'shared/form_validation_errors_notice', locals: { resource: @resource } %>
+
+<%= form_with scope: @resource, local: true, url: form_url, method: submit_method do |f| %>
   <%= wly_form_div self, 'wly_labeled_text_field', f, :name %>
   <%= wly_check_boxes_for @tags, :tag_ids, "Tags", f %>
   <%= f.submit %>

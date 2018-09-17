@@ -1,6 +1,8 @@
+<%= render partial: 'shared/form_validation_errors_notice', locals: {resource: @cart} %>
+
 <h1>Edit Cart</h1>
 
-<%= form_with scope: @cart, url: user_cart_path(@user, @cart), method: 'patch' do |f| %>
+<%= form_with scope: @cart, local: true, url: user_cart_path(@user, @cart), method: 'patch' do |f| %>
   <%= wly_form_div self, 'wly_labeled_field', f, 'date_select', :date %>
   <br>
   <%= wly_form_div self, 'wly_labeled_text_field', f, :note %>

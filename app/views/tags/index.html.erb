@@ -24,3 +24,10 @@
 </div>
 <br>
 <% end %>
+
+<h3>Ten Most Popular Tags Overall:</h3>
+<% Tag.ten_most_popular.each do |tag| %>
+  <p>
+    <%= tag.name %> | <%= tag.users.count %>
+  </p>
+<% end %>

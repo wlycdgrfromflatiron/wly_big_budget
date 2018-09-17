@@ -1,17 +1,17 @@
 # a DRYing abstraction over the various nested resource controllers
 class NestedResourcesController < SessionsController
   def create resource_type, resource_params
-    resource = resource_type.camelize.constantize.new(resource_params)
+    @resource = resource_type.camelize.constantize.new(resource_params)
 
-    if resource.respond_to? :user
-      resource.user = @user
+    if @resource.respond_to? :user
+      @resource.user = @user
     else
-      resource.users << @user
+      @resource.users << @user
     end
     
-    if resource.save
+    if @resource.save
       show_path_helper = "user_" + resource_type + "_path"
-      redirect_to send(show_path_helper, @user, resource)
+      redirect_to send(show_path_helper, @user, @resource)
     else
       render :new
     end
