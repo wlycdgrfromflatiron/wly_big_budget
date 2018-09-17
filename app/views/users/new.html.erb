@@ -1,3 +1,5 @@
-<h1>New User Sign Up Form</h1>
-
 <%= render partial: 'sessions/form', locals: {target_url: users_path, submit_label: "Sign Up"} %>
+
+<%= link_to 'Log in with Amazon', '/auth/amazon' %>
+
+<%= link_to 'Log In', root_path %>
