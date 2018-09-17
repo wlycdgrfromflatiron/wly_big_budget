@@ -1,13 +1,11 @@
-<nav>
-  <% if logged_in? %>
-    <%= link_to 'Home', home_user_path(@user) %>
-    <%= link_to 'Carts', user_carts_path(@user)  %>
-    <%= link_to 'Stores', user_prefab_stores_path(@user) %>
-    <%= link_to 'Items', user_prefab_items_path(@user) %>
-    <%= link_to 'Tags', user_tags_path(@user) %>
-    <%= link_to 'Sign Out', signout_path %>
-  <% else %>
-    <%= link_to "Log In", root_path %>
-    <%= link_to "Sign Up", new_user_path %>
-  <% end %>
-</nav>
+<% if logged_in? %>
+  <%= link_to 'Home', home_user_path(@user) %>
+  <%= link_to 'Carts', user_carts_path(@user)  %>
+  <%= link_to 'Stores', user_prefab_stores_path(@user) %>
+  <%= link_to 'Items', user_prefab_items_path(@user) %>
+  <%= link_to 'Tags', user_tags_path(@user) %>
+  <%= link_to 'Sign Out', signout_path %>
+<% else %>
+  <%= link_to "Log In", root_path %>
+  <%= link_to "Sign Up", new_user_path %>
+<% end %>

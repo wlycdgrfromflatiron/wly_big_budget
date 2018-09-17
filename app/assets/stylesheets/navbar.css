@@ -1,14 +1,15 @@
 nav {
     padding: 10px;
-    background-color: #333333;
+    background-color: #007700;
 }
 
 nav a {
-    color: white;
+    color: rgb(175, 182, 219);
     padding: 0px 10px;
     font-family: sans-serif;
+    text-decoration: none;
 }
 
 nav a:hover {
-    color: pink;
+    color: white;
 }

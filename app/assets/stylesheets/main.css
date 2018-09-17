@@ -1,3 +1,9 @@
-.field_with_errors {
-    background-color: pink;
+body {
+    margin: 0;
+    padding: 0;
 }
+
+main {
+    margin-left: 20px;
+}
+
