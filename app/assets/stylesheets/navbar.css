@@ -5,11 +5,20 @@ nav {
 
 nav a {
     color: rgb(175, 182, 219);
-    padding: 0px 10px;
+    padding: 0px 5px;
     font-family: sans-serif;
     text-decoration: none;
+    font-size: 12px;
 }
 
 nav a:hover {
     color: white;
+}
+
+#logo {
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 24px;
+    color: white;
+
+    margin-right: 20px;
 }
