@@ -2,7 +2,7 @@
     justify-content: center;
 }
 
-.login-form {
+.login-form, .login-form-divider, .login-form-links {
     width: 100%;
 }
 
@@ -14,4 +14,27 @@
     height: 110px;
     font-size: 36px;
     width: 100%;
+}
+
+.login-form-divider {
+    color: #666666;
+    border: 1px solid;
+    margin-bottom: 16px;
+}
+
+.login-container a {
+    text-decoration: none;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+}
+
+.login-container .amazon-login-link {
+    color: $amazon-yellow;
+}
+
+.login-container .big-budget-login-link {
+    color: $big-budget-green;
+    float: right;
 }

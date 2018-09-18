@@ -9,7 +9,10 @@
     <%= f.submit submit_label %>
   <% end %>
 
-  <%= link_to 'Log in with Amazon', '/auth/amazon' %>
+  <div class="login-form-divider"></div>
 
-  <%= link_to link_label, link_path %>
+  <div class="login-form-links">
+    <%= link_to 'Log in with Amazon', '/auth/amazon', class: 'amazon-login-link' %>
+    <%= link_to link_label, link_path, class: 'big-budget-login-link' %>
+  </div>
 </div>
