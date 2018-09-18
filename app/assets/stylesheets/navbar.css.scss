@@ -11,6 +11,10 @@ nav a {
     text-decoration: none;
 }
 
+nav a:last-of-type {
+    float: right;
+}
+
 nav a:hover {
     color: white;
 }
