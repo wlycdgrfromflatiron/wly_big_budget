@@ -1,4 +1,5 @@
 <% if logged_in? %>
+  <span id="logo">BB</span>
   <%= link_to 'Home', home_user_path(@user) %>
   <%= link_to 'C', user_carts_path(@user)  %>
   <%= link_to 'S', user_prefab_stores_path(@user) %>
