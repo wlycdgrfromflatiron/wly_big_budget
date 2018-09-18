@@ -1,5 +1,6 @@
- @import '_reset';
- @import 'vars';
- @import 'main';
- @import 'navbar';
- @import 'form';
+@import 'vars/colors';
+@import '_reset';
+@import 'flex';
+@import 'navbar';
+@import 'login';
+@import 'form';

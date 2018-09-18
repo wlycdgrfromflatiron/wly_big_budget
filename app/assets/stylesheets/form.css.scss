@@ -1,0 +1,12 @@
+input[type=text], input[type=password], input[type=submit] {
+    display: block; 
+}
+
+input[type=submit] {
+    background-color: $color-submit-button-bg;
+    color: $color-submit-button-text;
+}
+
+.field_with_errors {
+    background-color: $color-error;
+}
