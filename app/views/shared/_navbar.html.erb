@@ -1,9 +1,10 @@
-<span id="logo">BIG BUDGET</span>
 <% if logged_in? %>
-  <%= link_to 'H', home_user_path(@user) %>
+  <%= link_to 'Home', home_user_path(@user) %>
   <%= link_to 'C', user_carts_path(@user)  %>
   <%= link_to 'S', user_prefab_stores_path(@user) %>
   <%= link_to 'I', user_prefab_items_path(@user) %>
   <%= link_to 'T', user_tags_path(@user) %>
   <%= link_to 'Sign Out', signout_path %>
+<% else %>
+  <span id="logo">BIG BUDGET</span>
 <% end %>
