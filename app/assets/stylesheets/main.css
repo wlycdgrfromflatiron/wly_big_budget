@@ -74,8 +74,13 @@ body {
     margin-bottom: 16px;
 }
 
-input[type=text], input[type=password], input[typ=submit] {
+input[type=text], input[type=password], input[type=submit] {
     display: block; 
+}
+
+input[type=submit] {
+    background-color: #007700;
+    color: white;
 }
 
 .field_with_errors {
