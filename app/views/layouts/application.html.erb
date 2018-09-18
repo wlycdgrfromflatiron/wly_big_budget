@@ -15,8 +15,10 @@
     <nav>
       <%= render "shared/navbar" %>
     </nav>
-    <main>
+    <main class="flex-centered-column">
+      <div class="flex-column">
         <%= yield %>
+      </div>
     </main>
   </body>
 </html>

@@ -1,6 +1,26 @@
-.flex-columns {
+.flex-column {
     display: flex;
     flex-direction: column;
+    align-items: start;
+}
+
+.flex-centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 1079px) {
+    .flex-centered-column {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1080px){
+    .flex-centered-column {
+        width: 864px;
+    }
 }
 
 .full-height {

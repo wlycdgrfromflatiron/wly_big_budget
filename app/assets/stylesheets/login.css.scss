@@ -1,19 +1,5 @@
 .login-container {
     justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-@media (max-width: 1079px) {
-    .login-container {
-        width: 80%;
-    }
-}
-
-@media (min-width: 1080px){
-    .login-container {
-        width: 864px;
-    }
 }
 
 .login-form {
