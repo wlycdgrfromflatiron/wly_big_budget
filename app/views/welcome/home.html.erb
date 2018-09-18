@@ -1,7 +1,5 @@
-<section class="layout-login flex-container full-height">
-    <div class="flex-container login-container flex-fill" >
-        <%= render partial: 'sessions/form', locals: {target_url: '/signin', submit_label: "Log In"} %>
-        <%= link_to 'Log in with Amazon', '/auth/amazon' %>
-        <%= link_to 'Sign Up', new_user_path %>
-    </div>
-</section>
+<div class="flex-columns login-container full-height" >
+    <%= render partial: 'sessions/form', locals: {target_url: '/signin', submit_label: "Log In"} %>
+    <%= link_to 'Log in with Amazon', '/auth/amazon' %>
+    <%= link_to 'Sign Up', new_user_path %>
+</div>
