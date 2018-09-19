@@ -1,11 +1,11 @@
 nav {
     padding: 10px;
     background-color: $big-budget-green;
-    font-size: 64px;
+    font-size: $font-size-navbar;
+    font-family: $font-stack-navbar;
 }
 
 nav a {
-    font-family: 'Fredoka One', sans-serif;
     color: rgb(175, 182, 219);
     padding: 0px 5px;
     text-decoration: none;
@@ -20,7 +20,6 @@ nav a:hover {
 }
 
 #logo {
-    font-family: 'Fredoka One', sans-serif;
     color: $color-logo;
     margin-right: 20px;
 }
