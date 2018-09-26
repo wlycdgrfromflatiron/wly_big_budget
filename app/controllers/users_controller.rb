@@ -14,6 +14,7 @@ class UsersController < SessionsController
   end
 
   def home
+    @this_months_total_spending = Cart.total(@user.carts.this_month)
   end
 
   def show
