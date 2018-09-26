@@ -12,9 +12,9 @@ class Cart < ApplicationRecord
   validates :cart_store, presence: true
   validates :cart_items, presence: true
 
-  scope :this_month, -> {where(date.month == Date.today.month && date.year == Date.today.year )}
+  scope :this_month, -> { where("date >= ? ", Date.new(Date.today.year, Date.today.month, 1)) }
 
-  def total (carts)
+  def self.total (carts)
     carts.reduce(0) { |total, cart| total += cart.total }
   end
 
