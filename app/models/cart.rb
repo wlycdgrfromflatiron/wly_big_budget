@@ -12,6 +12,12 @@ class Cart < ApplicationRecord
   validates :cart_store, presence: true
   validates :cart_items, presence: true
 
+  scope :this_month, -> {where(date.month == Date.today.month && date.year == Date.today.year )}
+
+  def total (carts)
+    carts.reduce(0) { |total, cart| total += cart.total }
+  end
+
   def total
     cart_items.reduce(0) { |total, cart_item| total += cart_item.price }
   end
