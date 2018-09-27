@@ -1,7 +1,7 @@
 # wly's Big Budget
 ### flexible budgeting for minnows and mavens
 
-Big Budget is a simple budgeting app that helps you track, categorize, and explore your spending with support for item and store prefabs, tags, and multi-item purchases.
+Big Budget is a simple budgeting app that helps you track, categorize, and explore your spending through support for item and store prefabs, tags, and multi-item purchases.
 
 ## Getting Started
 For a quick peek, check out the [preview production version](https://wly-big-budget.herokuapp.com/). Use 'ilya@gmail.com' pw 'ilya', 'eugene@gmail.com' pw 'eugene', or 'willa@gmail.com' pw 'willa' to log in, as new first-party account creation is disabled. Alternatively, you can log in through Amazon. Please be mindful that this is just a demo.
