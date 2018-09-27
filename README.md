@@ -29,7 +29,7 @@ If you're on Windows, I recommend you [install WSL](https://docs.microsoft.com/e
 
 You'll need Bundler, Ruby's de-facto official package manager, to install the project's dependencies. Check the [Bundler website](https://bundler.io/) for installation instructions and usage details.
 
-For exploring and  editing the code, I recommend [Visual Studio Code](https://code.visualstudio.com/). It is a one-stop solution that has good support for all interpreted and compiled languages you might want to use, from web dev stalwarts like Javascript, Python, and Ruby, to ones like C++, Java, Haskell, and Go.
+For exploring and  editing the code, I recommend [Visual Studio Code](https://code.visualstudio.com/). It is a one-stop solution that has good support for most all interpreted and compiled languages you might want to use, from web dev stalwarts like Javascript, Python, and Ruby, to ones like C++, Java, Haskell, and Go.
 
 ## Deployment
 For free and easy deployment, I suggest Heroku. The app is already configured to use Heroku's preferred PostgreSQL on production. Visit the [Heroku Devcenter](https://devcenter.heroku.com/) to get started.
