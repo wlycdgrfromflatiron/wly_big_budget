@@ -44,7 +44,7 @@ For the versions available, see the tags on this repository.
 Ilya Zarembsky / Project lead / Initial and ongoing design and development
 
 ## License 
-This project is licensed under the GNU AGPLv3 license - see the LICENSE.md file for details
+This project is licensed under the GNU AGPLv3 license - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 This is a [Flatiron School](https://flatironschool.com/) portfolio project. The school's web developer curriculum greatly helped me get to this point.
