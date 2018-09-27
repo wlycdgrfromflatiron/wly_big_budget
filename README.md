@@ -4,6 +4,7 @@
 Big Budget is a simple budgeting app that helps you track, categorize, and explore your spending with support for item and store prefabs, tags, and multi-item purchases.
 
 ## Getting Started
+For a quick peek, check out the [preview production version](https://wly-big-budget.herokuapp.com/). Use 'ilya@gmail.com' pw 'ilya', 'eugene@gmail.com' pw 'eugene', or 'willa@gmail.com' pw 'willa' to log in, as new first-party account creation is disabled. Alternatively, you can log in through Amazon. Please be mindful that this is just a demo.
 
 To use and explore Big Budget on your local machine, follow these steps:
 * Clone the repo
@@ -23,8 +24,11 @@ To use and explore Big Budget on your local machine, follow these steps:
 
 ## Prerequisites
 You'll need to have Ruby installed. If it's not already installed on your system, follow the [official Ruby installation guide](https://www.ruby-lang.org/en/documentation/installation/).
-If you're on Windows, I recommend you [intall WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and use [cmder](http://cmder.net/) instead of the default Ubuntu on Windows terminal.
+
+If you're on Windows, I recommend you [install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and use [cmder](http://cmder.net/) instead of the default Ubuntu on Windows terminal.
+
 You'll need Bundler, Ruby's de-facto official package manager, to install the project's dependencies. Check the [Bundler website](https://bundler.io/) for installation instructions and usage details.
+
 For exploring and  editing the code, I recommend [Visual Studio Code](https://code.visualstudio.com/). It is a one-stop solution that has good and growing support for all the languages you might want to use - not just the popular web dev ones.
 
 ## Deployment
