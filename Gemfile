@@ -30,6 +30,9 @@ gem 'omniauth-amazon'
 # HTTPS on localhost
 gem 'thin'
 
+# Serialization for JSON AJAX API use
+gem 'active_model_serializers'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

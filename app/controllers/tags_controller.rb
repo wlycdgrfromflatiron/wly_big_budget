@@ -7,6 +7,11 @@ class TagsController < NestedResourcesController
 
   def index
     @tags = @user.tags
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @tags }
+    end
   end
 
   def show
