@@ -3,7 +3,7 @@
     <%= flash[:notice] %>
   <% end %>
 
-  <%= form_with scope: @user, class: 'login-form', url: target_url do |f| %>
+  <%= form_with scope: @user, class: 'login-form', url: target_url, local: true do |f| %>
     <%= f.text_field :email, placeholder: 'Email' %>
     <%= f.password_field :password, placeholder: 'Password' %>
     <%= f.submit submit_label %>

@@ -1,1 +1,3 @@
+<% content_for :body_class, "frontPage" %>
+
 <%= render partial: 'sessions/form', locals: {target_url: '/signin', submit_label: 'Log In', link_label: 'Sign Up', link_path: new_user_path} %>

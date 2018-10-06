@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:new, :create, :destroy]
   end
 
-  post '/signin', to: 'sessions#signin'
+  post '/signin', to: 'sessions#create'
   get '/signout', to: 'sessions#signout'
   get '/auth/amazon/callback', to: 'sessions#amazon_signin'
 

@@ -1,1 +1,1 @@
-const bananas = "foster";
+const bananas = "FOSTER"
