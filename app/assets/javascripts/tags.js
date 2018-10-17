@@ -39,7 +39,17 @@
         const tagsNavbarLink = document.getElementById('tags-navbar-link');
 
         tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
+
+        console.log("window.onLoad handler called")
     }
+    
+    // can use this to block refresh
+    /*
+    window.addEventListener('beforeunload', function(e){
+        e.preventDefault();
+        e.returnValue = '';
+    })
+    */
 })();
 
 let userIdReady = true
