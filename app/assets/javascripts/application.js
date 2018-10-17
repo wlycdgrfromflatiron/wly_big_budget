@@ -16,3 +16,4 @@
 //= require_tree ./templates
 //= require home
 //= require tags
+//= require prefab_items

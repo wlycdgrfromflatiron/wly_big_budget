@@ -1,4 +1,4 @@
-(function TagsIndex() {
+(function PrefabItems(){
     function handleTagsNavbarLinkClick(event){
         event.preventDefault();
 
@@ -29,6 +29,6 @@
         const tagsNavbarLink = document.getElementById('tags-navbar-link');
         tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
 
-        console.log("TagsIndex window.onLoad handler called")
+        console.log("PrefabItems window.onLoad handler called")
     })
 })();
