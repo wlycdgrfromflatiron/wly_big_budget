@@ -33,6 +33,9 @@ gem 'thin'
 # Serialization for JSON AJAX API use
 gem 'active_model_serializers'
 
+# JS view templates
+gem 'handlebars_assets'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

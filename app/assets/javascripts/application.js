@@ -12,5 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require handlebars.runtime-v4.0.12
+//= require_tree ./templates
 //= require home
 //= require tags
