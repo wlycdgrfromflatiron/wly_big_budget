@@ -10,7 +10,7 @@
 
         // update to show "LOADING"
         const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = "LOADING TAGS...."
+        mainDiv.innerHTML = "LOADING YOUR PREFAB ITEMS...."
 
         // send data request
         // when data comes back, parse it and insert it
