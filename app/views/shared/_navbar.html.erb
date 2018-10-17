@@ -3,7 +3,7 @@
   <%= link_to 'Home', home_user_path(@user) %>
   <%= link_to 'C', user_carts_path(@user)  %>
   <%= link_to 'S', user_prefab_stores_path(@user) %>
-  <%= link_to 'I', user_prefab_items_path(@user) %>
+  <%= link_to 'I', user_prefab_items_path(@user), id: 'prefab-items-navbar-link' %>
   <%= link_to 'T', user_tags_path(@user), id: 'tags-navbar-link' %>
   <%= link_to 'Sign Out', signout_path %>
 <% else %>

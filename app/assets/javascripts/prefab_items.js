@@ -1,12 +1,12 @@
 (function PrefabItems(){
-    function handleTagsNavbarLinkClick(event){
+    function handlePrefabItemsNavbarLinkClick(event){
         event.preventDefault();
 
-        console.log("tags navbar link clicked!");
+        console.log("prefab items navbar link clicked!");
         console.log(`userId: ${userId}`);
 
         // change URL - use pushState
-        history.pushState({}, "Tags", `/users/${userId}/tags`)
+        history.pushState({}, "Prefab Items", `/users/${userId}/prefab_items`)
 
         // update to show "LOADING"
         const mainDiv = document.getElementById('main-content-column')
@@ -14,20 +14,22 @@
 
         // send data request
         // when data comes back, parse it and insert it
-        fetch(`/users/${userId}/tags.json`)
+        fetch(`/users/${userId}/prefab_items.json`)
             .then(response => response.json())
             .then(responseJSON => {
                 console.log(responseJSON)
+                /*
                 mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
                     header: "ALL THE TAGS!",
                     tags: responseJSON
                 })
+                */
             })
     }
 
     window.addEventListener('load', () => {
-        const tagsNavbarLink = document.getElementById('tags-navbar-link');
-        tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
+        document.getElementById('prefab-items-navbar-link')
+            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
 
         console.log("PrefabItems window.onLoad handler called")
     })

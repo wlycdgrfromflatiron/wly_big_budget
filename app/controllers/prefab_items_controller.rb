@@ -5,6 +5,11 @@ class PrefabItemsController < NestedResourcesController
 
   def index
     @prefab_items = @user.prefab_items
+
+    respond_to do |format|
+      format.html { render 'index'}
+      format.json { render json: @prefab_items }
+    end
   end
 
   def show
