@@ -10,7 +10,7 @@
 
         // update to show "LOADING"
         const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = "LOADING TAGS!"
+        mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({loadingMessage: "BANANAS FOSTER FRIENDS, BANANAS FOSTER...."})
 
         // send data request
         // when data comes back, parse it and insert it
@@ -18,7 +18,7 @@
             .then(response => response.json())
             .then(responseJSON => {
                 console.log(responseJSON)
-                mainDiv.innerHTML = renderTags(responseJSON)
+               // mainDiv.innerHTML = renderTags(responseJSON)
             })
     }
 
@@ -42,7 +42,7 @@
 
         console.log("window.onLoad handler called")
     }
-    
+
     // can use this to block refresh
     /*
     window.addEventListener('beforeunload', function(e){
