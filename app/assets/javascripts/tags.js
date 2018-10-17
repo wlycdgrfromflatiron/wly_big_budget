@@ -10,7 +10,7 @@
 
         // update to show "LOADING"
         const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({loadingMessage: "BANANAS FOSTER FRIENDS, BANANAS FOSTER...."})
+        mainDiv.innerHTML = "LOADING TAGS...."
 
         // send data request
         // when data comes back, parse it and insert it
@@ -18,7 +18,10 @@
             .then(response => response.json())
             .then(responseJSON => {
                 console.log(responseJSON)
-               // mainDiv.innerHTML = renderTags(responseJSON)
+                mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
+                    header: "ALL THE TAGS!",
+                    tags: responseJSON
+                })
             })
     }
 
