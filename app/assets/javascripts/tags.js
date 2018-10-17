@@ -7,6 +7,9 @@
 
         // change URL - use pushState
         history.pushState({}, "Tags", `/users/${userId}/tags`)
+
+        const mainDiv = document.getElementById('main-content-column')
+        console.log(mainDiv)
         // update to show "LOADING"
         // send data request
         // when data comes back, parse it and insert it
@@ -18,7 +21,7 @@
     }
 
     window.onload = () => {
-        const tagsNavbarLink = document.getElementById('tags_navbar_link');
+        const tagsNavbarLink = document.getElementById('tags-navbar-link');
 
         tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
     }
