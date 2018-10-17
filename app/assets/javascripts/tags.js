@@ -8,16 +8,31 @@
         // change URL - use pushState
         history.pushState({}, "Tags", `/users/${userId}/tags`)
 
-        const mainDiv = document.getElementById('main-content-column')
-        console.log(mainDiv)
         // update to show "LOADING"
+        const mainDiv = document.getElementById('main-content-column')
+        mainDiv.innerHTML = "LOADING TAGS!"
+
         // send data request
         // when data comes back, parse it and insert it
-
-        fetch('/users/1/tags.json')
+        fetch(`/users/${userId}/tags.json`)
             .then(response => response.json())
-            .then(responseJSON => console.log(responseJSON))
+            .then(responseJSON => {
+                console.log(responseJSON)
+                mainDiv.innerHTML = renderTags(responseJSON)
+            })
+    }
 
+    // tags have id, name, prefab_stores array, prefab_items array
+    // prefab_stores have id, name
+    // prefab_items have id, name
+    function renderTags(tags){
+        html = "<ul>"
+        for (let tag of tags){
+            html += `<li>${tag.name}</li>`
+        }
+        html += "</ul>"
+
+        return html
     }
 
     window.onload = () => {
