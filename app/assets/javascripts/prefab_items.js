@@ -18,19 +18,21 @@
             .then(response => response.json())
             .then(responseJSON => {
                 console.log(responseJSON)
-                /*
-                mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
-                    header: "ALL THE TAGS!",
-                    tags: responseJSON
+                mainDiv.innerHTML = HandlebarsTemplates["prefab_items/index"]({
+                    header: "All the prefab items!",
+                    prefab_items: responseJSON
                 })
-                */
             })
     }
 
     window.addEventListener('load', () => {
-        document.getElementById('prefab-items-navbar-link')
-            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
-
         console.log("PrefabItems window.onLoad handler called")
+
+        const prefabItemsNavbarLink = document.getElementById('prefab-items-navbar-link');
+        prefabItemsNavbarLink
+            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
+        if (window.location.pathname.match(/users\/\d\/prefab_items$/)){
+            prefabItemsNavbarLink.dispatchEvent(new Event('click'));
+        }        
     })
 })();
