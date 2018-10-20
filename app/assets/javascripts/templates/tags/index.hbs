@@ -1,5 +1,14 @@
 <h1>{{header}}</h1>
 
-{{#each tags}}
-    <h3><a href="#" id={{id}} onclick="handleTagClick(event)">{{name}}</a></h3>
-{{/each}}
+<div id="tag-details">
+    <h3>{{selectedTag.name}}</h3>
+    {{#each selectedTag.prefab_stores}}
+        {{name}}
+    {{/each}}
+</div>
+
+<div>
+    {{#each tags}}
+        <a href="#" id={{id}} onclick="handleTagClick(event)">{{name}}</a>    
+    {{/each}}
+</div>

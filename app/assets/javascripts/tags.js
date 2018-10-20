@@ -19,7 +19,8 @@ function handleTagsNavbarLinkClick(event){
             console.log(responseJSON)
             mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
                 header: "ALL THE TAGS!",
-                tags: responseJSON
+                tags: responseJSON,
+                selectedTag: responseJSON[0]
             })
         })
 }
@@ -27,6 +28,13 @@ function handleTagsNavbarLinkClick(event){
 function handleTagClick(event){
     event.preventDefault();
     console.log("Tag clicked!");
+    console.log(event.target.innerHTML)
+
+    const detailsDiv = document.getElementById('tag-details')
+    const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
+    console.log(selectedTagName)
+    console.log(selectedTagName.innerHTML)
+    selectedTagName.innerHTML = event.target.innerHTML;
 }
 
 window.addEventListener('load', () => {
