@@ -1,11 +1,5 @@
-<div id="tag-details">
-    <h3>{{selectedTag.name}}</h3>
-    {{#each selectedTag.prefab_stores}}
-        {{name}}<br>
+<div id="tag-links">
+    {{#each tags}}
+        <a href="#" class="tag-index-link" id="tag-{{id}}">{{name}}</a>
     {{/each}}
 </div>
-
-
-{{#each tags}}
-    <a href="#" class="tag-index-link" id="tag-{{id}}">{{name}}</a>    
-{{/each}}

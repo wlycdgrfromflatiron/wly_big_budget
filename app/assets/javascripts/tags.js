@@ -15,6 +15,8 @@ class TagsController {
     
     // HANDLERS - need to be bound to class instance in constructor
     handleTagClick(event){ // user clicks a tag in the tag index view
+        console.log("handleTagClick called")
+        
         event.preventDefault();
         const detailsDiv = document.getElementById('tag-details')
         const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
@@ -28,23 +30,37 @@ class TagsController {
         event.preventDefault();
         history.pushState({}, "Tags", `/users/${userId}/tags`)
         store.tags ? 
-            this.renderStoredTags(this.sortTags(SORT_ALPHA_ASC)) : 
-            this.fetchStoreAndRenderTags();
+            this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC)) : 
+            this.fetchAndStoreTagsThenRenderTagsIndex();
+        this.attachTagClickListeners()
     }
 
-    async fetchStoreAndRenderTags(){
+    async fetchAndStoreTagsThenRenderTagsIndex(){
         let tags = await fetch(`/users/${userId}/tags.json`)
         store.tags = await tags.json()
-        this.renderStoredTags(this.sortTags(SORT_ALPHA_ASC))
+        this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
     }
 
-    renderStoredTags(sortedTags){
+    renderTagsIndex(sortedTags){
         const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
-            tags: sortedTags,
-            selectedTag: sortedTags[0],
+        mainDiv.innerHTML = this.renderSelectedTagDiv(sortedTags[0])
+        mainDiv.innerHTML += this.renderTagsList(sortedTags)
+    }
+
+    renderSelectedTagDiv(selectedTag){
+        return HandlebarsTemplates["tags/selectedTag"]({
+            tag: selectedTag
         })
-        const tagLinks = document.getElementsByClassName('tag-index-link');
+    }
+
+    renderTagsList(sortedTags){
+        return HandlebarsTemplates["tags/index"]({
+            tags: sortedTags
+        })
+    }
+
+    attachTagClickListeners(){
+        const tagLinks = document.getElementsByClassName('tag-index-link')
         for (const tagLink of tagLinks){
             tagLink.addEventListener('click', event => this.handleTagClick(event))
         }
