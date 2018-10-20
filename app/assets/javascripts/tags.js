@@ -18,9 +18,20 @@ class TagsController {
         console.log("handleTagClick called")
 
         event.preventDefault();
-        const detailsDiv = document.getElementById('tag-details')
-        const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
-        selectedTagName.innerHTML = event.target.innerHTML;
+        // extract the tag id
+        // find the matching tag entry in the store
+        // call renderSelectedTagDiv passing in that matching tag entry
+        // BONUS: if user has clicked on the already selected tag, take them to details screen
+        console.log(event.target.dataset.tagId);
+
+        const tagId = event.target.dataset.tagId;
+
+        console.log(store.tags)
+        const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
+        console.log(selectedTag)
+        
+        document.getElementById('tag-details').innerHTML =
+            this.renderSelectedTagDiv(selectedTag)
     }
 
     async handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
@@ -33,12 +44,6 @@ class TagsController {
         store.tags ? false : await this.fetchTags() 
         this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
         this.attachTagClickListeners()
-        /*
-        store.tags ? 
-            await this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC)) : 
-            await this.fetchAndStoreTagsThenRenderTagsIndex();
-        this.attachTagClickListeners()
-        */
     }
 
     async fetchTags(){
@@ -54,14 +59,18 @@ class TagsController {
 
     renderTagsIndex(sortedTags){
         const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = this.renderSelectedTagDiv(sortedTags[0])
+        const selectedTagDiv = document.createElement('div')
+        selectedTagDiv.setAttribute('id', 'tag-details')
+        selectedTagDiv.innerHTML = this.renderSelectedTagDiv(sortedTags[0])
+        mainDiv.appendChild(selectedTagDiv);
+
         mainDiv.innerHTML += this.renderTagsList(sortedTags)
     }
 
     renderSelectedTagDiv(selectedTag){
         return HandlebarsTemplates["tags/selectedTag"]({
-            tag: selectedTag
-        })
+                tag: selectedTag
+            })
     }
 
     renderTagsList(sortedTags){
