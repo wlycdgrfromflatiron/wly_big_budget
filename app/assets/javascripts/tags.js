@@ -1,40 +1,31 @@
-const ALPHA_ASC = 0;
-
-const store = {}
-
 class TagIndexController {
     constructor(){
+        console.log("TagIndexController constructor entered")
+
         this.handleTagsNavbarLinkClick = this.handleTagsNavbarLinkClick.bind(this)
 
-        window.addEventListener('load', () => {
-            console.log("TagsIndex window.onLoad handler called")
+        const tagsNavbarLink = document.getElementById('tags-navbar-link');
+        tagsNavbarLink.addEventListener('click', this.handleTagsNavbarLinkClick);
         
-            const tagsNavbarLink = document.getElementById('tags-navbar-link');
-            tagsNavbarLink.addEventListener('click', this.handleTagsNavbarLinkClick);
-            if (window.location.pathname.match(/users\/\d\/tags$/)){
-                tagsNavbarLink.dispatchEvent(new Event('click'));
-            }
-        })
+        if (window.location.pathname.match(/users\/\d\/tags$/)){
+            tagsNavbarLink.dispatchEvent(new Event('click'));
+        }
     }    
     
     async fetchStoreAndRenderTags(){
         let tags = await fetch(`/users/${userId}/tags.json`)
         store.tags = await tags.json()
-        this.renderStoredTags(this.sortTags(ALPHA_ASC))
-       //console.log("called fetchStoreAndRenderTags")
+        this.renderStoredTags(this.sortTags(SORT_ALPHA_ASC))
     }
 
     handleTagsNavbarLinkClick(event){
         console.log("tags navbar link clicked!");
         console.log(`userId: ${userId}`);
 
-        console.log("the value of this inside handleTagsNavbarLinkClick method is: ");
-        console.log(this);
-
         event.preventDefault();
         history.pushState({}, "Tags", `/users/${userId}/tags`)
         store.tags ? 
-            this.renderStoredTags(sortTags(ALPHA_ASC)) : 
+            this.renderStoredTags(sortTags(SORT_ALPHA_ASC)) : 
             this.fetchStoreAndRenderTags();
     }
 
@@ -53,15 +44,13 @@ class TagIndexController {
         const sortedTags = store.tags.slice()
         let sortFunc
         switch(sort){
-            case ALPHA_ASC:
+            case SORT_ALPHA_ASC:
                 sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
                 break;
             default:
                 sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
         }
         return sortedTags.sort(sortFunc)
-
-
     }
 
     handleTagClick(event){
@@ -71,5 +60,3 @@ class TagIndexController {
         selectedTagName.innerHTML = event.target.innerHTML;
     }
 }
-
-const tagIndexController = new TagIndexController();

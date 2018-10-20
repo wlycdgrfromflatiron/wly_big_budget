@@ -14,6 +14,6 @@
 //= require activestorage
 //= require handlebars.runtime-v4.0.12
 //= require_tree ./templates
-//= require home
+//= require main
 //= require tags
 //= require prefab_items
