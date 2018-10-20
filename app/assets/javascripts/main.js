@@ -1,5 +1,4 @@
-let userIdReady = false
-let userId = 0
+let userId;
 const SORT_ALPHA_ASC = 0;
 const store = {}
 
@@ -10,8 +9,10 @@ class Main {
             console.log(userIdDiv);
             console.log(userIdDiv.dataset);
 
+            // user is not logged in (yet)
+            if ("" === userIdDiv.dataset.id) return;
+
             userId = userIdDiv.dataset.id;
-            userIdReady = true;
 
             new TagIndexController();
         })

@@ -1,5 +1,16 @@
-(function PrefabItems(){
-    function handlePrefabItemsNavbarLinkClick(event){
+class PrefabItemsController {
+    constructor(){
+        console.log("PrefabItemsControllers constructor called")
+
+        const prefabItemsNavbarLink = document.getElementById('prefab-items-navbar-link');
+        prefabItemsNavbarLink
+            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
+        if (window.location.pathname.match(/users\/\d\/prefab_items$/)){
+            prefabItemsNavbarLink.dispatchEvent(new Event('click'));
+        } 
+    }
+
+    handlePrefabItemsNavbarLinkClick(event){
         event.preventDefault();
 
         console.log("prefab items navbar link clicked!");
@@ -24,15 +35,4 @@
                 })
             })
     }
-
-    window.addEventListener('load', () => {
-        console.log("PrefabItems window.onLoad handler called")
-
-        const prefabItemsNavbarLink = document.getElementById('prefab-items-navbar-link');
-        prefabItemsNavbarLink
-            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
-        if (window.location.pathname.match(/users\/\d\/prefab_items$/)){
-            prefabItemsNavbarLink.dispatchEvent(new Event('click'));
-        }        
-    })
-})();
+}
