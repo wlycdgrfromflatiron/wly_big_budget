@@ -26,9 +26,12 @@
     }
 
     window.addEventListener('load', () => {
+        console.log("TagsIndex window.onLoad handler called")
+
         const tagsNavbarLink = document.getElementById('tags-navbar-link');
         tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
-
-        console.log("TagsIndex window.onLoad handler called")
+        if (window.location.pathname.match(/users\/\d\/tags$/)){
+            tagsNavbarLink.dispatchEvent(new Event('click'));
+        }
     })
 })();
