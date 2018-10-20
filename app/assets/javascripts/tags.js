@@ -2,71 +2,74 @@ const ALPHA_ASC = 0;
 
 const store = {}
 
-function handleTagsNavbarLinkClick(event){
-    event.preventDefault();
+class TagIndexController {
+    constructor(){
+        this.handleTagsNavbarLinkClick = this.handleTagsNavbarLinkClick.bind(this)
 
-    console.log("tags navbar link clicked!");
-    console.log(`userId: ${userId}`);
-
-    // change URL - use pushState
-    history.pushState({}, "Tags", `/users/${userId}/tags`)
-
-    // update to show "LOADING"
-    //const mainDiv = document.getElementById('main-content-column')
-    //mainDiv.innerHTML = "LOADING TAGS...."
-
-    // send data request
-    // when data comes back, parse it and insert it
-    store.tags ? renderStoredTags(sortTags(ALPHA_ASC)) : fetchStoreAndRenderTags();
-}
-
-function renderStoredTags(sortedTags){
-    const mainDiv = document.getElementById('main-content-column')
-    mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
-        tags: sortedTags,
-        selectedTag: sortedTags[0]
-    })
-}
-
-async function fetchStoreAndRenderTags(){
-    let tags = await fetch(`/users/${userId}/tags.json`)
-    store.tags = await tags.json()
-
-    renderStoredTags(sortTags(ALPHA_ASC))
-}
-
-function sortTags(sort){
-    const sortedTags = store.tags.slice()
-    let sortFunc
-    switch(sort){
-        case ALPHA_ASC:
-            sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
-            break;
-        default:
-            sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
+        window.addEventListener('load', () => {
+            console.log("TagsIndex window.onLoad handler called")
+        
+            const tagsNavbarLink = document.getElementById('tags-navbar-link');
+            tagsNavbarLink.addEventListener('click', this.handleTagsNavbarLinkClick);
+            if (window.location.pathname.match(/users\/\d\/tags$/)){
+                tagsNavbarLink.dispatchEvent(new Event('click'));
+            }
+        })
+    }    
+    
+    async fetchStoreAndRenderTags(){
+        let tags = await fetch(`/users/${userId}/tags.json`)
+        store.tags = await tags.json()
+        this.renderStoredTags(this.sortTags(ALPHA_ASC))
+       //console.log("called fetchStoreAndRenderTags")
     }
 
-    return sortedTags.sort(sortFunc)
-}
+    handleTagsNavbarLinkClick(event){
+        console.log("tags navbar link clicked!");
+        console.log(`userId: ${userId}`);
 
-function handleTagClick(event){
-    event.preventDefault();
-    console.log("Tag clicked!");
-    console.log(event.target.innerHTML)
+        console.log("the value of this inside handleTagsNavbarLinkClick method is: ");
+        console.log(this);
 
-    const detailsDiv = document.getElementById('tag-details')
-    const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
-    console.log(selectedTagName)
-    console.log(selectedTagName.innerHTML)
-    selectedTagName.innerHTML = event.target.innerHTML;
-}
-
-window.addEventListener('load', () => {
-    console.log("TagsIndex window.onLoad handler called")
-
-    const tagsNavbarLink = document.getElementById('tags-navbar-link');
-    tagsNavbarLink.addEventListener('click', handleTagsNavbarLinkClick);
-    if (window.location.pathname.match(/users\/\d\/tags$/)){
-        tagsNavbarLink.dispatchEvent(new Event('click'));
+        event.preventDefault();
+        history.pushState({}, "Tags", `/users/${userId}/tags`)
+        store.tags ? 
+            this.renderStoredTags(sortTags(ALPHA_ASC)) : 
+            this.fetchStoreAndRenderTags();
     }
-})
+
+    renderStoredTags(sortedTags){
+        const mainDiv = document.getElementById('main-content-column')
+        mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
+            tags: sortedTags,
+            selectedTag: sortedTags[0]
+        })
+    }
+
+    sortTags(sort){
+        console.log("the value of this inside sortTags method is: ");
+        console.log(this);
+
+        const sortedTags = store.tags.slice()
+        let sortFunc
+        switch(sort){
+            case ALPHA_ASC:
+                sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
+                break;
+            default:
+                sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
+        }
+        return sortedTags.sort(sortFunc)
+
+
+    }
+
+    handleTagClick(event){
+        event.preventDefault();
+        const detailsDiv = document.getElementById('tag-details')
+        const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
+        selectedTagName.innerHTML = event.target.innerHTML;
+    }
+}
+
+const tagIndexController = new TagIndexController();
