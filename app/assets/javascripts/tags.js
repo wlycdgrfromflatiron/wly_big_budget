@@ -16,23 +16,34 @@ class TagsController {
     // HANDLERS - need to be bound to class instance in constructor
     handleTagClick(event){ // user clicks a tag in the tag index view
         console.log("handleTagClick called")
-        
+
         event.preventDefault();
         const detailsDiv = document.getElementById('tag-details')
         const selectedTagName = detailsDiv.getElementsByTagName('h3')[0]
         selectedTagName.innerHTML = event.target.innerHTML;
     }
 
-    handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
+    async handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
         console.log("tags navbar link clicked!");
         console.log(`userId: ${userId}`);
 
         event.preventDefault();
         history.pushState({}, "Tags", `/users/${userId}/tags`)
-        store.tags ? 
-            this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC)) : 
-            this.fetchAndStoreTagsThenRenderTagsIndex();
+
+        store.tags ? false : await this.fetchTags() 
+        this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
         this.attachTagClickListeners()
+        /*
+        store.tags ? 
+            await this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC)) : 
+            await this.fetchAndStoreTagsThenRenderTagsIndex();
+        this.attachTagClickListeners()
+        */
+    }
+
+    async fetchTags(){
+        let tags = await fetch(`/users/${userId}/tags.json`)
+        store.tags = await tags.json()
     }
 
     async fetchAndStoreTagsThenRenderTagsIndex(){
