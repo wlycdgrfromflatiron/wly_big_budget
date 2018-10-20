@@ -4,7 +4,7 @@ class PrefabItemsController {
 
         const prefabItemsNavbarLink = document.getElementById('prefab-items-navbar-link');
         prefabItemsNavbarLink
-            .addEventListener('click', handlePrefabItemsNavbarLinkClick);
+            .addEventListener('click', this.handlePrefabItemsNavbarLinkClick);
         if (window.location.pathname.match(/users\/\d\/prefab_items$/)){
             prefabItemsNavbarLink.dispatchEvent(new Event('click'));
         } 

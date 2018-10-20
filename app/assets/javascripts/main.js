@@ -14,7 +14,8 @@ class Main {
 
             userId = userIdDiv.dataset.id;
 
-            new TagIndexController();
+            new PrefabItemsController();
+            new TagsController();
         })
     }
 }

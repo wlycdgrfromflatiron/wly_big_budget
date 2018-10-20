@@ -1,4 +1,4 @@
-class TagIndexController {
+class TagsController {
     constructor(){
         console.log("TagIndexController constructor entered")
 
@@ -6,7 +6,7 @@ class TagIndexController {
 
         const tagsNavbarLink = document.getElementById('tags-navbar-link');
         tagsNavbarLink.addEventListener('click', this.handleTagsNavbarLinkClick);
-        
+
         if (window.location.pathname.match(/users\/\d\/tags$/)){
             tagsNavbarLink.dispatchEvent(new Event('click'));
         }
