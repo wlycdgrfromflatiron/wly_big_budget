@@ -1,3 +1,6 @@
+const store = {}
+store.tags =  []
+
 function handleTagsNavbarLinkClick(event){
     event.preventDefault();
 
@@ -17,10 +20,16 @@ function handleTagsNavbarLinkClick(event){
         .then(response => response.json())
         .then(responseJSON => {
             console.log(responseJSON)
+            store.tags = responseJSON
+            const alphaSortedTags = store.tags.slice()
+            console.log(alphaSortedTags)
+            alphaSortedTags.sort((tagA, tagB) => tagA.name.localeCompare(tagB.name))
+            //alphaSortedTags.sort((tagA, tagB) => tagA.name < tagB.name)
+            //console.log(alphaSortedTags)
             mainDiv.innerHTML = HandlebarsTemplates["tags/index"]({
                 header: "ALL THE TAGS!",
-                tags: responseJSON,
-                selectedTag: responseJSON[0]
+                tags: alphaSortedTags,
+                selectedTag: alphaSortedTags[0]
             })
         })
 }
