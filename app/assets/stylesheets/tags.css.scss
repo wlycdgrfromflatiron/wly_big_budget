@@ -1,4 +1,4 @@
-#tag-details {
+#tag-details-container {
     padding-bottom: 5px;
     margin-bottom: 10px;
     border-bottom: 1px solid;
@@ -6,13 +6,17 @@
     height: 200px;
 }
 
-#tag-list {
+#tag-list-container {
     a {
         color: black;
         text-decoration: underline
     }
 
     a.selected {
+        color: $big-budget-green;
+    }
+
+    a:hover {
         color: $big-budget-green;
     }
 }

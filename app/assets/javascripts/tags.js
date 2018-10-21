@@ -12,6 +12,12 @@ class TagsController {
     }   
     
     // HANDLERS - need to be bound to class instance in constructor
+    handleSelectedTagClick(event){
+        event.preventDefault();
+
+
+    }
+    
     handleTagClick(event){ // user clicks a tag in the tag index view
         event.preventDefault();
 
@@ -22,8 +28,8 @@ class TagsController {
 
         const tagId = event.target.dataset.tagId;
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
-        document.getElementById('tag-details').innerHTML =
-            this.renderSelectedTagDiv(selectedTag)
+
+        this.renderSelectedTagDiv(selectedTag);
     }
 
     async handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
@@ -34,8 +40,11 @@ class TagsController {
         history.pushState({}, "Tags", `/users/${userId}/tags`)
 
         store.tags ? false : await this.fetchTags() 
-        this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
-        this.attachTagClickListeners()
+        this.renderTagsIndexContainers()
+
+        const sortedTags = this.sortTags(SORT_ALPHA_ASC)
+        this.renderTagsList(sortedTags, 0)
+        this.renderSelectedTagDiv(sortedTags[0])
     }
     // /HANDLERS
 
@@ -50,43 +59,41 @@ class TagsController {
         this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
     }
 
-    renderTagsIndex(sortedTags){
-        const selectedTagDiv = document.createElement('div')
-        selectedTagDiv.innerHTML = this.renderSelectedTagDiv(sortedTags[0])
-        selectedTagDiv.setAttribute('id', 'tag-details')
-        selectedTagDiv.setAttribute('data-tag-id', sortedTags[0].id)
+    renderTagsIndexContainers(sortedTags){        
+        const tagDetailsContainer = document.createElement('div');
+        tagDetailsContainer.setAttribute('id', 'tag-details-container');
 
-        const tagListDiv = document.createElement('div')
-        tagListDiv.innerHTML = this.renderTagsList(sortedTags)
-        tagListDiv.setAttribute('id', 'tag-list')
-        
-        const selectedTagLink = tagListDiv.getElementsByTagName('a').item(0)
-        selectedTagLink.classList.add('selected')
+        const tagListContainer = document.createElement('div');
+        tagListContainer.setAttribute('id', 'tag-list-container');
 
-        const mainDiv = document.getElementById('main-content-column')
-        mainDiv.innerHTML = ""
-        mainDiv.appendChild(selectedTagDiv);
-        mainDiv.appendChild(tagListDiv);
-        //mainDiv.innerHTML += this.renderTagsList(sortedTags)
+        const mainDiv = document.getElementById('main-content-column');
+        mainDiv.appendChild(tagDetailsContainer);
+        mainDiv.appendChild(tagListContainer);
     }
 
     renderSelectedTagDiv(selectedTag){
-        return HandlebarsTemplates["tags/selectedTag"]({
+        const tagDetailsDiv = document.getElementById('tag-details-container');
+        
+        tagDetailsDiv.innerHTML = 
+            HandlebarsTemplates["tags/selectedTag"]({
                 tag: selectedTag
             })
+
+        tagDetailsDiv.getElementsByTagName('a')[0].addEventListener('click', event => this.handleSelectedTagClick(event))
     }
 
-    renderTagsList(sortedTags, selectedTag){
-        return HandlebarsTemplates["tags/index"]({
-            tags: sortedTags
-        })
-    }
+    renderTagsList(sortedTags, selectedTagIndex){
+        const tagListContainer = document.getElementById('tag-list-container');
 
-    attachTagClickListeners(){
-        const tagLinks = document.getElementsByClassName('tag-index-link')
-        for (const tagLink of tagLinks){
-            tagLink.addEventListener('click', event => this.handleTagClick(event))
-        }
+        tagListContainer.innerHTML = 
+            HandlebarsTemplates["tags/index"]({
+                tags: sortedTags
+            })
+
+        tagListContainer.addEventListener('click', event => this.handleTagClick(event))
+        
+        const selectedTagItem = tagListContainer.getElementsByClassName('tag-index-link').item(selectedTagIndex)
+        selectedTagItem.classList.add('selected')
     }
 
     sortTags(sort){
