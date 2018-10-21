@@ -1,7 +1,5 @@
 class TagsController {
     constructor(){
-        console.log("TagIndexController constructor entered")
-
         this.handleTagClick = this.handleTagClick.bind(this)
         this.handleTagsNavbarLinkClick = this.handleTagsNavbarLinkClick.bind(this)
 
@@ -52,9 +50,15 @@ class TagsController {
         selectedTagDiv.setAttribute('id', 'tag-details')
         selectedTagDiv.setAttribute('data-tag-id', sortedTags[0].id)
 
+        const tagListDiv = document.createElement('div')
+        tagListDiv.innerHTML = this.renderTagsList(sortedTags)
+        tagListDiv.setAttribute('id', 'tag-list')
+        //const selectedTagLink = tagListDiv.getElementsByTagName('a').filter(tag)
+
         const mainDiv = document.getElementById('main-content-column')
         mainDiv.appendChild(selectedTagDiv);
-        mainDiv.innerHTML += this.renderTagsList(sortedTags)
+        mainDiv.appendChild(tagListDiv);
+        //mainDiv.innerHTML += this.renderTagsList(sortedTags)
     }
 
     renderSelectedTagDiv(selectedTag){
