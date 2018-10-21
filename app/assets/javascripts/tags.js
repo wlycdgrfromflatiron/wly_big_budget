@@ -18,6 +18,8 @@ class TagsController {
         const tagId = event.target.dataset.tagId;
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
 
+        history.pushState({}, `Tag: ${selectedTag.name}`, `/users/${userId}/tags/${selectedTag.id}/edit`)
+
         this.renderSelectedTag(selectedTag);
     }
 
