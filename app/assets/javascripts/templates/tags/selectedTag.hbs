@@ -1,5 +1,21 @@
-<h3>{{tag.name}}</h3>
+<h1><a href="#">{{tag.name}}</a></h1>
+
+{{#if tag.prefab_stores}}
+    Prefab stores:<br>
+{{/if}}
 {{#each tag.prefab_stores}}
     {{name}}<br>
 {{/each}}
 
+{{#if tag.prefab_stores}}
+    {{#if tag.prefab_items}}
+        <br>
+    {{/if}}
+{{/if}}
+
+{{#if tag.prefab_items}}
+    Prefab items:<br>
+{{/if}}
+{{#each tag.prefab_items}}
+    {{name}}<br>
+{{/each}}
