@@ -12,24 +12,13 @@ class TagsController {
     }   
     
     // HANDLERS - need to be bound to class instance in constructor
-    handleSelectedTagClick(event){
-        event.preventDefault();
-
-
-    }
-    
     handleTagClick(event){ // user clicks a tag in the tag index view
         event.preventDefault();
-
-        const selectedLink = document.getElementsByClassName('selected')[0]
-        selectedLink.classList.remove('selected')
-        
-        event.target.classList.add('selected')
 
         const tagId = event.target.dataset.tagId;
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
 
-        this.renderSelectedTagDiv(selectedTag);
+        this.renderSelectedTag(selectedTag);
     }
 
     async handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
@@ -40,11 +29,10 @@ class TagsController {
         history.pushState({}, "Tags", `/users/${userId}/tags`)
 
         store.tags ? false : await this.fetchTags() 
-        this.renderTagsIndexContainers()
+        this.renderTagsContainers()
 
         const sortedTags = this.sortTags(SORT_ALPHA_ASC)
-        this.renderTagsList(sortedTags, 0)
-        this.renderSelectedTagDiv(sortedTags[0])
+        this.renderTagsList(sortedTags)
     }
     // /HANDLERS
 
@@ -59,7 +47,7 @@ class TagsController {
         this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
     }
 
-    renderTagsIndexContainers(sortedTags){        
+    renderTagsContainers(sortedTags){        
         const tagDetailsContainer = document.createElement('div');
         tagDetailsContainer.setAttribute('id', 'tag-details-container');
 
@@ -71,18 +59,20 @@ class TagsController {
         mainDiv.appendChild(tagListContainer);
     }
 
-    renderSelectedTagDiv(selectedTag){
+    renderSelectedTag(selectedTag){
+        document.getElementById('tag-list-container').innerHTML = "";
+
         const tagDetailsDiv = document.getElementById('tag-details-container');
         
         tagDetailsDiv.innerHTML = 
             HandlebarsTemplates["tags/selectedTag"]({
                 tag: selectedTag
             })
-
-        tagDetailsDiv.getElementsByTagName('a')[0].addEventListener('click', event => this.handleSelectedTagClick(event))
     }
 
-    renderTagsList(sortedTags, selectedTagIndex){
+    renderTagsList(sortedTags){
+        document.getElementById('tag-details-container').innerHTML = "";
+
         const tagListContainer = document.getElementById('tag-list-container');
 
         tagListContainer.innerHTML = 
@@ -91,9 +81,6 @@ class TagsController {
             })
 
         tagListContainer.addEventListener('click', event => this.handleTagClick(event))
-        
-        const selectedTagItem = tagListContainer.getElementsByClassName('tag-index-link').item(selectedTagIndex)
-        selectedTagItem.classList.add('selected')
     }
 
     sortTags(sort){
