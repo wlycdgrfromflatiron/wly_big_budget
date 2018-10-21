@@ -14,6 +14,12 @@ class TagsController {
     // HANDLERS - need to be bound to class instance in constructor
     handleTagClick(event){ // user clicks a tag in the tag index view
         event.preventDefault();
+
+        const selectedLink = document.getElementsByClassName('selected')[0]
+        selectedLink.classList.remove('selected')
+        
+        event.target.classList.add('selected')
+
         const tagId = event.target.dataset.tagId;
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
         document.getElementById('tag-details').innerHTML =
@@ -53,7 +59,9 @@ class TagsController {
         const tagListDiv = document.createElement('div')
         tagListDiv.innerHTML = this.renderTagsList(sortedTags)
         tagListDiv.setAttribute('id', 'tag-list')
-        //const selectedTagLink = tagListDiv.getElementsByTagName('a').filter(tag)
+        
+        const selectedTagLink = tagListDiv.getElementsByTagName('a').item(0)
+        selectedTagLink.classList.add('selected')
 
         const mainDiv = document.getElementById('main-content-column')
         mainDiv.appendChild(selectedTagDiv);

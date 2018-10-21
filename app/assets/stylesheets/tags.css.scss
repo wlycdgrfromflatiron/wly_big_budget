@@ -4,7 +4,13 @@
     border-bottom: 1px solid;
 }
 
-a {
-    color: black;
-    text-decoration: underline;
+#tag-list {
+    a {
+        color: black;
+        text-decoration: underline
+    }
+
+    a.selected {
+        color: $big-budget-green;
+    }
 }
