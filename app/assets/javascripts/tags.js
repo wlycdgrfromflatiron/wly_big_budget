@@ -64,6 +64,7 @@ class TagsController {
         selectedTagLink.classList.add('selected')
 
         const mainDiv = document.getElementById('main-content-column')
+        mainDiv.innerHTML = ""
         mainDiv.appendChild(selectedTagDiv);
         mainDiv.appendChild(tagListDiv);
         //mainDiv.innerHTML += this.renderTagsList(sortedTags)
