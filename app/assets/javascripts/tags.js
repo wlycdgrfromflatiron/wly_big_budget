@@ -15,21 +15,9 @@ class TagsController {
     
     // HANDLERS - need to be bound to class instance in constructor
     handleTagClick(event){ // user clicks a tag in the tag index view
-        console.log("handleTagClick called")
-
         event.preventDefault();
-        // extract the tag id
-        // find the matching tag entry in the store
-        // call renderSelectedTagDiv passing in that matching tag entry
-        // BONUS: if user has clicked on the already selected tag, take them to details screen
-        console.log(event.target.dataset.tagId);
-
         const tagId = event.target.dataset.tagId;
-
-        console.log(store.tags)
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
-        console.log(selectedTag)
-        
         document.getElementById('tag-details').innerHTML =
             this.renderSelectedTagDiv(selectedTag)
     }
@@ -45,6 +33,7 @@ class TagsController {
         this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
         this.attachTagClickListeners()
     }
+    // /HANDLERS
 
     async fetchTags(){
         let tags = await fetch(`/users/${userId}/tags.json`)
@@ -58,12 +47,13 @@ class TagsController {
     }
 
     renderTagsIndex(sortedTags){
-        const mainDiv = document.getElementById('main-content-column')
         const selectedTagDiv = document.createElement('div')
-        selectedTagDiv.setAttribute('id', 'tag-details')
         selectedTagDiv.innerHTML = this.renderSelectedTagDiv(sortedTags[0])
-        mainDiv.appendChild(selectedTagDiv);
+        selectedTagDiv.setAttribute('id', 'tag-details')
+        selectedTagDiv.setAttribute('data-tag-id', sortedTags[0].id)
 
+        const mainDiv = document.getElementById('main-content-column')
+        mainDiv.appendChild(selectedTagDiv);
         mainDiv.innerHTML += this.renderTagsList(sortedTags)
     }
 
@@ -73,7 +63,7 @@ class TagsController {
             })
     }
 
-    renderTagsList(sortedTags){
+    renderTagsList(sortedTags, selectedTag){
         return HandlebarsTemplates["tags/index"]({
             tags: sortedTags
         })
