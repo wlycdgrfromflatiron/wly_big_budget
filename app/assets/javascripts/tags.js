@@ -39,6 +39,7 @@ class TagsController {
     async fetchTags(){
         let tags = await fetch(`/users/${userId}/tags.json`)
         store.tags = await tags.json()
+        console.log(store.tags)
     }
 
     async fetchAndStoreTagsThenRenderTagsIndex(){
