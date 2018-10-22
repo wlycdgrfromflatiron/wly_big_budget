@@ -18,7 +18,8 @@ class TagsController {
         const tagId = event.target.dataset.tagId;
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
 
-        history.pushState({}, `Tag: ${selectedTag.name}`, `/users/${userId}/tags/${selectedTag.id}/edit`)
+        history.pushState({bananas: "foster"}, `Tag: ${selectedTag.name}`, `/users/${userId}/tags/${selectedTag.id}/edit`)
+        //console.log(history);
 
         this.renderSelectedTag(selectedTag);
     }
@@ -33,8 +34,9 @@ class TagsController {
         store.tags ? false : await this.fetchTags() 
         this.renderTagsContainers()
 
-        const sortedTags = this.sortTags(SORT_ALPHA_ASC)
-        this.renderTagsList(sortedTags)
+        this.sortTags(SORT_ALPHA_ASC)
+
+        this.renderTagList(store.tags.sorted)
     }
     // /HANDLERS
 
@@ -50,7 +52,7 @@ class TagsController {
         this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
     }
 
-    renderTagsContainers(sortedTags){        
+    renderTagsContainers(){        
         const tagDetailsContainer = document.createElement('div');
         tagDetailsContainer.setAttribute('id', 'tag-details-container');
 
@@ -73,24 +75,20 @@ class TagsController {
             })
     }
 
-    renderTagsList(sortedTags){
+    renderTagList(tagList){
         document.getElementById('tag-details-container').innerHTML = "";
 
         const tagListContainer = document.getElementById('tag-list-container');
 
         tagListContainer.innerHTML = 
             HandlebarsTemplates["tags/index"]({
-                tags: sortedTags
+                tags: tagList
             })
 
         tagListContainer.addEventListener('click', event => this.handleTagClick(event))
     }
 
     sortTags(sort){
-        console.log("the value of this inside sortTags method is: ");
-        console.log(this);
-
-        const sortedTags = store.tags.slice()
         let sortFunc
         switch(sort){
             case SORT_ALPHA_ASC:
@@ -99,6 +97,6 @@ class TagsController {
             default:
                 sortFunc = (tagA, tagB) => tagA.name.localeCompare(tagB.name);
         }
-        return sortedTags.sort(sortFunc)
+        store.tags.sorted = store.tags.slice().sort(sortFunc)
     }
 }
