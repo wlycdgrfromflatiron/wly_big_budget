@@ -16,7 +16,7 @@ class Main {
 
             userId = userIdDiv.dataset.id;
 
-            this.prefabItemsController = new PrefabItemsController();
+            this.prefabItemsController = new PrefabItemsController(this);
             this.tagsController = new TagsController(this);
 
             this.mainDiv = document.getElementById('main-content-column')

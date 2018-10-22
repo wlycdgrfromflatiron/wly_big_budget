@@ -11,8 +11,10 @@ class TagsController {
     
     // HANDLERS - need to be bound to class instance in constructor
     handlePrefabItemClick(event){
-        console.log(event.target.dataset)
-        this.main.forwardRenderRequest(RESOURCE_PREFAB_ITEM, event.target.dataset.prefabItemId)
+        this.main.forwardRenderRequest(
+            RESOURCE_PREFAB_ITEM, 
+            event.target.dataset.prefabItemId
+        )
     }
 
     handleTagClick(event){ // user clicks a tag in the tag index view
@@ -65,7 +67,7 @@ class TagsController {
                 tags: tagList
             })
         )
-        
+
         document
             .getElementById('tag-list-container')
             .addEventListener('click', event => this.handleTagClick(event))

@@ -1,5 +1,5 @@
 class PrefabItemsController {
-    constructor(){
+    constructor(main){
         console.log("PrefabItemsControllers constructor called")
 
         const prefabItemsNavbarLink = document.getElementById('prefab-items-navbar-link');
@@ -7,12 +7,26 @@ class PrefabItemsController {
             .addEventListener('click', this.handlePrefabItemsNavbarLinkClick);
         if (window.location.pathname.match(/users\/\d\/prefab_items$/)){
             prefabItemsNavbarLink.dispatchEvent(new Event('click'));
-        } 
+        }
+
+        this.main = main
     }
 
     async handleEditViewRequest(prefabItemId){
-        const mainDiv = document.getElementById('main-content-column')
-        //store.prefab_items ? 'skip this step' : 
+        store.prefab_items ? 'skip this step' : await this.fetchPrefabItems()
+
+        this.main.render(
+            'prefab-item-details-container',
+            "BANANAS FOSTER"
+            //HandlebarsTemplates["prefab_items/edit"]({
+            //    
+            //})
+
+        )
+    }
+
+    fetchPrefabItems(){
+        console.log("Fetching prefabs....")
     }
 
     handlePrefabItemsNavbarLinkClick(event){
