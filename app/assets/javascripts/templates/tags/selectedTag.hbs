@@ -12,13 +12,15 @@ Prefab stores:<br>
 <br>
 
 Prefab items:<br>
-{{#if tag.prefab_items}}
-    {{#each tag.prefab_items}}
-        {{name}}<br>
-    {{/each}}
-{{else}}
-    None yet ~<br>
-{{/if}}
+<div id="prefab-items-section">
+    {{#if tag.prefab_items}}
+        {{#each tag.prefab_items}}
+            <div data-prefab-item-id={{id}}>{{name}}</div>
+        {{/each}}
+    {{else}}
+        None yet ~<br>
+    {{/if}}
+</div>
 
 <br>
 

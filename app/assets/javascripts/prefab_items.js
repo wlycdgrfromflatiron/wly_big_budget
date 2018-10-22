@@ -10,6 +10,11 @@ class PrefabItemsController {
         } 
     }
 
+    async handleEditViewRequest(prefabItemId){
+        const mainDiv = document.getElementById('main-content-column')
+        //store.prefab_items ? 'skip this step' : 
+    }
+
     handlePrefabItemsNavbarLinkClick(event){
         event.preventDefault();
 
