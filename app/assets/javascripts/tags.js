@@ -25,16 +25,15 @@ class TagsController {
     }
 
     async handleTagsNavbarLinkClick(event){ // user clicks the T in the navbar
-        console.log("tags navbar link clicked!");
-        console.log(`userId: ${userId}`);
-
         event.preventDefault();
+
         history.pushState({}, "Tags", `/users/${userId}/tags`)
 
-        store.tags ? false : await this.fetchTags() 
-        this.renderTagsContainers()
+        store.tags ? 'skip this step' : await this.fetchTags() 
 
-        this.sortTags(SORT_ALPHA_ASC)
+        store.tags.sorted ? 'skip this' : this.sortTags(SORT_ALPHA_ASC)
+
+        this.renderTagsContainers()
 
         this.renderTagList(store.tags.sorted)
     }
@@ -43,13 +42,6 @@ class TagsController {
     async fetchTags(){
         let tags = await fetch(`/users/${userId}/tags.json`)
         store.tags = await tags.json()
-        console.log(store.tags)
-    }
-
-    async fetchAndStoreTagsThenRenderTagsIndex(){
-        let tags = await fetch(`/users/${userId}/tags.json`)
-        store.tags = await tags.json()
-        this.renderTagsIndex(this.sortTags(SORT_ALPHA_ASC))
     }
 
     renderTagsContainers(){        
@@ -60,6 +52,7 @@ class TagsController {
         tagListContainer.setAttribute('id', 'tag-list-container');
 
         const mainDiv = document.getElementById('main-content-column');
+        mainDiv.innerHTML = "";
         mainDiv.appendChild(tagDetailsContainer);
         mainDiv.appendChild(tagListContainer);
     }
