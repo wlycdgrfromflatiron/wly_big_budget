@@ -1,7 +1,8 @@
 class TagSerializer < ActiveModel::Serializer
-  attributes :id, :name, :carts, :total_spent
-  has_many :prefab_stores
-  has_many :prefab_items
-  # has_many :prefab_item_tags
-  # has_many :prefab_items, through: :prefab_item_tags
+  attribute :id
+  attribute :name, key: :n
+  attribute :carts, key: :c
+  attribute :total_spent, key: :t
+  has_many :prefab_stores, key: :s
+  has_many :prefab_items, key: :i
 end
