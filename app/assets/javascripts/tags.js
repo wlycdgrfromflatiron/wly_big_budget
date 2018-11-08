@@ -43,8 +43,21 @@ class TagsController {
     // /HANDLERS
 
     async fetchTags(){
-        let tags = await fetch(`/users/${userId}/tags.json`)
-        store.tags = await tags.json()
+        console.log("fetchTags called");
+
+        const tags = await fetch(`/users/${userId}/tags.json`);
+
+        const tagsJson = await tags.json();
+        tagsJson.map(tag => {
+            tag.name = tag.n;
+            delete tag.n;
+
+            tag.carts = tag.c;
+            delete tag.c;
+
+            return tag;
+        });
+        store.tags = tagsJson;
     }
 
     renderSelectedTag(selectedTag){
@@ -74,6 +87,9 @@ class TagsController {
     }
 
     sortTags(sort){
+        console.log('store.tags when sortTags called:');
+        console.log(store);
+
         let sortFunc
         switch(sort){
             case SORT_ALPHA_ASC:
