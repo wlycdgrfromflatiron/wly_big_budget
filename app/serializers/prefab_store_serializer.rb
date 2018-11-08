@@ -1,3 +1,4 @@
 class PrefabStoreSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attribute :id, key: :x
+  attribute :name, key: :n
 end
