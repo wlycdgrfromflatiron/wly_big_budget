@@ -7,8 +7,6 @@ const RESOURCE_PREFAB_ITEM = 0;
 class Main {
     constructor(){
         const userIdDiv = document.getElementById('user-id')
-        console.log(userIdDiv);
-        console.log(userIdDiv.dataset);
 
         // user is not logged in (yet)
         if ("" === userIdDiv.dataset.id) return;
@@ -18,10 +16,10 @@ class Main {
         this.prefabItemsController = new PrefabItemsController(this);
         this.tagsController = new TagsController(this);
 
-        this.mainDiv = document.getElementById('main-content-column')
+        this.mainDiv = document.getElementById('main-content-column');
 
-        if (window.location.pathname.match(/users\/\d\/tags$/)){
-            this.tagsController.handleTagsNavbarLinkClick(new Event('click'))
+        if (this.tagsIndexPage()){
+            this.tagsController.handleTagsNavbarLinkClick(new Event('click'));
         }
     }
 
@@ -33,17 +31,15 @@ class Main {
     }
 
     render(divId, html){
-        const contentDiv = document.createElement('div')
-        contentDiv.setAttribute('id', divId)
-        contentDiv.innerHTML = html
-        this.mainDiv.innerHTML = ""
-        this.mainDiv.appendChild(contentDiv)
+        const contentDiv = document.createElement('div');
+        contentDiv.setAttribute('id', divId);
+        contentDiv.innerHTML = html;
+        this.mainDiv.innerHTML = "";
+        this.mainDiv.appendChild(contentDiv);
     }
 
-    clearScreen(){
-        if (this.currentlyActiveDiv){
-            this.currentlyActiveDiv
-        }
+    tagsIndexPage(){
+        return ((null === window.location.pathname.match(/users\/\d\/tags$/)) ? false : true);
     }
 }
 
