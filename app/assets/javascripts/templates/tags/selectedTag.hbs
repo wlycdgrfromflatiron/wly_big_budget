@@ -1,8 +1,8 @@
-<h1>{{tag.name}} | ${{tag.total_spent}}</h1>
+<h1>{{tag.name}} | ${{tag.totalSpent}}</h1>
 
 Prefab stores:<br>
-{{#if tag.prefab_stores}}
-    {{#each tag.prefab_stores}}
+{{#if tag.prefabStores}}
+    {{#each tag.prefabStores}}
         {{name}}<br>
     {{/each}}
 {{else}}
@@ -13,8 +13,8 @@ Prefab stores:<br>
 
 Prefab items:<br>
 <div id="prefab-items-section">
-    {{#if tag.prefab_items}}
-        {{#each tag.prefab_items}}
+    {{#if tag.prefabItems}}
+        {{#each tag.prefabItems}}
             <div data-prefab-item-id={{id}}>{{name}}</div>
         {{/each}}
     {{else}}

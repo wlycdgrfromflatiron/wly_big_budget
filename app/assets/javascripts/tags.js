@@ -55,6 +55,15 @@ class TagsController {
             tag.carts = tag.c;
             delete tag.c;
 
+            tag.totalSpent = tag.t;
+            delete tag.t;
+
+            tag.prefabStores = tag.s;
+            delete tag.s;
+
+            tag.prefabItems = tag.i;
+            delete tag.i;
+
             return tag;
         });
         store.tags = tagsJson;
