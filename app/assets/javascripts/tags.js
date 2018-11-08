@@ -1,12 +1,12 @@
 class TagsController {
     constructor(main){
-        this.handleTagClick = this.handleTagClick.bind(this)
-        this.handleTagsNavbarLinkClick = this.handleTagsNavbarLinkClick.bind(this)
+        this.handleTagClick = this.handleTagClick.bind(this);
+        this.handleTagsNavbarLinkClick = this.handleTagsNavbarLinkClick.bind(this);
 
         const tagsNavbarLink = document.getElementById('tags-navbar-link');
         tagsNavbarLink.addEventListener('click', this.handleTagsNavbarLinkClick);
 
-        this.main = main
+        this.main = main;
     }   
     
     // HANDLERS - need to be bound to class instance in constructor
@@ -24,7 +24,6 @@ class TagsController {
         const selectedTag = store.tags.filter(tag => tag.id === parseInt(tagId))[0]
 
         history.pushState({bananas: "foster"}, `Tag: ${selectedTag.name}`, `/users/${userId}/tags/${selectedTag.id}/edit`)
-        //console.log(history);
 
         this.renderSelectedTag(selectedTag);
     }
@@ -66,13 +65,14 @@ class TagsController {
 
             return tag;
         });
+        
         store.tags = tagsJson;
     }
 
     renderSelectedTag(selectedTag){
         this.main.render(
             'tag-details-container',
-            HandlebarsTemplates["tags/selectedTag"]({
+            HandlebarsTemplates["tags/edit"]({
                 tag: selectedTag
             })
         )
