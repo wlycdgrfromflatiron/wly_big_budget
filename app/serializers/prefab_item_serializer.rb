@@ -1,4 +1,4 @@
 class PrefabItemSerializer < ActiveModel::Serializer
-  attributes :id, :name
-  has_many :tags
+  attribute :id, key: :x
+  attribute :name, key: :n
 end
