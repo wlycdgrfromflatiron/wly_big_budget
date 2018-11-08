@@ -6,25 +6,23 @@ const RESOURCE_PREFAB_ITEM = 0;
 
 class Main {
     constructor(){
-        window.addEventListener('load', () => {
-            const userIdDiv = document.getElementById('user-id')
-            console.log(userIdDiv);
-            console.log(userIdDiv.dataset);
+        const userIdDiv = document.getElementById('user-id')
+        console.log(userIdDiv);
+        console.log(userIdDiv.dataset);
 
-            // user is not logged in (yet)
-            if ("" === userIdDiv.dataset.id) return;
+        // user is not logged in (yet)
+        if ("" === userIdDiv.dataset.id) return;
 
-            userId = userIdDiv.dataset.id;
+        userId = userIdDiv.dataset.id;
 
-            this.prefabItemsController = new PrefabItemsController(this);
-            this.tagsController = new TagsController(this);
+        this.prefabItemsController = new PrefabItemsController(this);
+        this.tagsController = new TagsController(this);
 
-            this.mainDiv = document.getElementById('main-content-column')
+        this.mainDiv = document.getElementById('main-content-column')
 
-            if (window.location.pathname.match(/users\/\d\/tags$/)){
-                this.tagsController.handleTagsNavbarLinkClick(new Event('click'))
-            }
-        })
+        if (window.location.pathname.match(/users\/\d\/tags$/)){
+            this.tagsController.handleTagsNavbarLinkClick(new Event('click'))
+        }
     }
 
     forwardRenderRequest(resourceType, resourceId){
@@ -49,4 +47,4 @@ class Main {
     }
 }
 
-new Main();
+window.addEventListener('load', () => new Main());
