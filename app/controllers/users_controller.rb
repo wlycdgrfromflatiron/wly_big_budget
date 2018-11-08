@@ -1,7 +1,7 @@
 class UsersController < SessionsController
   # parameterized filter implementation adapted from:
   # https://stackoverflow.com/questions/5507026/before-filter-with-parameters
-  before_action only: [:home, :show] {|c| c.session_guard c.this_user? }
+  before_action only: [:data, :home, :show] {|c| c.session_guard c.this_user? }
 
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
@@ -10,6 +10,13 @@ class UsersController < SessionsController
       log_in
     else
       redirect_to root_url, notice: "Used or invalid token."
+    end
+  end
+
+  def data
+    respond_to do |format|
+      format.html { render 'data' }
+      format.json { render json: @user }
     end
   end
 

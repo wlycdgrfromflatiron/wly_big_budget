@@ -7,12 +7,13 @@ const RESOURCE_PREFAB_ITEM = 0;
 class Main {
     constructor(){
         const userIdDiv = document.getElementById('user-id')
-
         // user is not logged in (yet)
         if ("" === userIdDiv.dataset.id) return;
-
         userId = userIdDiv.dataset.id;
 
+        this.loadUserData();
+
+        /*
         this.prefabItemsController = new PrefabItemsController(this);
         this.tagsController = new TagsController(this);
 
@@ -21,6 +22,7 @@ class Main {
         if (this.tagsIndexPage()){
             this.tagsController.handleTagsNavbarLinkClick(new Event('click'));
         }
+        */
     }
 
     forwardRenderRequest(resourceType, resourceId){
@@ -28,6 +30,13 @@ class Main {
         case RESOURCE_PREFAB_ITEM:
             this.prefabItemsController.handleEditViewRequest(resourceId)
         }
+    }
+
+    async loadUserData(){
+        const data = await fetch(`/users/${userId}/data.json`);
+        console.log(data);
+        const dataJson = await data.json();
+        console.log(dataJson);
     }
 
     render(divId, html){
