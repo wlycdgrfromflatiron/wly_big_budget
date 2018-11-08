@@ -2,6 +2,7 @@ class UserSerializer < ActiveModel::Serializer
     has_many :tags
     has_many :prefab_items
     has_many :prefab_item_tags
+    has_many :carts
 end
 
 =begin
