@@ -41,27 +41,23 @@ class Main {
     }
 
     unpackUserData(dataJson){
+        console.log(dataJson);
+
         store.tags = dataJson.tags;
-        this.unpack(store.tags, {'id' : 'x', 'name' : 'n'});
-        console.log(store.tags);
-        //this.unpack(store.tags);
+        this.unpack(store.tags, {'x': 'id', 'n': 'name'});
 
-        /*
-        store.tags.map(tag => {
-            tag.id = tag.x;
-            delete tag.x;
+        store.prefab_stores = dataJson.prefab_stores;
+        this.unpack(store.prefab_stores, {'x': 'id', 'n': 'name'});
 
-            tag.name = tag.n;
-            delete tag.n;
-        })
-        */
-        //console.log(dataJson);
-        //console.log(store);
+        store.prefab_store_tags = dataJson.prefab_store_tags;
+        this.unpack(store.prefab_store_tags, {'x': 'id', 'p': 'prefab_store_id', 't': 'tag_id'});
+
+        console.log(store);
     }
 
     unpack(data, longNames){
         data.map(datum => {
-            for (const [longName, minifiedName] of Object.entries(longNames)){
+            for (const [minifiedName, longName] of Object.entries(longNames)){
                 datum[longName] = datum[minifiedName];
                 delete datum[minifiedName];
             }
