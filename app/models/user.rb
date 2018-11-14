@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :carts
   has_many :cart_items, through: :carts
+  has_many :cart_item_tags, through: :cart_items
   has_many :prefab_stores #new
   has_many :prefab_store_tags, through: :prefab_stores
   has_many :prefab_items #new
