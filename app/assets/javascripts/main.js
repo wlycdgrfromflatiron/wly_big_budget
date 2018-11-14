@@ -43,14 +43,28 @@ class Main {
     unpackUserData(dataJson){
         console.log(dataJson);
 
-        store.tags = dataJson.tags;
-        this.unpack(store.tags, {'x': 'id', 'n': 'name'});
-
-        store.prefab_stores = dataJson.prefab_stores;
-        this.unpack(store.prefab_stores, {'x': 'id', 'n': 'name'});
-
-        store.prefab_store_tags = dataJson.prefab_store_tags;
-        this.unpack(store.prefab_store_tags, {'x': 'id', 'p': 'prefab_store_id', 't': 'tag_id'});
+        store.tags = this.unpack(
+            dataJson.tags,  
+            {
+                'x': 'id', 
+                'n': 'name'
+            }
+        );
+        store.prefab_stores = this.unpack(
+            dataJson.prefab_stores, 
+            {
+                'x': 'id', 
+                'n': 'name'
+            }
+        );
+        store.prefab_store_tags = this.unpack(
+            dataJson.prefab_store_tags,  
+            {
+                'x': 'id', 
+                'p': 'prefab_store_id', 
+                't': 'tag_id'
+            }
+        );
 
         console.log(store);
     }
@@ -63,6 +77,8 @@ class Main {
             }
             return datum;
         });
+
+        return data;
     }
 
     render(divId, html){
