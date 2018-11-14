@@ -7,6 +7,7 @@ class UserSerializer < ActiveModel::Serializer
     has_many :carts
     has_many :cart_items
     has_many :cart_item_tags
+    has_many :cart_stores
 end
 
 =begin
