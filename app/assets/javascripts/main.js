@@ -34,9 +34,43 @@ class Main {
 
     async loadUserData(){
         const data = await fetch(`/users/${userId}/data.json`);
-        console.log(data);
+        //console.log(data);
         const dataJson = await data.json();
-        console.log(dataJson);
+
+        this.unpackUserData(dataJson);
+    }
+
+    unpackUserData(dataJson){
+        store.tags = dataJson.tags;
+        this.unpack(store.tags, {'id' : 'x', 'name' : 'n'});
+        //this.unpack(store.tags);
+
+        /*
+        store.tags.map(tag => {
+            tag.id = tag.x;
+            delete tag.x;
+
+            tag.name = tag.n;
+            delete tag.n;
+        })
+        */
+        //console.log(dataJson);
+        //console.log(store);
+    }
+
+    unpack(data, longNames){
+    //unpack(data){
+        console.log("HEllo! From unpack()");
+        console.log(data);
+        console.log(longNames);
+        console.log(typeof longNames);
+        
+        for (const [longName, minName] of Object.entries(longNames)){
+            console.log(`${longName}, ${minName}`);
+            //data[longName] = data[shortName];
+            //delete data[shortname];
+        }
+        
     }
 
     render(divId, html){
