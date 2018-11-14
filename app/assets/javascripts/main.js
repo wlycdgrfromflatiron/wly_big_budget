@@ -65,7 +65,65 @@ class Main {
                 't': 'tag_id'
             }
         );
-
+        store.prefab_items = this.unpack(
+            dataJson.prefab_items,
+            {
+                'x' : 'id',
+                'n' : 'name'
+            }
+        );
+        store.prefab_item_tags = this.unpack(
+            dataJson.prefab_item_tags,
+            {
+                'x' : 'id',
+                'p' : 'prefab_item_id',
+                't' : 'tag_id'
+            }
+        );
+        store.carts = this.unpack(
+            dataJson.carts,
+            {
+                'x' : 'id',
+                'd' : 'date',
+                'n' : 'name'
+            }
+        );
+        store.cart_stores = this.unpack(
+            dataJson.cart_stores,
+            {
+                'x' : 'id',
+                'c' : 'cart_id',
+                'p' : 'prefab_store_id',
+                'n' : 'name'
+            }
+        );
+        store.cart_store_tags = this.unpack(
+            dataJson.cart_store_tags,
+            {
+                'x' : 'id',
+                'c' : 'cart_id',
+                't' : 'tag_id'
+            }
+        );
+        store.cart_items = this.unpack(
+            dataJson.cart_items,
+            {
+                'x' : 'id',
+                'c' : 'cart_id',
+                'p' : 'prefab_item_id',
+                'n' : 'name',
+                'd' : 'dollars'
+            }
+        );
+        store.cart_item_tags = this.unpack(
+            dataJson.cart_item_tags,
+            {
+                'x' : 'id',
+                'c' : 'cart_id',
+                't' : 'tag_id'
+            }
+        );
+        
         console.log(store);
     }
 
