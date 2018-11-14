@@ -43,6 +43,7 @@ class Main {
     unpackUserData(dataJson){
         store.tags = dataJson.tags;
         this.unpack(store.tags, {'id' : 'x', 'name' : 'n'});
+        console.log(store.tags);
         //this.unpack(store.tags);
 
         /*
@@ -59,18 +60,13 @@ class Main {
     }
 
     unpack(data, longNames){
-    //unpack(data){
-        console.log("HEllo! From unpack()");
-        console.log(data);
-        console.log(longNames);
-        console.log(typeof longNames);
-        
-        for (const [longName, minName] of Object.entries(longNames)){
-            console.log(`${longName}, ${minName}`);
-            //data[longName] = data[shortName];
-            //delete data[shortname];
-        }
-        
+        data.map(datum => {
+            for (const [longName, minifiedName] of Object.entries(longNames)){
+                datum[longName] = datum[minifiedName];
+                delete datum[minifiedName];
+            }
+            return datum;
+        });
     }
 
     render(divId, html){
