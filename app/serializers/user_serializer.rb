@@ -5,6 +5,7 @@ class UserSerializer < ActiveModel::Serializer
     has_many :prefab_stores
     has_many :prefab_store_tags
     has_many :carts
+    has_many :cart_items
 end
 
 =begin
