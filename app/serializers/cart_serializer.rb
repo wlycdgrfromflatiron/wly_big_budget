@@ -1,3 +1,5 @@
 class CartSerializer < ActiveModel::Serializer
-    attributes :id, :date, :note
+    attribute :id, key: :x
+    attribute :date, key: :d
+    attribute :note, key: :n
 end
